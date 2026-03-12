@@ -5,6 +5,7 @@ import { Fish, BookOpen, Layers } from 'lucide-react';
 import WeatherDashboard from './components/WeatherDashboard';
 import KnotsCatalog from './components/KnotsCatalog';
 import BlogPost from './components/BlogPost';
+import AdBanner from './components/AdBanner';
 
 function NavBar() {
   const location = useLocation();
@@ -78,6 +79,10 @@ function App() {
           <Route path="/blog" element={<BlogPost />} />
         </Routes>
       </main>
+
+      <div className="max-w-4xl mx-auto px-4 w-full">
+        <AdBanner slot="REEMPLAZAR_POR_ID_DE_SLOT" />
+      </div>
 
       <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
         <p>© 2026 PescaApp - Plataforma para pescadores deportivos.</p>
