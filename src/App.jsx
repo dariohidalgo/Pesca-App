@@ -81,7 +81,7 @@ function App() {
       </main>
 
       <div className="max-w-4xl mx-auto px-4 w-full">
-        <AdBanner slot="REEMPLAZAR_POR_ID_DE_SLOT" />
+        <AdBanner slot="3228900466" />
       </div>
 
       <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
