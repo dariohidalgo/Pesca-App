@@ -24,7 +24,7 @@ export default function AdBanner({ slot, style = { display: 'block' }, format = 
                 ref={adRef}
                 className="adsbygoogle"
                 style={style}
-                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // ¡Reemplazar por tu ID de AdSense!
+                data-ad-client="ca-pub-9506611717740136" // ¡Reemplazar por tu ID de AdSense!
                 data-ad-slot={slot}
                 data-ad-format={format}
                 data-full-width-responsive={responsive}
