@@ -12,8 +12,8 @@ function NavBar() {
   const navLinkClass = (path) => {
     const isActive = location.pathname === path;
     return `flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${isActive
-        ? 'bg-blue-50 text-blue-700'
-        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+      ? 'bg-blue-50 text-blue-700'
+      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
       }`;
   };
 
@@ -49,8 +49,24 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col">
       <Helmet>
-        <title>PescaApp | Herramientas para Pescadores</title>
-        <meta name="description" content="Pronóstico de pique, catálogo de nudos y blog especializado para la pesca deportiva en Argentina." />
+        <title>Pesca Córdoba - Guía, Pronóstico y Nudos</title>
+        <meta name="title" content="Pesca Córdoba - Guía, Pronóstico y Nudos" />
+        <meta name="description" content="La mejor guía de pesca deportiva en Córdoba. Descubre nudos, especies de peces, pronóstico del clima y los mejores lugares para pescar en Argentina." />
+        <meta name="keywords" content="pesca, córdoba, pesca deportiva, nudos de pesca, especies de peces, clima para pesca, lugares de pesca, argentina" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pescacordoba.com.ar/" />
+        <meta property="og:title" content="Pesca Córdoba - Guía, Pronóstico y Nudos" />
+        <meta property="og:description" content="La mejor guía de pesca deportiva en Córdoba. Descubre nudos, especies de peces, pronóstico del clima y los mejores lugares para pescar en Argentina." />
+        <meta property="og:image" content="https://www.pescacordoba.com.ar/seo.jpg" />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.pescacordoba.com.ar/" />
+        <meta property="twitter:title" content="Pesca Córdoba - Guía, Pronóstico y Nudos" />
+        <meta property="twitter:description" content="La mejor guía de pesca deportiva en Córdoba. Descubre nudos, especies de peces, pronóstico del clima y los mejores lugares para pescar en Argentina." />
+        <meta property="twitter:image" content="https://www.pescacordoba.com.ar/seo.jpg" />
       </Helmet>
 
       <NavBar />

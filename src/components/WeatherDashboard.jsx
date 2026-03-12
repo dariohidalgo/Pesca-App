@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle } from 'lucide-react';
+import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award } from 'lucide-react';
 
 const LOCATIONS = [
     { id: 'san-roque', name: 'Dique San Roque', lat: -31.3789, lon: -64.4647 },
     { id: 'los-molinos', name: 'Dique Los Molinos', lat: -31.8194, lon: -64.5361 },
     { id: 'rio-tercero', name: 'Embalse de Río Tercero', lat: -32.2033, lon: -64.4072 },
     { id: 'cruz-del-eje', name: 'Dique Cruz del Eje', lat: -30.7350, lon: -64.7933 },
-    { id: 'pichanas', name: 'Dique Pichanas', lat: -30.6550, lon: -64.9650 },
+    { id: 'el-cajon', name: 'Dique El Cajón', lat: -30.8500, lon: -64.5500 },
+    { id: 'cerro-pelado', name: 'Embalse Cerro Pelado', lat: -32.2250, lon: -64.6394 },
 ];
 
 const calculateFishingIndex = (wind, pressure) => {
@@ -16,7 +17,6 @@ const calculateFishingIndex = (wind, pressure) => {
     if (pressure > 1015 && wind < 15) return { label: 'Excelente', color: 'bg-green-500', text: 'Condiciones ideales. Alta actividad probable.' };
     return { label: 'Bueno', color: 'bg-blue-500', text: 'Condiciones aceptables para intentar.' };
 };
-
 const getMoonPhaseText = (phase) => {
     if (phase === null || phase === undefined) return 'Desconocida';
     if (phase === 0 || phase === 1) return 'Luna Nueva';
@@ -29,9 +29,20 @@ const getMoonPhaseText = (phase) => {
     return 'Luna Menguante';
 };
 
+const getWeatherIcon = (code) => {
+    if (code === 0 || code === 1) return <Sun className="h-6 w-6 text-yellow-500" />;
+    if (code === 2 || code === 3) return <Cloud className="h-6 w-6 text-slate-400" />;
+    if (code >= 51 && code <= 67) return <CloudRain className="h-6 w-6 text-blue-500" />;
+    if (code >= 80 && code <= 82) return <CloudRain className="h-6 w-6 text-blue-500" />;
+    if (code >= 95) return <AlertCircle className="h-6 w-6 text-purple-500" />;
+    return <Cloud className="h-6 w-6 text-slate-400" />;
+};
+
 export default function WeatherDashboard() {
     const [selectedLocation, setSelectedLocation] = useState(LOCATIONS[0]);
     const [weatherData, setWeatherData] = useState(null);
+    const [dailyForecast, setDailyForecast] = useState([]);
+    const [bestDayIndex, setBestDayIndex] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -41,22 +52,51 @@ export default function WeatherDashboard() {
             setError(null);
             try {
                 const { lat, lon } = selectedLocation;
-                // OpenMeteo endpoint: pressure, wind, daily moon phase
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m&daily=sunset&timezone=auto`;
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=auto`;
                 const res = await axios.get(url);
 
-                // Let's use basic mock for moon phase if not supported directly in standard lightweight params, 
-                // to keep it simple, though OpenMeteo might need specific params.
-                // Actually, we'll request timezone=auto so daily works, but wait, OpenMeteo might not return moon phase unless explicitly queried. 
-                // We will make a safe call.
-
                 const current = res.data.current;
+                const daily = res.data.daily;
+
                 setWeatherData({
                     pressure: current.surface_pressure,
                     wind: current.wind_speed_10m,
-                    // Placeholder or random for moon phase if API misses it to not break app
                     moonPhase: 0.5 // Luna Llena por defecto para Demo
                 });
+
+                const forecastList = [];
+                let bestIdx = -1;
+                let minWind = Infinity;
+
+                if (daily && daily.time) {
+                    for (let i = 1; i < daily.time.length && i <= 6; i++) {
+                        const dateStr = daily.time[i];
+                        const dateObj = new Date(dateStr + 'T12:00:00');
+                        const windMax = daily.wind_speed_10m_max[i];
+                        const tempMax = daily.temperature_2m_max[i];
+                        const tempMin = daily.temperature_2m_min[i];
+                        const weatherCode = daily.weather_code[i];
+
+                        forecastList.push({
+                            originalIndex: i,
+                            date: dateObj,
+                            dayName: dateObj.toLocaleDateString('es-AR', { weekday: 'short' }),
+                            windMax,
+                            tempMax,
+                            tempMin,
+                            weatherCode
+                        });
+
+                        if (windMax < minWind) {
+                            minWind = windMax;
+                            bestIdx = forecastList.length - 1;
+                        }
+                    }
+                }
+
+                setDailyForecast(forecastList);
+                setBestDayIndex(bestIdx);
+
             } catch (err) {
                 setError('Error al obtener los datos climáticos.');
             } finally {
@@ -165,6 +205,49 @@ export default function WeatherDashboard() {
                                 </div>
                             </div>
                         </div>
+
+                        {dailyForecast.length > 0 && (
+                            <div className="mt-8 pt-6 border-t border-slate-100">
+                                <div className="flex items-center gap-2 mb-6">
+                                    <Calendar className="h-6 w-6 text-blue-600" />
+                                    <h3 className="text-xl font-bold text-slate-800">Pronóstico Próximos {dailyForecast.length} Días</h3>
+                                </div>
+                                <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
+                                    {dailyForecast.map((day, idx) => {
+                                        const isBest = idx === bestDayIndex;
+                                        return (
+                                            <div key={idx} className={`relative p-4 rounded-xl border flex flex-col items-center justify-between text-center transition-all ${isBest ? 'bg-green-50 border-green-200 ring-2 ring-green-500 shadow-md transform -translate-y-1' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 hover:-translate-y-0.5'}`}>
+                                                {isBest && (
+                                                    <div className="absolute -top-3 -right-3 bg-green-500 text-white p-1.5 rounded-full shadow-lg z-10" title="Mejor día para pescar">
+                                                        <Award className="h-5 w-5" />
+                                                    </div>
+                                                )}
+                                                <p className="font-bold text-slate-700 capitalize mb-1">{day.dayName}</p>
+                                                <p className="text-[11px] text-slate-500 mb-2">{day.date.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' })}</p>
+
+                                                <div className="mb-2">
+                                                    {getWeatherIcon(day.weatherCode)}
+                                                </div>
+
+                                                <div className="flex gap-2 text-sm font-semibold mb-2">
+                                                    <span className="text-red-500">{Math.round(day.tempMax)}°</span>
+                                                    <span className="text-blue-500">{Math.round(day.tempMin)}°</span>
+                                                </div>
+
+                                                <div className={`flex items-center gap-1 text-[11px] font-medium px-2 py-1.5 rounded w-full justify-center ${isBest ? 'bg-green-100 text-green-700' : 'bg-slate-200/50 text-slate-600'}`}>
+                                                    <Wind className="h-3.5 w-3.5" />
+                                                    {Math.round(day.windMax)} km/h
+                                                </div>
+
+                                                {isBest && (
+                                                    <span className="mt-3 text-[10px] font-bold text-green-700 uppercase bg-green-200 px-2 py-0.5 rounded-full w-full">Mejor Día</span>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 );
             })()}
