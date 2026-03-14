@@ -1,6 +1,6 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText } from 'lucide-react';
+import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail } from 'lucide-react';
 
 import WeatherDashboard from './components/WeatherDashboard';
 import KnotsCatalog from './components/KnotsCatalog';
@@ -24,12 +24,12 @@ function NavBar() {
 
   return (
     <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-12">
         <div className="flex justify-between h-16">
-          <div className="flex bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 font-black text-2xl items-center gap-2 tracking-tight">
+          <Link to="/" className="flex shrink-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 font-black text-2xl items-center gap-2 tracking-tight hover:opacity-80 transition-opacity">
             <Fish className="h-8 w-8 text-blue-600" />
             Pesca<span className="text-slate-900">App</span>
-          </div>
+          </Link>
           <div className="flex items-center gap-2 sm:gap-6">
             <Link to="/" className={navLinkClass('/')}>
               <Fish className="h-5 w-5" />
@@ -108,8 +108,14 @@ function App() {
         <AdBanner slot="3228900466" />
       </div>
 
-      <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-500 text-sm">
-        <p>© 2026 PescaApp - Plataforma para pescadores deportivos.</p>
+      <footer className="bg-white border-t border-slate-200 py-8">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col items-center justify-center gap-4 text-slate-500 text-sm">
+          <p>© 2026 PescaApp - Plataforma para pescadores deportivos.</p>
+          <a href="mailto:pescaappcordoba@gmail.com" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
+            <Mail className="h-4 w-4" />
+            pescaappcordoba@gmail.com
+          </a>
+        </div>
       </footer>
     </div>
   );
