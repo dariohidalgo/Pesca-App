@@ -4,14 +4,17 @@ export default function AdBanner({ slot, style = { display: 'block' }, format = 
     const adRef = useRef(null);
 
     useEffect(() => {
-        // Si estamos en entorno de desarrollo o Vercel (sin dominio aprobado) puede que el anuncio no cargue,
-        // pero intentamos inicializarlo si el script global de adsbygoogle está disponible
+        // En entorno de desarrollo (localhost) Adsense no se dibujará correctamente 
+        // y arrojará el error "No slot size for availableWidth=0".
+        // Lo evitamos asegurándonos de que no se lance en localhost o si ya fue inicializado.
         try {
-            if (window.adsbygoogle && adRef.current && !adRef.current.dataset.adsbygoogleStatus) {
-                window.adsbygoogle.push({});
+            if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+                if (window.adsbygoogle && adRef.current && !adRef.current.dataset.adsbygoogleStatus) {
+                    window.adsbygoogle.push({});
+                }
             }
         } catch (e) {
-            console.error('Error al cargar el anuncio:', e);
+            console.error('Error al inicializar el anuncio:', e);
         }
     }, []);
 

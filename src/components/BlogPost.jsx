@@ -198,13 +198,13 @@ export default function BlogPost() {
                             <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:hidden prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-a:text-blue-600 prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600">
                                 <ReactMarkdown
                                     components={{
-                                        h2: ({ node, ...props }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-slate-800 border-b pb-2" {...props} />,
-                                        h3: ({ node, ...props }) => <h4 className="text-xl font-bold mt-6 mb-3 text-slate-800" {...props} />,
-                                        p: ({ node, ...props }) => <p className="text-slate-600 leading-relaxed mb-6 text-lg" {...props} />,
-                                        ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
-                                        ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
-                                        li: ({ node, ...props }) => <li className="pl-2" {...props} />,
-                                        strong: ({ node, ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
+                                        h2: ({ ...props }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-slate-800 border-b pb-2" {...props} />,
+                                        h3: ({ ...props }) => <h4 className="text-xl font-bold mt-6 mb-3 text-slate-800" {...props} />,
+                                        p: ({ ...props }) => <p className="text-slate-600 leading-relaxed mb-6 text-lg" {...props} />,
+                                        ul: ({ ...props }) => <ul className="list-disc pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
+                                        ol: ({ ...props }) => <ol className="list-decimal pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
+                                        li: ({ ...props }) => <li className="pl-2" {...props} />,
+                                        strong: ({ ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
                                     }}
                                 >
                                     {selectedPost.content}

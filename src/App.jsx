@@ -1,11 +1,15 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Fish, BookOpen, Layers } from 'lucide-react';
+import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText } from 'lucide-react';
 
 import WeatherDashboard from './components/WeatherDashboard';
 import KnotsCatalog from './components/KnotsCatalog';
 import BlogPost from './components/BlogPost';
 import AdBanner from './components/AdBanner';
+import FishingMap from './components/FishingMap';
+import SolunarCalendar from './components/SolunarCalendar';
+import DamLevels from './components/DamLevels';
+import FishingRules from './components/FishingRules';
 
 function NavBar() {
   const location = useLocation();
@@ -31,9 +35,25 @@ function NavBar() {
               <Fish className="h-5 w-5" />
               <span className="hidden sm:inline">Pronóstico</span>
             </Link>
+            <Link to="/mapa" className={navLinkClass('/mapa')}>
+              <MapPin className="h-5 w-5" />
+              <span className="hidden sm:inline">Mapa</span>
+            </Link>
+            <Link to="/calendario" className={navLinkClass('/calendario')}>
+              <Moon className="h-5 w-5" />
+              <span className="hidden sm:inline">Solunar</span>
+            </Link>
+            <Link to="/diques" className={navLinkClass('/diques')}>
+              <Waves className="h-5 w-5" />
+              <span className="hidden sm:inline">Diques</span>
+            </Link>
             <Link to="/nudos" className={navLinkClass('/nudos')}>
               <Layers className="h-5 w-5" />
               <span className="hidden sm:inline">Nudos</span>
+            </Link>
+            <Link to="/reglamento" className={navLinkClass('/reglamento')}>
+              <FileText className="h-5 w-5" />
+              <span className="hidden xl:inline">Reglamento</span>
             </Link>
             <Link to="/blog" className={navLinkClass('/blog')}>
               <BookOpen className="h-5 w-5" />
@@ -75,7 +95,11 @@ function App() {
       <main className="flex-grow w-full pb-16">
         <Routes>
           <Route path="/" element={<WeatherDashboard />} />
+          <Route path="/mapa" element={<FishingMap />} />
+          <Route path="/calendario" element={<SolunarCalendar />} />
+          <Route path="/diques" element={<DamLevels />} />
           <Route path="/nudos" element={<KnotsCatalog />} />
+          <Route path="/reglamento" element={<FishingRules />} />
           <Route path="/blog" element={<BlogPost />} />
         </Routes>
       </main>

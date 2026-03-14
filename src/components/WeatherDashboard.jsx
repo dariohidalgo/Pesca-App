@@ -98,6 +98,7 @@ export default function WeatherDashboard() {
                 setBestDayIndex(bestIdx);
 
             } catch (err) {
+                console.error("Error fetching weather data:", err);
                 setError('Error al obtener los datos climáticos.');
             } finally {
                 setLoading(false);
