@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X } from 'lucide-react';
+import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X, Ship } from 'lucide-react';
 
 import WeatherDashboard from './components/WeatherDashboard';
 import KnotsCatalog from './components/KnotsCatalog';
@@ -11,6 +11,9 @@ import FishingMap from './components/FishingMap';
 import SolunarCalendar from './components/SolunarCalendar';
 import DamLevels from './components/DamLevels';
 import FishingRules from './components/FishingRules';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsConditions from './components/TermsConditions';
+import BoatRentals from './components/BoatRentals';
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -58,6 +61,10 @@ function NavBar() {
             <Link to="/diques" className={navLinkClass('/diques')}>
               <Waves className="h-5 w-5" />
               <span className="hidden xl:inline">Diques</span>
+            </Link>
+            <Link to="/botes" className={navLinkClass('/botes')}>
+              <Ship className="h-5 w-5" />
+              <span className="hidden xl:inline">Botes</span>
             </Link>
             <Link to="/nudos" className={navLinkClass('/nudos')}>
               <Layers className="h-5 w-5" />
@@ -118,6 +125,12 @@ function NavBar() {
             </div>
             <span>Diques</span>
           </Link>
+          <Link to="/botes" onClick={() => setIsOpen(false)} className={mobileNavLinkClass('/botes')}>
+             <div className={`p-2 rounded-lg ${location.pathname === '/botes' ? 'bg-blue-100' : 'bg-white shadow-sm'}`}>
+              <Ship className="h-5 w-5" />
+            </div>
+            <span>Botes</span>
+          </Link>
           <Link to="/nudos" onClick={() => setIsOpen(false)} className={mobileNavLinkClass('/nudos')}>
              <div className={`p-2 rounded-lg ${location.pathname === '/nudos' ? 'bg-blue-100' : 'bg-white shadow-sm'}`}>
               <Layers className="h-5 w-5" />
@@ -177,6 +190,9 @@ function App() {
           <Route path="/nudos" element={<KnotsCatalog />} />
           <Route path="/reglamento" element={<FishingRules />} />
           <Route path="/blog" element={<BlogPost />} />
+          <Route path="/botes" element={<BoatRentals />} />
+          <Route path="/privacidad" element={<PrivacyPolicy />} />
+          <Route path="/terminos" element={<TermsConditions />} />
         </Routes>
       </main>
 
@@ -207,6 +223,7 @@ function App() {
                 <Link to="/calendario" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Solunar</Link>
                 <Link to="/diques" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Diques</Link>
                 <Link to="/nudos" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Nudos</Link>
+                <Link to="/botes" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Botes</Link>
                 <Link to="/blog" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Blog</Link>
               </div>
             </div>
@@ -224,8 +241,12 @@ function App() {
             </div>
           </div>
 
-          <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-xs text-center">
+          <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-slate-400 text-xs text-center">
             <p>© 2026 PescaApp. Todos los derechos reservados.</p>
+            <div className="flex items-center gap-6">
+              <Link to="/privacidad" className="hover:text-blue-600 transition-colors">Políticas de Privacidad</Link>
+              <Link to="/terminos" className="hover:text-blue-600 transition-colors">Términos y Condiciones</Link>
+            </div>
             <p className="flex items-center gap-1">
               Hecho con <span className="text-red-400">❤</span> para pescadores.
             </p>
