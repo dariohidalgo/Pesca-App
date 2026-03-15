@@ -52,8 +52,13 @@ export default function WeatherDashboard() {
             setError(null);
             try {
                 const { lat, lon } = selectedLocation;
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=auto`;
+                // Fetch from our new internal API route to handle CORS and caching
+                const url = `/api/weather?lat=${lat}&lon=${lon}`;
                 const res = await axios.get(url);
+
+                if (!res.data || typeof res.data !== 'object' || !res.data.current) {
+                    throw new Error('La respuesta de la API es inválida o el servidor no está configurado para manejar rutas de API localmente.');
+                }
 
                 const current = res.data.current;
                 const daily = res.data.daily;
@@ -150,12 +155,24 @@ export default function WeatherDashboard() {
             )}
 
             {error && !loading && (
-                <div className="bg-red-50 text-red-600 p-4 rounded-xl flex items-start gap-3 border border-red-100">
-                    <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
-                    <div>
-                        <p className="font-semibold">Ocurrió un error</p>
-                        <p className="text-sm">{error}</p>
+                <div className="bg-red-50 text-red-600 p-6 rounded-xl flex flex-col gap-3 border border-red-100">
+                    <div className="flex items-start gap-3">
+                        <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
+                        <div>
+                            <p className="font-semibold">Error al obtener datos</p>
+                            <p className="text-sm">{error}</p>
+                        </div>
                     </div>
+                    {error.includes("localmente") && (
+                        <div className="mt-2 p-3 bg-white/50 rounded-lg text-xs border border-red-200">
+                            <p className="font-bold mb-1 uppercase">Solución para desarrollo local:</p>
+                            <p className="mb-2">Las Serverless Functions requieren el entorno de Vercel para ejecutarse.</p>
+                            <code className="block bg-slate-800 text-slate-100 p-2 rounded mb-2 font-mono">
+                                npx vercel dev
+                            </code>
+                            <p>Usa este comando en lugar de <span className="font-mono bg-slate-200 px-1 rounded">npm run dev</span> para probar la API localmente.</p>
+                        </div>
+                    )}
                 </div>
             )}
 
