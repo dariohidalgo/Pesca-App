@@ -5,7 +5,7 @@
             "destination": "/api/$1"
         },
         {
-            "source": "/(.*)",
+            "source": "/((?!node_modules/|@vite/|@fs/|@id/|@react-refresh|src/|public/|.*\\..*).*)",
             "destination": "/index.html"
         }
     ]
