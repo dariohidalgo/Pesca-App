@@ -2,7 +2,7 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { Helmet } from 'react-helmet-async';
-import { MapPin, Info, Navigation2 } from 'lucide-react';
+import { MapPin, Info, Navigation2, Mail } from 'lucide-react';
 
 // Fix for default marker icons in react-leaflet + Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -77,10 +77,10 @@ export default function FishingMap() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden relative" style={{ height: '600px' }}>
-        <MapContainer 
-          center={cordobaCenter} 
-          zoom={mapZoom} 
-          scrollWheelZoom={true} 
+        <MapContainer
+          center={cordobaCenter}
+          zoom={mapZoom}
+          scrollWheelZoom={true}
           style={{ height: '100%', width: '100%', zIndex: 10 }}
         >
           <TileLayer
@@ -93,7 +93,7 @@ export default function FishingMap() {
                 <div className="p-1">
                   <h3 className="font-bold text-lg text-slate-900 mb-1">{loc.name}</h3>
                   <p className="text-sm text-slate-600 mb-3">{loc.description}</p>
-                  
+
                   <div className="space-y-2 mb-4">
                     <div className="flex items-start gap-2">
                       <span className="font-semibold text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Especies</span>
@@ -105,7 +105,7 @@ export default function FishingMap() {
                     </div>
                   </div>
 
-                  <a 
+                  <a
                     href={`https://www.google.com/maps/dir/?api=1&destination=${loc.position[0]},${loc.position[1]}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -128,6 +128,10 @@ export default function FishingMap() {
           <p className="text-sm text-blue-800 mt-1">
             Revisá siempre el estado y reglamentaciones en cada punto antes de ir. Si conocés otros pesqueros o campings que valga la pena agregar, envianos un mensaje.
           </p>
+          <a href="mailto:pescaappcordoba@gmail.com" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
+            <Mail className="h-4 w-4" />
+            pescaappcordoba@gmail.com
+          </a>
         </div>
       </div>
     </div>
