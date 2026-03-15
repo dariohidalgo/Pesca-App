@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X, Ship } from 'lucide-react';
+import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X, Ship, PlusCircle } from 'lucide-react';
+
 
 import WeatherDashboard from './components/WeatherDashboard';
 import KnotsCatalog from './components/KnotsCatalog';
@@ -14,6 +15,8 @@ import FishingRules from './components/FishingRules';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import BoatRentals from './components/BoatRentals';
+import ServiceForm from './components/ServiceForm';
+
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -78,7 +81,12 @@ function NavBar() {
               <BookOpen className="h-5 w-5" />
               <span className="hidden xl:inline">Blog</span>
             </Link>
+            <Link to="/sumar-servicio" className={navLinkClass('/sumar-servicio')}>
+              <PlusCircle className="h-5 w-5" />
+              <span className="hidden xl:inline">Sumar Servicio</span>
+            </Link>
           </div>
+
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center">
@@ -149,7 +157,14 @@ function NavBar() {
             </div>
             <span>Blog</span>
           </Link>
+          <Link to="/sumar-servicio" onClick={() => setIsOpen(false)} className={mobileNavLinkClass('/sumar-servicio')}>
+            <div className={`p-2 rounded-lg ${location.pathname === '/sumar-servicio' ? 'bg-blue-100' : 'bg-white shadow-sm'}`}>
+              <PlusCircle className="h-5 w-5" />
+            </div>
+            <span>Sumar Servicio</span>
+          </Link>
         </div>
+
       </div>
     </nav>
   );
@@ -191,7 +206,9 @@ function App() {
           <Route path="/reglamento" element={<FishingRules />} />
           <Route path="/blog" element={<BlogPost />} />
           <Route path="/botes" element={<BoatRentals />} />
+          <Route path="/sumar-servicio" element={<ServiceForm />} />
           <Route path="/privacidad" element={<PrivacyPolicy />} />
+
           <Route path="/terminos" element={<TermsConditions />} />
         </Routes>
       </main>
