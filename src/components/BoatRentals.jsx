@@ -97,11 +97,25 @@ const BoatRentals = () => {
                           {rental.name}
                         </h3>
                         {rental.location && (
-                          <span className="flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-full whitespace-nowrap">
+                            <span className="flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-full whitespace-nowrap">
                             <MapPin className="h-3 w-3" />
                             {rental.location}
                           </span>
                         )}
+                      </div>
+                      
+                      <div className="flex gap-2 mb-4">
+                        <span className={`text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider ${
+                          rental.type === 'guide' ? 'bg-blue-100 text-blue-700' :
+                          rental.type === 'boat_rental' ? 'bg-emerald-100 text-emerald-700' :
+                          rental.type === 'raft_rental' ? 'bg-orange-100 text-orange-700' :
+                          'bg-amber-100 text-amber-700'
+                        }`}>
+                          {rental.type === 'guide' ? 'Guía' :
+                           rental.type === 'boat_rental' ? 'Bote' :
+                           rental.type === 'raft_rental' ? 'Balsa' :
+                           'Carnada'}
+                        </span>
                       </div>
 
                       <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed">

@@ -31,7 +31,11 @@ const ServiceForm = () => {
                 'template_3773hv4',
                 {
                     service_name: formData.name,
-                    service_type: formData.type === 'guide' ? 'Guía de Pesca' : 'Alquiler de Botes',
+                    service_type: 
+                        formData.type === 'guide' ? 'Guía de Pesca' : 
+                        formData.type === 'boat_rental' ? 'Alquiler de Botes' : 
+                        formData.type === 'raft_rental' ? 'Alquiler de Balsas' : 
+                        'Venta de Carnada',
                     service_contact: formData.contact,
                     service_location: formData.location,
                     service_description: formData.description,
@@ -72,7 +76,7 @@ const ServiceForm = () => {
     return (
         <div className="max-w-2xl mx-auto mt-12 mb-20 p-8 bg-white rounded-2xl shadow-xl">
             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Cargar Nuevo Servicio</h2>
-            <p className="text-slate-500 mb-8">Completa el formulario para cargar tu guía de pesca o alquiler de botes. El servicio será visible una vez que sea autorizado.</p>
+            <p className="text-slate-500 mb-8">Completa el formulario para cargar tu guía de pesca, alquiler de botes/balsas o venta de carnada. El servicio será visible una vez que sea autorizado.</p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,6 +100,8 @@ const ServiceForm = () => {
                         >
                             <option value="guide">Guía de Pesca</option>
                             <option value="boat_rental">Alquiler de Botes</option>
+                            <option value="raft_rental">Alquiler de Balsas</option>
+                            <option value="bait_seller">Venta de Carnada</option>
                         </select>
                     </div>
                 </div>
