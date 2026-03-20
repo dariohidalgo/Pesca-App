@@ -40,9 +40,9 @@ function NavBar() {
   };
 
   return (
-    <nav className="bg-white border-b border-slate-200 sticky top-0 z-50">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex shrink-0 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 font-black text-2xl items-center gap-2 tracking-tight hover:opacity-80 transition-opacity">
             <Fish className="h-8 w-8 text-blue-600" />
             Pesca<span className="text-slate-900">App</span>
@@ -50,46 +50,54 @@ function NavBar() {
           
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-1 xl:gap-2">
-            <Link to="/" className={navLinkClass('/')}>
-              <Fish className="h-5 w-5" />
-              <span className="hidden xl:inline">Pronóstico</span>
-            </Link>
-            <Link to="/mapa" className={navLinkClass('/mapa')}>
-              <MapPin className="h-5 w-5" />
-              <span className="hidden xl:inline">Mapa</span>
-            </Link>
-            <Link to="/calendario" className={navLinkClass('/calendario')}>
-              <Moon className="h-5 w-5" />
-              <span className="hidden xl:inline">Solunar</span>
-            </Link>
-            <Link to="/diques" className={navLinkClass('/diques')}>
-              <Waves className="h-5 w-5" />
-              <span className="hidden xl:inline">Diques</span>
-            </Link>
-            <Link to="/botes" className={navLinkClass('/botes')}>
-              <Ship className="h-5 w-5" />
-              <span className="hidden xl:inline">Botes</span>
-            </Link>
-            <Link to="/nudos" className={navLinkClass('/nudos')}>
-              <Layers className="h-5 w-5" />
-              <span className="hidden xl:inline">Nudos</span>
-            </Link>
-            <Link to="/reglamento" className={navLinkClass('/reglamento')}>
-              <FileText className="h-5 w-5" />
-              <span className="hidden xl:inline">Reglamento</span>
-            </Link>
-            <Link to="/blog" className={navLinkClass('/blog')}>
-              <BookOpen className="h-5 w-5" />
-              <span className="hidden xl:inline">Blog</span>
-            </Link>
-            <Link to="/sumar-servicio" className={navLinkClass('/sumar-servicio')}>
-              <PlusCircle className="h-5 w-5" />
-              <span className="hidden xl:inline">Sumar Servicio</span>
-            </Link>
-            <Link to="/nosotros" className={navLinkClass('/nosotros')}>
-              <Users className="h-5 w-5" />
-              <span className="hidden xl:inline">Nosotros</span>
-            </Link>
+            <div className="flex items-center gap-0.5 xl:gap-1 border-r border-slate-100 pr-2 mr-2">
+              <Link to="/" className={navLinkClass('/')}>
+                <Fish className="h-4 w-4" />
+                <span className="hidden xl:inline text-sm">Pronóstico</span>
+              </Link>
+              <Link to="/mapa" className={navLinkClass('/mapa')}>
+                <MapPin className="h-4 w-4" />
+                <span className="hidden xl:inline text-sm">Mapa</span>
+              </Link>
+              <Link to="/calendario" className={navLinkClass('/calendario')}>
+                <Moon className="h-4 w-4" />
+                <span className="hidden xl:inline text-sm">Solunar</span>
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-0.5 xl:gap-1">
+              <Link to="/diques" className={navLinkClass('/diques')}>
+                <Waves className="h-4 w-4" />
+                <span className="hidden 2xl:inline text-sm">Diques</span>
+              </Link>
+              <Link to="/botes" className={navLinkClass('/botes')}>
+                <Ship className="h-4 w-4" />
+                <span className="hidden 2xl:inline text-sm">Botes</span>
+              </Link>
+              <Link to="/nudos" className={navLinkClass('/nudos')}>
+                <Layers className="h-4 w-4" />
+                <span className="hidden 2xl:inline text-sm">Nudos</span>
+              </Link>
+              <Link to="/reglamento" className={navLinkClass('/reglamento')}>
+                <FileText className="h-4 w-4" />
+                <span className="hidden 2xl:inline text-sm">Reglamento</span>
+              </Link>
+              <Link to="/blog" className={navLinkClass('/blog')}>
+                <BookOpen className="h-4 w-4" />
+                <span className="hidden 2xl:inline text-sm">Blog</span>
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-3 ml-4">
+              <Link to="/sumar-servicio" className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-xl font-semibold transition-all text-sm border border-blue-100 shadow-sm">
+                <PlusCircle className="h-4 w-4" />
+                <span>Sumar Servicio</span>
+              </Link>
+              <Link to="/nosotros" className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white hover:bg-slate-800 rounded-xl font-semibold transition-all text-sm shadow-md shadow-slate-200">
+                <Users className="h-4 w-4" />
+                <span>Nosotros</span>
+              </Link>
+            </div>
           </div>
 
 
@@ -97,7 +105,7 @@ function NavBar() {
           <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg focus:outline-none p-2 transition-colors"
+              className="text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl focus:outline-none p-2.5 transition-colors border border-transparent hover:border-slate-200"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
