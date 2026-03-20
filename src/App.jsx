@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X, Ship, PlusCircle } from 'lucide-react';
+import { Fish, BookOpen, Layers, MapPin, Moon, Waves, FileText, Mail, Menu, X, Ship, PlusCircle, Users } from 'lucide-react';
 
 
 import WeatherDashboard from './components/WeatherDashboard';
