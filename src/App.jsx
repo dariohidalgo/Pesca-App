@@ -16,6 +16,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import BoatRentals from './components/BoatRentals';
 import ServiceForm from './components/ServiceForm';
+import AboutUs from './components/AboutUs';
 
 
 function NavBar() {
@@ -84,6 +85,10 @@ function NavBar() {
             <Link to="/sumar-servicio" className={navLinkClass('/sumar-servicio')}>
               <PlusCircle className="h-5 w-5" />
               <span className="hidden xl:inline">Sumar Servicio</span>
+            </Link>
+            <Link to="/nosotros" className={navLinkClass('/nosotros')}>
+              <Users className="h-5 w-5" />
+              <span className="hidden xl:inline">Nosotros</span>
             </Link>
           </div>
 
@@ -163,6 +168,12 @@ function NavBar() {
             </div>
             <span>Sumar Servicio</span>
           </Link>
+          <Link to="/nosotros" onClick={() => setIsOpen(false)} className={mobileNavLinkClass('/nosotros')}>
+            <div className={`p-2 rounded-lg ${location.pathname === '/nosotros' ? 'bg-blue-100' : 'bg-white shadow-sm'}`}>
+              <Users className="h-5 w-5" />
+            </div>
+            <span>Nosotros</span>
+          </Link>
         </div>
 
       </div>
@@ -207,6 +218,7 @@ function App() {
           <Route path="/blog" element={<BlogPost />} />
           <Route path="/botes" element={<BoatRentals />} />
           <Route path="/sumar-servicio" element={<ServiceForm />} />
+          <Route path="/nosotros" element={<AboutUs />} />
           <Route path="/privacidad" element={<PrivacyPolicy />} />
 
           <Route path="/terminos" element={<TermsConditions />} />
@@ -242,6 +254,7 @@ function App() {
                 <Link to="/nudos" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Nudos</Link>
                 <Link to="/botes" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Botes</Link>
                 <Link to="/blog" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Blog</Link>
+                <Link to="/nosotros" className="text-slate-500 hover:text-blue-600 text-sm transition-colors">Nosotros</Link>
               </div>
             </div>
 

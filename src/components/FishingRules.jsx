@@ -133,11 +133,50 @@ export default function FishingRules() {
                 </div>
             </div>
 
-            <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex gap-4 text-slate-700">
-                <Info className="h-6 w-6 text-slate-500 flex-shrink-0" />
-                <div className="text-sm">
-                    <p className="font-semibold mb-1">Importante</p>
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 flex flex-col md:flex-row gap-6 text-slate-700 mb-12">
+                <div className="flex-shrink-0">
+                    <div className="bg-amber-100 p-3 rounded-xl text-amber-600">
+                        <Info className="h-6 w-6" />
+                    </div>
+                </div>
+                <div className="text-sm space-y-3">
+                    <p className="font-bold text-slate-900 uppercase tracking-wide">Importante sobre la normativa</p>
                     <p>Las regulaciones están sujetas a modificaciones anuales por parte de la Secretaría de Ambiente. Se recomienda consultar al menos una vez por temporada las actualizaciones específicas en el Boletín Oficial de la Provincia, ya que diferentes diques pueden poseer normativas especiales debido a rescates ecológicos.</p>
+                </div>
+            </div>
+
+            {/* Nueva sección sobre Ética y Conservación para aumentar el valor del contenido */}
+            <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                    <Fish className="w-64 h-64" />
+                </div>
+                <div className="relative z-10 max-w-2xl">
+                    <h3 className="text-3xl font-black mb-6 tracking-tight">Ética del Pescador y Conservación</h3>
+                    <div className="space-y-6 text-slate-300 leading-relaxed">
+                        <p>
+                            En Pesca Córdoba creemos que el futuro de nuestro deporte depende directamente de la salud de nuestros ríos y diques. El compromiso del pescador deportivo va más allá de seguir la ley; se trata de una ética de respeto por la naturaleza.
+                        </p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
+                            <div className="space-y-3">
+                                <h4 className="text-white font-bold text-lg flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-green-400"></div>
+                                    Pesca y Devolución
+                                </h4>
+                                <p className="text-sm">
+                                    Incluso cuando la ley permite sacrificar piezas, te alentamos a devolver los ejemplares más grandes. Los "grandes reproductores" son los que garantizan poblaciones saludables para las próximas temporadas.
+                                </p>
+                            </div>
+                            <div className="space-y-3">
+                                <h4 className="text-white font-bold text-lg flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+                                    Basura Cero
+                                </h4>
+                                <p className="text-sm">
+                                    El sedal abandonado y los envases plásticos son mortales para las aves y la fauna local. Llévate siempre tus residuos (y si encuentras ajenos, también). Dejemos el lugar mejor de como lo encontramos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

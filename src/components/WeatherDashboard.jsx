@@ -266,6 +266,55 @@ export default function WeatherDashboard() {
                                 </div>
                             </div>
                         )}
+
+                        {/* Nueva sección educativa para mejorar el valor del contenido */}
+                        <div className="mt-12 pt-10 border-t border-slate-100">
+                             <h3 className="text-2xl font-bold text-slate-900 mb-6 font-sans">Ciencia de la Pesca: ¿Cómo influye el clima?</h3>
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 leading-relaxed">
+                                <div className="space-y-4">
+                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                        <Gauge className="h-5 w-5 text-blue-600" />
+                                        La Presión Atmosférica
+                                    </h4>
+                                    <p>
+                                        Los peces son extremadamente sensibles a los cambios de presión debido a su vejiga natatoria. Una **presión alta y estable** (generalmente por encima de 1013 hPa) suele traer cielos despejados y peces más activos. Por el contrario, una caída brusca de presión a menudo precede a tormentas, lo que puede disparar un frenesí alimenticio justo antes de que el mal tiempo llegue.
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
+                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                        <Wind className="h-5 w-5 text-teal-600" />
+                                        Efecto del Viento
+                                    </h4>
+                                    <p>
+                                        En los diques de Córdoba, el viento es fundamental. Un viento leve ayuda a oxigenar el agua y "rompe" la superficie, haciendo que los peces pierdan un poco de cautela. Sin embargo, vientos del sur suelen traer descensos de temperatura que aletargan a especies como la Tararira, mientras que el pejerrey prefiere aguas más frescas y movidas.
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
+                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                        <Moon className="h-5 w-5 text-indigo-600" />
+                                        Influencia de la Luna
+                                    </h4>
+                                    <p>
+                                        La gravedad lunar no solo afecta las mareas oceánicas, sino también el comportamiento de los peces de agua dulce. Las lunas llena y nueva suelen ser períodos de alta actividad (períodos mayores). Combinar una fase lunar favorable con un amanecer o atardecer aumenta drásticamente tus probabilidades de éxito.
+                                    </p>
+                                </div>
+                                <div className="space-y-4">
+                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                        <Sun className="h-5 w-5 text-yellow-500" />
+                                        La Temperatura del Agua
+                                    </h4>
+                                    <p>
+                                        Cada especie tiene su "zona de confort". El **Pejerrey** se activa con el frío (12°C a 18°C), buscando profundidad en verano. Las **Tarariras** y **Carpas** son amantes del calor, encontrando su máxima actividad por encima de los 22°C. Conocer estas preferencias te ayuda a elegir el lugar y la profundidad adecuada para tu línea.
+                                    </p>
+                                </div>
+                             </div>
+                             
+                             <div className="mt-10 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+                                <p className="text-blue-800 font-medium italic text-center">
+                                    "La pesca no es solo suerte, es entender el entorno. Usa esta guía para planificar tu próxima salida y recuerda siempre practicar la pesca deportiva responsable."
+                                </p>
+                             </div>
+                        </div>
                     </div>
                 );
             })()}

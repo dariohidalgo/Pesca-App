@@ -115,10 +115,32 @@ export default function KnotsCatalog() {
     return (
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 mt-10">
             <div className="mb-10 text-center">
-                <h2 className="text-4xl font-extrabold text-slate-800 tracking-tight">Catálogo de Nudos</h2>
-                <p className="text-lg text-slate-500 mt-3 max-w-2xl mx-auto">
-                    Aprende los nudos más efectivos para distintas modalidades de pesca.
+                <h2 className="text-4xl font-extrabold text-slate-800 tracking-tight">Catálogo de Nudos de Pesca</h2>
+                <p className="text-lg text-slate-500 mt-3 max-w-2xl mx-auto border-b pb-8">
+                    Dominar los nudos es fundamental para cualquier pescador. Un nudo bien hecho mantiene la resistencia de la línea, mientras que uno mal ejecutado puede reducirla hasta en un 50%. Aquí te presentamos los más confiables según su uso.
                 </p>
+            </div>
+
+            {/* Nueva sección de categorías con descripciones detalladas */}
+            <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                        Unión de Líneas (Bajos de Línea)
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                        Esenciales para unir el multifilamento con un "chicote" de Nylon o Fluorocarbono. Estos nudos deben ser delgados para pasar por los pasahilos de la caña sin frenar el lanzamiento.
+                    </p>
+                </div>
+                <div className="p-5 bg-slate-50 rounded-xl border border-slate-100">
+                    <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-teal-500"></div>
+                        Línea al Aparejo Final
+                    </h4>
+                    <p className="text-sm text-slate-600">
+                        Nudos diseñados para sujetar anzuelos, emerillones o señuelos. Su principal característica es que no se deslizan bajo tensión extrema, asegurando la captura una vez que el pez clava.
+                    </p>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
