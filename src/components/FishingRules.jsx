@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Scale, FileText, Anchor, Info, ExternalLink, CalendarDays, ShieldAlert } from 'lucide-react';
+import { Scale, FileText, Anchor, Info, ExternalLink, CalendarDays, ShieldAlert, Fish } from 'lucide-react';
 
 const fishingRules = [
     {
