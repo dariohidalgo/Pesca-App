@@ -104,7 +104,9 @@ export default function WeatherDashboard() {
 
             } catch (err) {
                 console.error("Error fetching weather data:", err);
-                setError('Error al obtener los datos climáticos.');
+                const errorMessage = err.response?.data?.error || err.message || 'Error al obtener los datos climáticos.';
+                const errorDetails = err.response?.data?.details || '';
+                setError(`${errorMessage} ${errorDetails}`);
             } finally {
                 setLoading(false);
             }
