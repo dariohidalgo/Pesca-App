@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Scale, CheckCircle2, AlertCircle, Info } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const TermsConditions = () => {
   useEffect(() => {
@@ -8,6 +9,12 @@ const TermsConditions = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
+      <Helmet>
+        <title>Términos y Condiciones - Pesca Córdoba</title>
+        <meta name="description" content="Términos y condiciones de uso de la plataforma Pesca Córdoba. Reglas, responsabilidades y propiedad intelectual." />
+        <meta name="robots" content="noindex" />
+      </Helmet>
+
       <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 overflow-hidden">
         <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-8 py-12 text-white">
           <div className="flex items-center gap-4 mb-4">

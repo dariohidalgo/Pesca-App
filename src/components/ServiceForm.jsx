@@ -3,6 +3,7 @@ import { db } from '../firebase/config';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { Helmet } from 'react-helmet-async';
 
 const ServiceForm = () => {
     const [formData, setFormData] = useState({
@@ -75,6 +76,11 @@ const ServiceForm = () => {
 
     return (
         <div className="max-w-2xl mx-auto mt-12 mb-20 p-8 bg-white rounded-2xl shadow-xl">
+            <Helmet>
+                <title>Sumar Servicio de Pesca - Pesca Córdoba</title>
+                <meta name="description" content="Publicá tu servicio de guía de pesca, alquiler de botes o venta de carnada en Pesca Córdoba. Llegá a cientos de pescadores." />
+            </Helmet>
+
             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Cargar Nuevo Servicio</h2>
             <p className="text-slate-500 mb-8">Completa el formulario para cargar tu guía de pesca, alquiler de botes/balsas o venta de carnada. El servicio será visible una vez que sea autorizado.</p>
 

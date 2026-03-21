@@ -12,10 +12,10 @@ const LOCATIONS = [
 ];
 
 const calculateFishingIndex = (wind, pressure) => {
-    if (wind > 25) return { label: 'Malo', color: 'bg-red-500', text: 'Viento fuerte. Riesgoso e incómodo.' };
-    if (pressure < 1005) return { label: 'Regular', color: 'bg-yellow-500', text: 'Baja presión. Los peces pueden estar poco activos.' };
-    if (pressure > 1015 && wind < 15) return { label: 'Excelente', color: 'bg-green-500', text: 'Condiciones ideales. Alta actividad probable.' };
-    return { label: 'Bueno', color: 'bg-blue-500', text: 'Condiciones aceptables para intentar.' };
+    if (wind > 25) return { label: 'Malo', color: 'bg-red-500 dark:bg-red-900', text: 'Viento fuerte. Riesgoso e incómodo.' };
+    if (pressure < 1005) return { label: 'Regular', color: 'bg-yellow-500 dark:bg-yellow-800', text: 'Baja presión. Los peces pueden estar poco activos.' };
+    if (pressure > 1015 && wind < 15) return { label: 'Excelente', color: 'bg-green-500 dark:bg-green-900', text: 'Condiciones ideales. Alta actividad probable.' };
+    return { label: 'Bueno', color: 'bg-blue-500 dark:bg-blue-900', text: 'Condiciones aceptables para intentar.' };
 };
 const getMoonPhaseText = (phase) => {
     if (phase === null || phase === undefined) return 'Desconocida';
@@ -123,11 +123,11 @@ export default function WeatherDashboard() {
     };
 
     return (
-        <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white rounded-2xl shadow-xl mt-6">
+        <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl mt-6">
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <div>
-                    <h2 className="text-3xl font-extrabold text-slate-800 tracking-tight">Pronóstico de Pique</h2>
-                    <p className="text-slate-500 mt-1">Condiciones climáticas para la pesca deportiva</p>
+                    <h2 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">Pronóstico de Pique</h2>
+                    <p className="text-slate-500 dark:text-slate-400 mt-1">Condiciones climáticas para la pesca deportiva</p>
                 </div>
 
                 <div className="relative w-full md:w-64">
@@ -137,7 +137,7 @@ export default function WeatherDashboard() {
                     <select
                         value={selectedLocation.id}
                         onChange={handleLocationChange}
-                        className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 text-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm appearance-none font-medium cursor-pointer"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm appearance-none font-medium cursor-pointer"
                     >
                         {LOCATIONS.map(loc => (
                             <option key={loc.id} value={loc.id}>{loc.name}</option>
@@ -154,12 +154,12 @@ export default function WeatherDashboard() {
             {loading && (
                 <div className="flex flex-col items-center justify-center py-16">
                     <Loader2 className="h-10 w-10 text-blue-500 animate-spin mb-4" />
-                    <p className="text-slate-500 font-medium">Buscando el mejor pique...</p>
+                    <p className="text-slate-500 dark:text-slate-400 font-medium">Buscando el mejor pique...</p>
                 </div>
             )}
 
             {error && !loading && (
-                <div className="bg-red-50 text-red-600 p-6 rounded-xl flex flex-col gap-3 border border-red-100">
+                <div className="bg-red-50 dark:bg-red-950 text-red-600 dark:text-red-300 p-6 rounded-xl flex flex-col gap-3 border border-red-100 dark:border-red-900">
                     <div className="flex items-start gap-3">
                         <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
                         <div>
@@ -168,13 +168,13 @@ export default function WeatherDashboard() {
                         </div>
                     </div>
                     {error.includes("localmente") && (
-                        <div className="mt-2 p-3 bg-white/50 rounded-lg text-xs border border-red-200">
+                        <div className="mt-2 p-3 bg-white/50 dark:bg-slate-800/50 rounded-lg text-xs border border-red-200 dark:border-red-800">
                             <p className="font-bold mb-1 uppercase">Solución para desarrollo local:</p>
                             <p className="mb-2">Las Serverless Functions requieren el entorno de Vercel para ejecutarse.</p>
-                            <code className="block bg-slate-800 text-slate-100 p-2 rounded mb-2 font-mono">
+                            <code className="block bg-slate-800 dark:bg-slate-950 text-slate-100 p-2 rounded mb-2 font-mono">
                                 npx vercel dev
                             </code>
-                            <p>Usa este comando en lugar de <span className="font-mono bg-slate-200 px-1 rounded">npm run dev</span> para probar la API localmente.</p>
+                            <p>Usa este comando en lugar de <span className="font-mono bg-slate-200 dark:bg-slate-700 px-1 rounded">npm run dev</span> para probar la API localmente.</p>
                         </div>
                     )}
                 </div>
@@ -197,55 +197,55 @@ export default function WeatherDashboard() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
-                                <div className="bg-blue-100 p-3 rounded-xl text-blue-600">
+                            <div className="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                                <div className="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-xl text-blue-600 dark:text-blue-400">
                                     <Gauge className="h-8 w-8" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-slate-500">Presión Atmosférica</p>
-                                    <p className="text-2xl font-bold text-slate-800">{weatherData.pressure} <span className="text-base font-normal text-slate-500">hPa</span></p>
+                                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Presión Atmosférica</p>
+                                    <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">{weatherData.pressure} <span className="text-base font-normal text-slate-500 dark:text-slate-400">hPa</span></p>
                                 </div>
                             </div>
 
-                            <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
-                                <div className="bg-teal-100 p-3 rounded-xl text-teal-600">
+                            <div className="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                                <div className="bg-teal-100 dark:bg-teal-900/50 p-3 rounded-xl text-teal-600 dark:text-teal-400">
                                     <Wind className="h-8 w-8" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-slate-500">Viento</p>
-                                    <p className="text-2xl font-bold text-slate-800">{weatherData.wind} <span className="text-base font-normal text-slate-500">km/h</span></p>
+                                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Viento</p>
+                                    <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">{weatherData.wind} <span className="text-base font-normal text-slate-500 dark:text-slate-400">km/h</span></p>
                                 </div>
                             </div>
 
-                            <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
-                                <div className="bg-indigo-100 p-3 rounded-xl text-indigo-600">
+                            <div className="bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 p-6 rounded-2xl flex items-center gap-4 hover:shadow-md transition-shadow">
+                                <div className="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-xl text-indigo-600 dark:text-indigo-400">
                                     <Moon className="h-8 w-8" />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-slate-500">Fase Lunar</p>
-                                    <p className="text-xl font-bold text-slate-800">{getMoonPhaseText(weatherData.moonPhase)}</p>
+                                    <p className="text-sm font-medium text-slate-500 dark:text-slate-400">Fase Lunar</p>
+                                    <p className="text-xl font-bold text-slate-800 dark:text-slate-100">{getMoonPhaseText(weatherData.moonPhase)}</p>
                                 </div>
                             </div>
                         </div>
 
                         {dailyForecast.length > 0 && (
-                            <div className="mt-8 pt-6 border-t border-slate-100">
+                            <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700">
                                 <div className="flex items-center gap-2 mb-6">
                                     <Calendar className="h-6 w-6 text-blue-600" />
-                                    <h3 className="text-xl font-bold text-slate-800">Pronóstico Próximos {dailyForecast.length} Días</h3>
+                                    <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100">Pronóstico Próximos {dailyForecast.length} Días</h3>
                                 </div>
                                 <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                                     {dailyForecast.map((day, idx) => {
                                         const isBest = idx === bestDayIndex;
                                         return (
-                                            <div key={idx} className={`relative p-4 rounded-xl border flex flex-col items-center justify-between text-center transition-all ${isBest ? 'bg-green-50 border-green-200 ring-2 ring-green-500 shadow-md transform -translate-y-1' : 'bg-slate-50 border-slate-200 hover:bg-slate-100 hover:-translate-y-0.5'}`}>
+                                            <div key={idx} className={`relative p-4 rounded-xl border flex flex-col items-center justify-between text-center transition-all ${isBest ? 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800 ring-2 ring-green-500 dark:ring-green-600 shadow-md transform -translate-y-1' : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 hover:-translate-y-0.5'}`}>
                                                 {isBest && (
                                                     <div className="absolute -top-3 -right-3 bg-green-500 text-white p-1.5 rounded-full shadow-lg z-10" title="Mejor día para pescar">
                                                         <Award className="h-5 w-5" />
                                                     </div>
                                                 )}
-                                                <p className="font-bold text-slate-700 capitalize mb-1">{day.dayName}</p>
-                                                <p className="text-[11px] text-slate-500 mb-2">{day.date.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' })}</p>
+                                                <p className="font-bold text-slate-700 dark:text-slate-200 capitalize mb-1">{day.dayName}</p>
+                                                <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-2">{day.date.toLocaleDateString('es-AR', { day: 'numeric', month: 'short' })}</p>
 
                                                 <div className="mb-2">
                                                     {getWeatherIcon(day.weatherCode)}
@@ -256,13 +256,13 @@ export default function WeatherDashboard() {
                                                     <span className="text-blue-500">{Math.round(day.tempMin)}°</span>
                                                 </div>
 
-                                                <div className={`flex items-center gap-1 text-[11px] font-medium px-2 py-1.5 rounded w-full justify-center ${isBest ? 'bg-green-100 text-green-700' : 'bg-slate-200/50 text-slate-600'}`}>
+                                                <div className={`flex items-center gap-1 text-[11px] font-medium px-2 py-1.5 rounded w-full justify-center ${isBest ? 'bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300' : 'bg-slate-200/50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-400'}`}>
                                                     <Wind className="h-3.5 w-3.5" />
                                                     {Math.round(day.windMax)} km/h
                                                 </div>
 
                                                 {isBest && (
-                                                    <span className="mt-3 text-[10px] font-bold text-green-700 uppercase bg-green-200 px-2 py-0.5 rounded-full w-full">Mejor Día</span>
+                                                    <span className="mt-3 text-[10px] font-bold text-green-700 dark:text-green-300 uppercase bg-green-200 dark:bg-green-900 px-2 py-0.5 rounded-full w-full">Mejor Día</span>
                                                 )}
                                             </div>
                                         );
@@ -272,11 +272,11 @@ export default function WeatherDashboard() {
                         )}
 
                         {/* Nueva sección educativa para mejorar el valor del contenido */}
-                        <div className="mt-12 pt-10 border-t border-slate-100">
-                             <h3 className="text-2xl font-bold text-slate-900 mb-6 font-sans">Ciencia de la Pesca: ¿Cómo influye el clima?</h3>
-                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 leading-relaxed">
+                        <div className="mt-12 pt-10 border-t border-slate-100 dark:border-slate-700">
+                             <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 font-sans">Ciencia de la Pesca: ¿Cómo influye el clima?</h3>
+                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-600 dark:text-slate-400 leading-relaxed">
                                 <div className="space-y-4">
-                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-lg flex items-center gap-2">
                                         <Gauge className="h-5 w-5 text-blue-600" />
                                         La Presión Atmosférica
                                     </h4>
@@ -285,7 +285,7 @@ export default function WeatherDashboard() {
                                     </p>
                                 </div>
                                 <div className="space-y-4">
-                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-lg flex items-center gap-2">
                                         <Wind className="h-5 w-5 text-teal-600" />
                                         Efecto del Viento
                                     </h4>
@@ -294,7 +294,7 @@ export default function WeatherDashboard() {
                                     </p>
                                 </div>
                                 <div className="space-y-4">
-                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-lg flex items-center gap-2">
                                         <Moon className="h-5 w-5 text-indigo-600" />
                                         Influencia de la Luna
                                     </h4>
@@ -303,7 +303,7 @@ export default function WeatherDashboard() {
                                     </p>
                                 </div>
                                 <div className="space-y-4">
-                                    <h4 className="font-bold text-slate-800 text-lg flex items-center gap-2">
+                                    <h4 className="font-bold text-slate-800 dark:text-slate-200 text-lg flex items-center gap-2">
                                         <Sun className="h-5 w-5 text-yellow-500" />
                                         La Temperatura del Agua
                                     </h4>
@@ -313,8 +313,8 @@ export default function WeatherDashboard() {
                                 </div>
                              </div>
                              
-                             <div className="mt-10 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
-                                <p className="text-blue-800 font-medium italic text-center">
+                             <div className="mt-10 p-6 bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900 rounded-2xl">
+                                <p className="text-blue-800 dark:text-blue-200 font-medium italic text-center">
                                     "La pesca no es solo suerte, es entender el entorno. Usa esta guía para planificar tu próxima salida y recuerda siempre practicar la pesca deportiva responsable."
                                 </p>
                              </div>

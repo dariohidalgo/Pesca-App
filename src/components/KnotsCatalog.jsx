@@ -1,5 +1,7 @@
 import { Layers, Tag, X } from 'lucide-react';
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import SchemaOrg from './SchemaOrg';
 
 const KNOTS_DATA = [
     {
@@ -114,30 +116,58 @@ export default function KnotsCatalog() {
 
     return (
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 mt-10">
+            <Helmet>
+                <title>Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba</title>
+                <meta name="description" content="Aprende a atar los nudos de pesca más efectivos: Palomar, Centauri, Uni, Albright y más. Guía visual paso a paso para pescadores." />
+            </Helmet>
+
+            <SchemaOrg schema={{
+                "@context": "https://schema.org",
+                "@type": "ItemList",
+                "name": "Catálogo de Nudos de Pesca",
+                "description": "Guía visual de los nudos de pesca más efectivos con instrucciones paso a paso.",
+                "numberOfItems": KNOTS_DATA.length,
+                "itemListElement": KNOTS_DATA.map((knot, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "item": {
+                        "@type": "HowTo",
+                        "name": knot.name,
+                        "description": knot.description,
+                        "image": `https://www.pescacordoba.com.ar${knot.image}`,
+                        "step": knot.steps.map((step, j) => ({
+                            "@type": "HowToStep",
+                            "position": j + 1,
+                            "text": step
+                        }))
+                    }
+                }))
+            }} />
+
             <div className="mb-10 text-center">
-                <h2 className="text-4xl font-extrabold text-slate-800 tracking-tight">Catálogo de Nudos de Pesca</h2>
-                <p className="text-lg text-slate-500 mt-3 max-w-2xl mx-auto border-b pb-8">
+                <h2 className="text-4xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">Catálogo de Nudos de Pesca</h2>
+                <p className="text-lg text-slate-500 dark:text-slate-400 mt-3 max-w-2xl mx-auto border-b border-slate-200 dark:border-slate-700 pb-8">
                     Dominar los nudos es fundamental para cualquier pescador. Un nudo bien hecho mantiene la resistencia de la línea, mientras que uno mal ejecutado puede reducirla hasta en un 50%. Aquí te presentamos los más confiables según su uso.
                 </p>
             </div>
 
             {/* Nueva sección de categorías con descripciones detalladas */}
             <div className="mb-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-5 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <div className="p-5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                    <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-blue-500"></div>
                         Unión de Líneas (Bajos de Línea)
                     </h4>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                         Esenciales para unir el multifilamento con un "chicote" de Nylon o Fluorocarbono. Estos nudos deben ser delgados para pasar por los pasahilos de la caña sin frenar el lanzamiento.
                     </p>
                 </div>
-                <div className="p-5 bg-slate-50 rounded-xl border border-slate-100">
-                    <h4 className="font-bold text-slate-800 mb-2 flex items-center gap-2">
+                <div className="p-5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700">
+                    <h4 className="font-bold text-slate-800 dark:text-slate-200 mb-2 flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-teal-500"></div>
                         Línea al Aparejo Final
                     </h4>
-                    <p className="text-sm text-slate-600">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                         Nudos diseñados para sujetar anzuelos, emerillones o señuelos. Su principal característica es que no se deslizan bajo tensión extrema, asegurando la captura una vez que el pez clava.
                     </p>
                 </div>
@@ -147,10 +177,10 @@ export default function KnotsCatalog() {
                 {KNOTS_DATA.map((knot) => (
                     <div
                         key={knot.id}
-                        className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col"
+                        className="bg-white dark:bg-slate-900 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col"
                         onClick={() => setSelectedKnot(knot)}
                     >
-                        <div className="relative h-48 bg-slate-200 overflow-hidden group">
+                        <div className="relative h-48 bg-slate-200 dark:bg-slate-700 overflow-hidden group">
                             <img
                                 src={knot.image}
                                 alt={`Imagen de ${knot.name}`}
@@ -161,14 +191,14 @@ export default function KnotsCatalog() {
                         </div>
 
                         <div className="p-6 flex-1 flex flex-col">
-                            <p className="text-slate-600 mb-5 text-sm leading-relaxed line-clamp-2">{knot.description}</p>
+                            <p className="text-slate-600 dark:text-slate-400 mb-5 text-sm leading-relaxed line-clamp-2">{knot.description}</p>
 
-                            <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-2 mt-auto">
+                            <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex flex-wrap gap-2 mt-auto">
                                 <Tag className="h-4 w-4 text-slate-400 mt-1" />
                                 {knot.badges.map((badge, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-50 text-blue-700 border border-blue-100"
+                                        className="px-2.5 py-1 text-xs font-semibold rounded-md bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-900"
                                         title={knot.category}
                                     >
                                         {badge}
@@ -187,12 +217,12 @@ export default function KnotsCatalog() {
                     onClick={() => setSelectedKnot(null)}
                 >
                     <div
-                        className="relative bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden"
+                        className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col md:flex-row overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
                             onClick={() => setSelectedKnot(null)}
-                            className="absolute z-10 top-4 right-4 p-2 bg-white/50 backdrop-blur-md hover:bg-white/80 rounded-full text-slate-800 transition-colors shadow-sm"
+                            className="absolute z-10 top-4 right-4 p-2 bg-white/50 dark:bg-slate-800/50 backdrop-blur-md hover:bg-white/80 dark:hover:bg-slate-700/80 rounded-full text-slate-800 dark:text-slate-200 transition-colors shadow-sm"
                         >
                             <X className="w-5 h-5" />
                         </button>
@@ -206,30 +236,30 @@ export default function KnotsCatalog() {
                         </div>
 
                         <div className="w-full md:w-1/2 p-6 sm:p-8 flex flex-col overflow-y-auto">
-                            <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-3 pr-8">{selectedKnot.name}</h3>
+                            <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100 mb-3 pr-8">{selectedKnot.name}</h3>
 
                             <div className="flex flex-wrap gap-2 mb-6">
                                 {selectedKnot.badges.map((badge, idx) => (
-                                    <span key={idx} className="px-3 py-1 text-xs font-semibold rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                                    <span key={idx} className="px-3 py-1 text-xs font-semibold rounded-md bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-100 dark:border-blue-900">
                                         {badge}
                                     </span>
                                 ))}
                             </div>
 
-                            <p className="text-slate-600 text-base sm:text-lg mb-8 leading-relaxed">
+                            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg mb-8 leading-relaxed">
                                 {selectedKnot.description}
                             </p>
 
                             {selectedKnot.steps && selectedKnot.steps.length > 0 && (
                                 <div className="mt-auto">
-                                    <h4 className="text-sm uppercase tracking-widest text-slate-400 font-bold mb-4 flex items-center gap-2">
+                                    <h4 className="text-sm uppercase tracking-widest text-slate-400 dark:text-slate-500 font-bold mb-4 flex items-center gap-2">
                                         <Layers className="h-5 w-5" />
                                         Instrucciones Paso a Paso
                                     </h4>
                                     <ul className="space-y-4">
                                         {selectedKnot.steps.map((step, index) => (
-                                            <li key={index} className="flex gap-4 items-start text-slate-700">
-                                                <span className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-xs sm:text-sm shadow-sm mt-0.5">
+                                            <li key={index} className="flex gap-4 items-start text-slate-700 dark:text-slate-300">
+                                                <span className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 font-bold flex items-center justify-center text-xs sm:text-sm shadow-sm mt-0.5">
                                                     {index + 1}
                                                 </span>
                                                 <span className="text-sm sm:text-base leading-relaxed">{step}</span>

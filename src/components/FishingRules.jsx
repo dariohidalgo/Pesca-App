@@ -46,11 +46,11 @@ export default function FishingRules() {
             </Helmet>
 
             <div className="mb-8 text-center sm:text-left">
-                <h1 className="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center sm:justify-start gap-3">
-                    <Scale className="h-8 w-8 text-slate-700" />
+                <h1 className="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center sm:justify-start gap-3 dark:text-white">
+                    <Scale className="h-8 w-8 text-slate-700 dark:text-white" />
                     Reglamento y Permisos
                 </h1>
-                <p className="mt-2 text-lg text-slate-600">
+                <p className="mt-2 text-lg text-slate-600 dark:text-white">
                     Información legal, vedas y tramitación del carnet provincial.
                 </p>
             </div>
@@ -73,9 +73,9 @@ export default function FishingRules() {
                                 <strong>Exentos:</strong> Jubilados, menores de 18 años y personas con discapacidad (deben tramitarlo igual, pero sin costo).
                             </div>
                         </div>
-                        <a 
-                            href="https://cidi.cba.gov.ar" 
-                            target="_blank" 
+                        <a
+                            href="https://cidi.cba.gov.ar"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 font-bold py-2.5 px-6 rounded-lg transition-colors shadow-sm"
                         >
@@ -87,11 +87,11 @@ export default function FishingRules() {
             </div>
 
             <div className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                    <ShieldAlert className="h-6 w-6 text-slate-600" />
+                <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2 dark:text-white">
+                    <ShieldAlert className="h-6 w-6 text-slate-600 " />
                     Cupos, Especies y Vedas
                 </h2>
-                
+
                 <div className="space-y-4">
                     {fishingRules.map((rule, idx) => (
                         <div key={idx} className={`p-6 rounded-xl border ${rule.color} shadow-sm transition-all hover:shadow-md`}>

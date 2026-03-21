@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Shield, Lock, Eye, FileText } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
   useEffect(() => {
@@ -8,6 +9,12 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
+      <Helmet>
+        <title>Política de Privacidad - Pesca Córdoba</title>
+        <meta name="description" content="Política de privacidad de Pesca Córdoba. Conocé cómo protegemos y utilizamos tu información personal." />
+        <meta name="robots" content="noindex" />
+      </Helmet>
+
       <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-100 overflow-hidden">
         <div className="bg-gradient-to-r from-blue-600 to-teal-500 px-8 py-12 text-white">
           <div className="flex items-center gap-4 mb-4">

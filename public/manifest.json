@@ -1,0 +1,18 @@
+{
+  "name": "Pesca Córdoba - Guía de Pesca Deportiva",
+  "short_name": "PescaApp",
+  "description": "La mejor guía de pesca deportiva en Córdoba. Pronóstico, mapa de pesqueros, calendario solunar y más.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/pesca.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

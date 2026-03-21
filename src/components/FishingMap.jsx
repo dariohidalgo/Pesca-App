@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { Helmet } from 'react-helmet-async';
 import { MapPin, Info, Navigation2, Mail } from 'lucide-react';
+import SchemaOrg from './SchemaOrg';
 
 // Fix for default marker icons in react-leaflet + Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -66,17 +67,40 @@ export default function FishingMap() {
         <meta name="description" content="Mapa interactivo con los mejores puntos de pesca en Córdoba. Dique San Roque, Los Molinos, Embalse y más." />
       </Helmet>
 
+      <SchemaOrg schema={{
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Pesqueros y Diques de Córdoba",
+        "description": "Mapa interactivo con los principales puntos de pesca deportiva en la provincia de Córdoba, Argentina.",
+        "url": "https://www.pescacordoba.com.ar/mapa",
+        "numberOfItems": mapLocations.length,
+        "itemListElement": mapLocations.map((loc, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "item": {
+            "@type": "Place",
+            "name": loc.name,
+            "description": loc.description,
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": loc.position[0],
+              "longitude": loc.position[1]
+            }
+          }
+        }))
+      }} />
+
       <div className="mb-8">
-        <h1 className="text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-3">
           <MapPin className="h-8 w-8 text-blue-600" />
           Mapa de Pesqueros en Córdoba
         </h1>
-        <p className="mt-2 text-lg text-slate-600">
+        <p className="mt-2 text-lg text-slate-600 dark:text-slate-400">
           Explorá los principales diques y cuerpos de agua de la provincia. Encontrá especies, servicios y rutas de acceso.
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden relative" style={{ height: '600px' }}>
+      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden relative" style={{ height: '600px' }}>
         <MapContainer
           center={cordobaCenter}
           zoom={mapZoom}
@@ -91,17 +115,17 @@ export default function FishingMap() {
             <Marker key={loc.id} position={loc.position}>
               <Popup className="custom-popup">
                 <div className="p-1">
-                  <h3 className="font-bold text-lg text-slate-900 mb-1">{loc.name}</h3>
-                  <p className="text-sm text-slate-600 mb-3">{loc.description}</p>
+                  <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100 mb-1">{loc.name}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{loc.description}</p>
 
                   <div className="space-y-2 mb-4">
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Especies</span>
-                      <span className="text-sm text-slate-700">{loc.species.join(', ')}</span>
+                      <span className="font-semibold text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded">Especies</span>
+                      <span className="text-sm text-slate-700 dark:text-slate-300">{loc.species.join(', ')}</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <span className="font-semibold text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Servicios</span>
-                      <span className="text-sm text-slate-700">{loc.services}</span>
+                      <span className="font-semibold text-xs bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-2 py-0.5 rounded">Servicios</span>
+                      <span className="text-sm text-slate-700 dark:text-slate-300">{loc.services}</span>
                     </div>
                   </div>
 
@@ -109,7 +133,7 @@ export default function FishingMap() {
                     href={`https://www.google.com/maps/dir/?api=1&destination=${loc.position[0]},${loc.position[1]}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex text-center items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors"
+                    className="flex text-center items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium transition-colors"
                   >
                     <Navigation2 className="h-4 w-4" />
                     Cómo llegar con GPS
@@ -121,11 +145,11 @@ export default function FishingMap() {
         </MapContainer>
       </div>
 
-      <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-4 flex gap-4">
+      <div className="mt-8 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-xl p-4 flex gap-4">
         <Info className="h-6 w-6 text-blue-600 flex-shrink-0" />
         <div>
-          <h4 className="font-semibold text-blue-900">¿Falta tu lugar preferido?</h4>
-          <p className="text-sm text-blue-800 mt-1">
+          <h4 className="font-semibold text-blue-900 dark:text-blue-100">¿Falta tu lugar preferido?</h4>
+          <p className="text-sm text-blue-800 dark:text-blue-200 mt-1">
             Revisá siempre el estado y reglamentaciones en cada punto antes de ir. Si conocés otros pesqueros o campings que valga la pena agregar, envianos un mensaje.
           </p>
           <a href="mailto:pescaappcordoba@gmail.com" className="flex items-center gap-2 hover:text-blue-600 transition-colors">
