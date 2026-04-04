@@ -147,6 +147,36 @@ export default function DamLevels() {
         })}
       </div>
 
+      {/* NEW EDUCATIONAL SECTION for AdSense */}
+      <div className="mt-12 bg-white rounded-2xl p-8 border border-slate-200 shadow-sm">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">
+          Hidrología y Comportamiento Íctico
+        </h2>
+        
+        <div className="space-y-6 text-slate-600">
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Impacto del Nivel de Agua en el Pique</h3>
+            <p className="leading-relaxed">
+              El volumen de agua embalsada es uno de los factores hidroclimáticos más críticos (y subestimados) en la pesca deportiva. Durante los períodos de <strong>bajante extrema</strong>, los peces se ven forzados a agruparse en los pozones más profundos o antiguos cauces de ríos inundados. Aunque esto puede parecer una ventaja porque los peces están "concentrados", el estrés por la falta de oxígeno, el aumento de temperatura y la competencia por el alimento suele volverlos apáticos y recelosos ante los señuelos y carnadas.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">El Efecto de las Crecientes Repentinas</h3>
+            <p className="leading-relaxed">
+              Cuando un dique experimenta una crecida rápida debido a precipitaciones copiosas en las cuencas altas (los ríos afluentes de las sierras), el agua arrastra una enorme cantidad de nutrientes, insectos, semillas y microorganismos hacia el embalse. Este aporte masivo de alimento desencadena un frenesí alimenticio, especialmente en especies omnívoras como la carpa y el bagre sapo. Sin embargo, el agua turbia (color "chocolate") reduce la visibilidad drásticamente, obligando al pescador a utilizar cebos con vibración acústica (como sonajeros en señuelos) o fuerte estímulo olfativo.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Termoclina y Niveles Estables</h3>
+            <p className="leading-relaxed">
+              El escenario ideal para la gran mayoría de las especies es un <strong>nivel estable durante varias semanas</strong>. Esto permite que se establezca la <em>termoclina</em> (una capa de agua que actúa como barrera de temperatura). En verano, encontrar a qué profundidad se sitúa la termoclina es el secreto mejor guardado de los pescadores de pejerrey, ya que los cardúmenes patronearán suspendidos justo por encima de aguas estancadas carentes de oxígeno.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-4">
         <AlertTriangle className="h-6 w-6 text-amber-600 flex-shrink-0" />
         <div>

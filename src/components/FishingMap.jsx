@@ -145,6 +145,36 @@ export default function FishingMap() {
         </MapContainer>
       </div>
 
+      {/* NEW EDUCATIONAL SECTION for AdSense */}
+      <div className="mt-12 bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
+          Guía de Ecosistemas Acuáticos en Córdoba
+        </h2>
+        
+        <div className="space-y-6 text-slate-600 dark:text-slate-400">
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">Los Grandes Diques (Aguas Abiertas)</h3>
+            <p className="leading-relaxed">
+              Los embalses artificiales como el San Roque, Los Molinos y Embalse de Río Tercero son la columna vertebral de la pesca deportiva en la provincia. Sus ecosistemas combinan grandes profundidades cerca del murallón y extensas playas someras en las colas. Aquí reina el <strong>Pejerrey (Odontesthes bonariensis)</strong>, introducido exitosamente hace décadas. Para tener éxito en estas grandes extensiones, es crucial comprender las corrientes térmicas: en invierno el pejerrey busca aguas oxigenadas en superficie o media agua, mientras que las grandes carpas rastrean el lecho arcilloso.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">Las Zonas de Vegetación y Juncos (Santuarios de la Tararira)</h3>
+            <p className="leading-relaxed">
+              Aléjate de las zonas de navegación profunda y busca las bahías protegidas del viento donde florecen los camalotes, juncos y gambarrusa. Lugares como El Cajón o Cruz del Eje poseen "pampas de yuyos" que funcionan como guarderías naturales para los alevinos y refugios de caza para la <strong>Tararira (Hoplias malabaricus)</strong>. La pesca en modalidad "Baitcasting" o mosca (Fly) rinde extraordinariamente bien en estos biomas de aguas someras que se calientan rápidamente con el sol cordobés.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">Ríos Serranos y Correderas</h3>
+            <p className="leading-relaxed">
+              Si abandonas el agua quieta de los lagos y remontas los afluentes de montaña en áreas como Calamuchita o Traslasierra, el paisaje cambia a un ecosistema lótico (aguas en movimiento). El agua más fría y cristalina, corriendo sobre cantos rodados de granito, es el hogar de <strong>Truchas Arcoíris</strong>. Aquí la paciencia, el sigilo, la imitación de insectos nativos y el lanzamiento milimétrico son obligatorios para lograr una captura y su posterior devolución inmediata.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="mt-8 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-xl p-4 flex gap-4">
         <Info className="h-6 w-6 text-blue-600 flex-shrink-0" />
         <div>

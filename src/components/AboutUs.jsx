@@ -80,6 +80,25 @@ const AboutUs = () => {
                         </div>
                     </section>
 
+                    {/* NEW E-E-A-T SECTION para AdSense */}
+                    <section className="bg-white rounded-2xl p-8 border border-slate-200 outline outline-4 outline-slate-50/50">
+                        <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                            <ShieldCheck className="h-7 w-7 text-indigo-600" />
+                            Nuestra Política Editorial y Rigor (E-E-A-T)
+                        </h2>
+                        <div className="space-y-4 text-slate-600 leading-relaxed text-md">
+                            <p>
+                                En <strong>Pesca Córdoba</strong> nos tomamos muy en serio la calidad y la veracidad de la información que publicamos. Al ser una herramienta utilizada por pescadores antes de emprender viajes o navegaciones, sabemos que una información errónea puede no solo arruinar un fin de semana, sino poner en riesgo la seguridad.
+                            </p>
+                            <ul className="list-disc pl-6 space-y-2 mt-4">
+                                <li><strong>Experiencia de primera mano (Experience):</strong> Todos nuestros reportes, mapas de pesqueros y guías técnicas están escritos por pescadores locales con al menos 10 años de experiencia comprobable en los diques cordobeses. No utilizamos contenido 100% automatizado para nuestros artículos de blog.</li>
+                                <li><strong>Conocimiento Técnico (Expertise):</strong> Para la redacción de los artículos sobre biología de las especies (como desoves, alimentación estacional) colaboramos con técnicos acuícolas y biólogos de la región.</li>
+                                <li><strong>Autoridad (Authoritativeness):</strong> Nuestros reportes meteorológicos y solunares son cruzados con los partes oficiales e internacionales de meteorología aeronáutica y el Servicio Meteorológico Nacional (SMN).</li>
+                                <li><strong>Confianza (Trustworthiness):</strong> Somos completamente transparentes con nuestros usuarios. Si una información es un rumor (por ejemplo, "se dice que hay pique en la bahía norte"), lo aclaramos como tal. Jamás garantizamos la captura, solo ofrecemos las mejores herramientas probabilísticas.</li>
+                            </ul>
+                        </div>
+                    </section>
+
                     <section className="text-center space-y-6 pt-6">
                         <h2 className="text-2xl font-bold text-slate-900">¿Tienes alguna duda o sugerencia?</h2>
                         <p className="text-slate-600 max-w-xl mx-auto">

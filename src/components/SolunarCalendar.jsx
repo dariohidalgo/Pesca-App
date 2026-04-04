@@ -167,6 +167,39 @@ export default function SolunarCalendar() {
           ))}
         </div>
       </div>
+      {/* NEW EDUCATIONAL SECTION for AdSense */}
+      <div className="mt-12 bg-white dark:bg-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">
+          Comprendiendo la Teoría Solunar
+        </h2>
+        
+        <div className="space-y-6 text-slate-600 dark:text-slate-400">
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">¿Qué es el Calendario Solunar?</h3>
+            <p className="leading-relaxed">
+              La teoría solunar fue propuesta inicialmente en 1926 por el norteamericano John Alden Knight. Tras analizar miles de capturas de pesca deportiva a lo largo de los años, Knight descubrió que había ciertos períodos del día en los que la actividad de los peces (y de la fauna en general) aumentaba drásticamente. Postuló que este fenómeno estaba íntimamente ligado a las posiciones relativas del Sol y la Luna respecto a la Tierra.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">Períodos Mayores y Menores</h3>
+            <p className="leading-relaxed">
+              El reloj solunar se divide principalmente en períodos "Mayores" y "Menores". 
+              <br /><br />
+              <strong>Los Períodos Mayores</strong> ocurren cuando la luna está directamente sobre nuestra cabeza (tránsito superior) o justo bajo nuestros pies en el hemisferio opuesto (tránsito inferior). Tienen una duración aproximada de 2 horas.
+              <br /><br />
+              <strong>Los Períodos Menores</strong> coinciden con la salida y puesta de la luna sobre el horizonte. Duran cerca de una hora. Si logras hacer coincidir tus lances durante un período Mayor que se solape con el amanecer o atardecer (momento de menor exposición lumínica superficial), tus chances estadísticas de captura aumentan de forma masiva frente a cualquier otro momento del día.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">¿Es Infalible? Mitos y Verdades</h3>
+            <p className="leading-relaxed">
+              En las sierras de Córdoba, la tabla solunar es una excelente herramienta predictiva, pero <strong>no es mágica</strong>. Las condiciones meteorológicas locales siempre tienen primacía. Si la tabla indica el "mejor período del año" pero hay un frente frío repentino que provoca un descenso violento en la presión hidrostática, los peces como la tararira se aletargarán irremediablemente. Usa la tabla solunar como un factor más en tu planificación, cruzándola siempre con nuestro <strong>Pronóstico de Pique</strong> barométrico.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
