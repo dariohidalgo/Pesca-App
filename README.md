@@ -77,6 +77,18 @@ En el directorio del proyecto, puedes ejecutar los siguientes comandos:
 - `npm run lint`: Ejecuta ESLint para analizar el código en busca de problemas.
 - `npm run preview`: Inicia un servidor local para previsualizar la build de producción.
 
+## 🌤️ Integración Meteorológica (Open-Meteo) y Licencias Comerciales
+
+La aplicación utiliza la API de [Open-Meteo](https://open-meteo.com/) para obtener simulaciones meteorológicas horarias de alta resolución (presión superficial, temperatura, velocidad y dirección de viento).
+
+### Condiciones de Uso y Monetización
+- **Uso no comercial:** La API pública de Open-Meteo es gratuita hasta 10.000 llamadas diarias para proyectos estrictamente no comerciales y desarrollo.
+- **Sitios monetizados con publicidad (Google AdSense):** Según los términos vigentes de Open-Meteo, los sitios web que generan ingresos publicitarios se consideran de uso comercial.
+- **Opciones de producción recomendadas:**
+  1. **Suscripción comercial de Open-Meteo:** Adquirir una clave comercial (`OPEN_METEO_API_KEY`) y configurarla como variable de entorno en el backend/proxy (por ejemplo, en Vercel Serverless Functions o Edge Middleware) para no exponer credenciales en el bundle del cliente.
+  2. **Auto-alojamiento (Self-hosting):** Desplegar la imagen Docker de código abierto de Open-Meteo en infraestructura propia.
+- **Estado actual del proyecto:** La integración actual consulta los endpoints estándar. No se contratan servicios de pago automáticamente; la decisión de suscripción o self-hosting queda identificada como un ítem de configuración del titular antes de escalar tráfico comercial.
+
 ## 🤝 Contribución
 
 ¡Las contribuciones son bienvenidas! Si deseas mejorar la plataforma, por favor sigue estos pasos:

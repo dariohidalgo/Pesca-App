@@ -5,13 +5,17 @@ import { Link } from 'react-router-dom';
 import SchemaOrg from './SchemaOrg';
 import { POSTS } from '../data/posts';
 
+import AdBanner from './AdBanner';
+
 export default function BlogList() {
     return (
         <>
             <Helmet>
-                <title>Blog de Pesca Deportiva | PescaApp</title>
+                <title>Blog de Pesca Deportiva - Pesca Córdoba</title>
                 <meta name="description" content="Artículos sobre técnicas, equipos, aparejos y consejos para la pesca deportiva en Córdoba. Guías de pejerrey, tararira, carpa y más." />
-                <meta property="og:title" content="Blog de Pesca Deportiva | PescaApp" />
+                <link rel="canonical" href="https://www.pescacordoba.com.ar/blog" />
+                <meta property="og:title" content="Blog de Pesca Deportiva - Pesca Córdoba" />
+                <meta property="og:url" content="https://www.pescacordoba.com.ar/blog" />
                 <meta property="og:type" content="website" />
             </Helmet>
 
@@ -80,6 +84,10 @@ export default function BlogList() {
                             </div>
                         </Link>
                     ))}
+                </div>
+
+                <div className="mt-12">
+                    <AdBanner slot="3228900466" />
                 </div>
             </div>
         </>

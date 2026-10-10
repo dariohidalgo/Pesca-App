@@ -5,6 +5,7 @@ import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import SchemaOrg from './SchemaOrg';
 import { POSTS } from '../data/posts';
+import AdBanner from './AdBanner';
 
 export default function BlogPost() {
     const { slug } = useParams();
@@ -14,16 +15,19 @@ export default function BlogPost() {
         return <Navigate to="/blog" replace />;
     }
 
+    const canonicalUrl = `https://www.pescacordoba.com.ar/blog/${post.slug}`;
+
     return (
         <>
             <Helmet>
-                <title>{post.title} | PescaApp</title>
+                <title>{post.title} | Pesca Córdoba</title>
                 <meta name="description" content={post.description} />
                 <meta name="author" content={post.author} />
-                <meta property="og:title" content={`${post.title} | PescaApp`} />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta property="og:title" content={`${post.title} | Pesca Córdoba`} />
                 <meta property="og:description" content={post.description} />
                 <meta property="og:type" content="article" />
-                <meta property="og:url" content={`https://www.pescacordoba.com.ar/blog/${post.slug}`} />
+                <meta property="og:url" content={canonicalUrl} />
                 <meta property="article:published_time" content={post.date} />
                 <meta property="article:author" content={post.author} />
                 <meta name="twitter:card" content="summary_large_image" />
@@ -51,7 +55,7 @@ export default function BlogPost() {
                 "datePublished": post.date,
                 "mainEntityOfPage": {
                     "@type": "WebPage",
-                    "@id": `https://www.pescacordoba.com.ar/blog/${post.slug}`
+                    "@id": canonicalUrl
                 }
             }} />
 
@@ -61,7 +65,7 @@ export default function BlogPost() {
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.pescacordoba.com.ar/" },
                     { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.pescacordoba.com.ar/blog" },
-                    { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://www.pescacordoba.com.ar/blog/${post.slug}` }
+                    { "@type": "ListItem", "position": 3, "name": post.title, "item": canonicalUrl }
                 ]
             }} />
 
@@ -75,13 +79,13 @@ export default function BlogPost() {
                         Volver a los artículos
                     </Link>
 
-                    <article className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 sm:p-12">
-                        <header className="mb-10 border-b border-slate-100 pb-8">
-                            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                    <article className="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-8 sm:p-12">
+                        <header className="mb-10 border-b border-slate-100 dark:border-slate-800 pb-8">
+                            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight mb-6">
                                 {post.title}
                             </h1>
 
-                            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 font-medium">
+                            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-500 dark:text-slate-400 font-medium">
                                 <div className="flex items-center gap-2">
                                     <User className="h-4 w-4 text-slate-400" />
                                     {post.author}
@@ -97,20 +101,41 @@ export default function BlogPost() {
                             </div>
                         </header>
 
-                        <div className="prose prose-slate max-w-none prose-headings:font-bold prose-h1:hidden prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h3:text-xl prose-a:text-blue-600 prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600">
+                        <div className="max-w-none">
                             <ReactMarkdown
                                 components={{
-                                    h2: ({ ...props }) => <h3 className="text-2xl font-bold mt-10 mb-4 text-slate-800 border-b pb-2" {...props} />,
-                                    h3: ({ ...props }) => <h4 className="text-xl font-bold mt-6 mb-3 text-slate-800" {...props} />,
-                                    p: ({ ...props }) => <p className="text-slate-600 leading-relaxed mb-6 text-lg" {...props} />,
-                                    ul: ({ ...props }) => <ul className="list-disc pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
-                                    ol: ({ ...props }) => <ol className="list-decimal pl-6 mb-6 text-slate-600 text-lg space-y-2" {...props} />,
+                                    h1: () => null,
+                                    h2: ({ ...props }) => <h2 className="text-2xl font-bold mt-10 mb-4 text-slate-800 dark:text-slate-100 border-b border-slate-100 dark:border-slate-800 pb-2" {...props} />,
+                                    h3: ({ ...props }) => <h3 className="text-xl font-bold mt-6 mb-3 text-slate-800 dark:text-slate-100" {...props} />,
+                                    p: ({ ...props }) => <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6 text-lg" {...props} />,
+                                    ul: ({ ...props }) => <ul className="list-disc pl-6 mb-6 text-slate-600 dark:text-slate-300 text-lg space-y-2" {...props} />,
+                                    ol: ({ ...props }) => <ol className="list-decimal pl-6 mb-6 text-slate-600 dark:text-slate-300 text-lg space-y-2" {...props} />,
                                     li: ({ ...props }) => <li className="pl-2" {...props} />,
-                                    strong: ({ ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
+                                    strong: ({ ...props }) => <strong className="font-semibold text-slate-900 dark:text-white" {...props} />,
+                                    em: ({ ...props }) => <em className="italic text-slate-700 dark:text-slate-200" {...props} />,
+                                    a: ({ href, children, ...props }) => (
+                                        <a
+                                            href={href}
+                                            target={href?.startsWith('http') ? '_blank' : undefined}
+                                            rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium transition-colors"
+                                            {...props}
+                                        >
+                                            {children}
+                                        </a>
+                                    ),
+                                    blockquote: ({ ...props }) => (
+                                        <blockquote className="border-l-4 border-blue-500 pl-4 py-2 my-6 italic text-slate-600 dark:text-slate-300 bg-blue-50/40 dark:bg-slate-800/50 rounded-r-lg" {...props} />
+                                    ),
+                                    hr: () => <hr className="my-8 border-slate-200 dark:border-slate-800" />,
                                 }}
                             >
                                 {post.content}
                             </ReactMarkdown>
+                        </div>
+
+                        <div className="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800">
+                            <AdBanner slot="3228900466" />
                         </div>
                     </article>
                 </div>

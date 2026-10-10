@@ -3,400 +3,388 @@ export const POSTS = [
         id: 1,
         slug: 'secretos-pesca-tarariras-verano',
         title: 'Secretos para la pesca de Tarariras en verano',
-        description: 'Aprende qué equipos, señuelos y técnicas necesitas para pescar tarariras de manera deportiva en Argentina.',
+        description: 'Equipos, señuelos y técnicas probadas para pescar tarariras en diques y lagunas de Córdoba durante la temporada estival.',
         date: '2025-12-20',
         dateDisplay: '20 de Diciembre, 2025',
         author: 'Darío Hidalgo',
-        readTime: '5 min lectura',
-        content: `
-# Secretos para la pesca de Tarariras en verano
+        readTime: '4 min lectura',
+        content: `La tararira (*Hoplias argentinensis* / *Hoplias malabaricus*) es uno de los mayores predadores de agua dulce de nuestra región. En los meses de verano, cuando la temperatura del agua se eleva por encima de los 20 °C, incrementa notablemente su metabolismo y busca alimento en sectores someros y vegetados.
 
-La tararira (hoplias malabaricus), también conocida como "tarucha", es uno de los peces más deportivos y agresivos de nuestras aguas. Su pesca con señuelos o mosca en verano regala ataques explosivos en superficie que cualquier pescador recordará por siempre.
+## Zonas de Acecho en los Embalses Cordobeses
 
-## Equipo Recomendado
+En embalses como el San Roque, Los Molinos y Cruz del Eje, las tarariras no suelen patrullar aguas abiertas ni fondos profundos. Sus apostaderos característicos son:
 
-Para dominar a este predador, necesitas un equipo con buena potencia de clavada:
+- **Colas de dique y desembocaduras de arroyos:** Lugares donde el sedimento fino y la poca profundidad generan mayor temperatura en el agua.
+- **Costas con vegetación densa:** Juncales, espadañas y ramas sumergidas donde se mimetiza para emboscar mojarras, dientudos y anfibios.
+- **Bahías protegidas del viento:** Zonas de agua calma donde los rayos solares calientan rápidamente la capa superficial durante las horas del mediodía.
 
-* **Caña:** De 1.80m a 2.10m, acción rápida o extra-rápida (10-20 lbs).
-* **Reel:** Huevito (Baitcasting) o frontal mediano (tamaño 2000-2500), cargado con **multifilamento de 40 a 50 lbs**.
-* **Leader:** ¡Fundamental! Un leader de acero o fluorocarbono grueso (0.60mm+) es obligatorio, ya que sus dientes afilados cortarán cualquier nylon estándar en segundos.
+## Equipamiento Recomendado
 
-## Los Mejores Señuelos
+Para lograr clavadas efectivas en una boca ósea y resistente, el equipo debe combinar ligereza para lanzamientos precisos con suficiente reserva de potencia:
 
-La tarucha es territorial y ataca por hambre o por irritación:
+- **Caña:** De 1.80 a 2.10 metros, grafito de acción rápida (Fast) o extra rápida, con rango de 10 a 20 libras.
+- **Reel:** Rotativo de perfil bajo (baitcasting) o frontal tamaño 2000 a 2500, con freno progresivo ajustado a 2-3 kg.
+- **Línea:** Multifilamento de 30 a 40 libras (aproximadamente 0.20 a 0.24 mm de diámetro), sin estiramiento para transmitir el golpe de clavada.
+- **Líder de protección:** Obligatorio. Los dientes afilados cortan el nylon convencional con facilidad. Se recomienda un líder de acero flexible multifilamento de 20 a 30 libras de unos 15 a 20 cm, o fluorocarbono grueso (0.60 mm o superior).
 
-1. **Ranas de goma (Superficie):** El señuelo estrella. Ideal para pescar sobre yuyos, camalotes o vegetación densa sin engancharse (anti-enganche).
-2. **Paseantes y Poppers:** Excelentes cuando el agua está limpia y más calmada. El ruido del popper saca a la tararira de su escondite.
-3. **Spinners y Cucharas:** Muy efectivos para buscarla a media agua o cuando las condiciones están difíciles.
+## Selección de Señuelos por Momento del Día
 
-## Consejos Finales
+1. **Primeras y últimas horas de luz (Superficie):** Paseantes (walk-the-dog) y poppers que generen perturbación sonora y visual en el espejo de agua.
+2. **Pleno sol sobre vegetación (Anti-enganche):** Ranas huecas de goma (hollow body frogs) con anzuelo doble pegado al lomo. Permiten deslizarse sobre mantos de algas sin engancharse.
+3. **Peces a media agua o días ventosos:** Spinnerbaits con pala willow/colorado, cucharas ondulantes con fleco de goma o señuelos de media agua tipo minnow en recuperación pausada con toques de puntera (twitching).
 
-Busca a las tarariras en aguas bajas, cálidas y con buena oxigenación. Zonas con juncos o troncos sumergidos son sus apostaderos favoritos. Y recuerda siempre: **pesca y devolución**. Cuidemos a este gran guerrero de nuestras lagunas.
-`
+## Normativa y Conservación
+
+En la provincia de Córdoba, la Secretaría de Ambiente establece períodos de veda primaveral para proteger la reproducción de la especie. Recordá verificar la resolución anual antes de salir y practicar siempre captura y devolución con anzuelos simples o rebabas aplastadas para preservar las poblaciones de nuestros embalses.`
     },
     {
         id: 2,
         slug: 'mejores-equipos-pejerrey-invierno-cordoba',
         title: 'Mejores equipos para pesca de pejerrey en invierno en Córdoba',
-        description: 'Guía completa sobre cañas, reeles y aparejos para tener éxito en la pesca del pejerrey durante la temporada invernal en los diques de Córdoba.',
+        description: 'Guía técnica sobre cañas, reeles y aparejos para optimizar la pesca de pejerrey en los diques cordobeses en temporada invernal.',
         date: '2026-05-15',
         dateDisplay: '15 de Mayo, 2026',
         author: 'Darío Hidalgo',
         readTime: '4 min lectura',
-        content: `
-# Mejores equipos para pesca de pejerrey en invierno en Córdoba
+        content: `La pesca del pejerrey (*Odontesthes bonariensis*) durante el invierno es la actividad deportiva por excelencia en los embalses de Córdoba. Las bajas temperaturas invernales concentran a los peces en cardúmenes definidos, pero también tornan el pique sumamente sutil, exigiendo una elección precisa de cada elemento del equipo.
 
-La pesca del pejerrey durante el invierno cordobés es una de las actividades más apasionantes para los pescadores deportivos. Las heladas mañanas en el San Roque o Los Molinos exigen no solo coraje, sino también el equipo adecuado.
+## La Caña: Longitud y Acción
 
-## La Caña Ideal
+Para pescar en diques como el San Roque, Los Molinos, Embalse de Río Tercero o Cruz del Eje, la caña debe cumplir dos propósitos: permitir el manejo cómodo de aparejos con múltiples boyas y ofrecer una puntera sensible que no oponga resistencia excesiva cuando el pez toma la carnada.
 
-Para el pejerrey, la sensibilidad es clave. Busca cañas **telescópicas de 4 a 4.5 metros**, preferentemente de grafito de alto módulo. Esto te permitirá:
-- Detectar piques sutiles.
-- Clavar a distancia con precisión.
-- Mantener una postura cómoda de pesca (línea de flote).
+- **Tipo:** Telescópica o por tramos, construida en grafito de alto módulo (IM6 a IM8).
+- **Largo:** De 4.00 a 4.50 metros para pesca de costa o embarcado en balsa/tracker. Esta longitud facilita el control de la línea y la clavada a distancia.
+- **Acción:** Rápida de puntera (acción de punta liviana), capaz de manejar aparejos con plomos pequeños de 5 a 25 gramos.
 
-## Reeles y Sedal
+## Reel y Selección del Sedal
 
-Un reel frontal tamaño *1000 a 2500* es más que suficiente. Lo fundamental aquí es el balance con la caña.
+Un conjunto equilibrado reduce la fatiga tras varias horas sosteniendo la caña:
 
-En cuanto al sedal, te recomendamos usar **multifilamento de 0.12mm a 0.16mm** para la línea madre, ya que al no tener memoria ni elasticidad, transmite el pique de forma instantánea. Para las brazoladas (donde van los anzuelos), usa fluorocarbono de 0.25mm a 0.30mm, que es invisible bajo el agua.
+- **Reel:** Frontal ultra liviano tamaño 1000 a 2500, con una relación de recogida de al menos 5.0:1 y carrete poco profundo para una salida de línea fluida.
+- **Línea madre:** El multifilamento de 0.12 a 0.16 mm es el estándar actual. Al carecer de elasticidad, transmite el toque al instante, incluso a 30 metros de distancia. Si preferís monofilamento de nylon, optá por calibres de 0.20 a 0.23 mm de baja memoria con aplicación de flotalíneas para que no se hunda.
+- **Brazoladas:** Siempre en fluorocarbono transparente de 0.22 a 0.26 mm. Su índice de refracción cercano al agua reduce la visibilidad ante peces recelosos en aguas claras.
 
-### Tipos de Líneas (Aparejos)
-1. **Líneas de 3 boyas**: Las más tradicionales. Los colores limón o fucsia son excelentes para días nublados.
-2. **Paternoster**: Esencial cuando el pejerrey se encuentra a mayor profundidad y no sube a comer a flote.
-3. **Línea de vuelo**: Para cuando el pescado está muy activo en la superficie.
+## Aparejos Principales: Flote vs. Paternoster
 
-## Conclusión
+1. **Línea de 3 boyas de flote:** Ideal para días templados o cuando el cardumen se encuentra en los primeros 40 a 80 cm de la superficie. Las boyas esféricas, chupetonas o cometa de madera balsa o poliuretano (en colores limón, fucsia o blanco y negro según el reflejo del sol) ofrecen mínima resistencia al avance del pez.
+2. **Línea paternoster o balancín:** Esencial en jornadas frías o con viento sostenido, cuando el pejerrey desciende a profundidades de entre 3 y 8 metros. Permite presentar 2 o 3 anzuelos escalonados a diferentes niveles sobre una misma vertical.
 
-El éxito en la pesca del "Flecha de Plata" radica en los detalles. No olvides un buen abrigo, un termo con mate caliente y la paciencia necesaria. ¡Buena pesca!
-`
+## Anzuelos y Carnada
+
+- **Anzuelos:** Modelos de ojal recto o paleta fina tipo Mustad 1687, Akita Kitsune o Maruseigo, en tamaños número 3 a 5.
+- **Carnada:** La mojarra viva pequeña o mediana es la opción más efectiva. Puede combinarse con tiras finas de filete de pejerrey o dientudo curado con azúcar y sal para mayor firmeza.`
     },
     {
         id: 3,
         slug: 'armado-lineas-infalibles-pejerrey',
         title: 'Armado de líneas infalibles para la pesca de Pejerrey',
-        description: 'Todo lo que necesitas saber para armar líneas de flote, paternoster y de fondo para pescar pejerreyes.',
+        description: 'Instrucciones paso a paso para confeccionar aparejos de 3 boyas, paternoster y líneas tramposas para pejerrey de embalse.',
         date: '2026-03-14',
         dateDisplay: '14 de Marzo, 2026',
         author: 'Darío Hidalgo',
-        readTime: '6 min lectura',
-        content: `
-# Armado de líneas infalibles para la pesca de Pejerrey
+        readTime: '5 min lectura',
+        content: `En la pesca de pejerrey en embalses de Córdoba, el aparejo marca la diferencia entre una jornada exitosa y horas sin registrar actividad. A continuación detallamos la confección técnica de las tres configuraciones fundamentales utilizadas en nuestros diques.
 
-El pejerrey es, sin lugar a dudas, la especie predilecta de muchos pescadores. Y si hay algo que define el éxito en su pesca, es la línea o aparejo que utilicemos. Aquí repasamos las mejores líneas para que tu jornada rinda al máximo.
+## 1. Línea Clásica de 3 Boyas de Flote
 
-## Línea de Flote (3 Boyas)
+Diseñada para pescar cuando el pejerrey se alimenta en los estratos superficiales (entre 15 y 70 cm de profundidad).
 
-Es la línea más clásica y emocionante, ya que permite ver la llevada en tiempo real. 
-- **Boyas:** Las preferidas son las de formato "chupetona" o "lágrima" en colores vibrantes (fucsia, verde limón o negro si hay mucho reflejo).
-- **Armado:** Sobre una madre de nylon (0.40 mm), se colocan tres boyas separadas por 1 metro a 1.20 metros entre sí, fijadas con nudos corredizos. 
-- **Brazoladas:** Dependen del día, pero se aconseja empezar probando entre 15 y 40 cm de profundidad. Es vital usar fluorocarbono para las brazoladas (0.23 a 0.28 mm) para que sean invisibles bajo el agua.
+### Materiales
+- 1 tramo de 3.5 a 4 metros de monofilamento 0.35 mm (madre).
+- 3 boyas tipo chupetona o cometa de 10 a 14 cm (madera balsa o poliuretano).
+- 6 perlitas pequeñas y 6 microesmerillones o rotores plásticos.
+- Hilo de atar o multifilamento para nudos corredizos.
+- Fluorocarbono 0.23 a 0.26 mm para las brazoladas.
 
-## El Versátil Paternoster
+### Armado
+1. En un extremo de la madre, atá un esmerillón con mosquetón para conectar la línea al reel.
+2. Colocá un nudo corredizo de hilo, una perlita, la primera boya (o rotor), otra perlita y un segundo nudo corredizo.
+3. Repetí el proceso para las otras dos boyas, manteniendo una separación de 1.00 a 1.20 metros entre cada una.
+4. En el extremo final de la madre, colocá un esmerillón con mosquetón pequeño para sujetar una boya mandale o un plomito lastre de 3 a 5 gramos para anclar la deriva si hay viento.
+5. Atá las brazoladas (de 25 a 50 cm de longitud) a los rotores con un nudo loco en el anzuelo para darle libertad de natación a la mojarra.
 
-Cuando el pejerrey no está cazando en superficie y se encuentra a media agua o cerca del fondo, el paternoster es el salvavidas.
-- Esta línea usa una boya zanahoria grande arriba (a veces corrediza) y un plomito al final de la madre.
-- Permite colocar 2 o 3 anzuelos a distintas profundidades (ej: uno a 1 m, uno a 2 m y uno cerca del fondo).
-- Ideal para diques profundos o lagunas en días de mucho frío.
+## 2. Aparejo Paternoster para Aguas Medias y Fondos
 
-## Línea de Vuelo o "Tramposa"
+Cuando las bajas temperaturas o el paso de una lancha descienden el cardumen, el paternoster permite explorar columnas verticales de agua de hasta 6 metros.
 
-Para esos días de laguna planchada o cuando el pejerrey come muy sutil y suelta la carnada al sentir resistencia.
-- Se arma agregando una mini-boya (Yo-yo o pilotín) muy cerca del anzuelo en la brazolada. 
-- Esto hace que cuando el pez tome la carnada, no sienta la resistencia de la boya principal de inmediato, dándole tiempo a tragar y dándote esos segundos vitales para clavar.
+### Materiales
+- 1 tramo de monofilamento 0.35 mm de 2 a 3.5 metros (madre).
+- 1 boya zanahoria o esférica pasante (de 25 a 40 gramos de capacidad de flotación).
+- 2 a 3 rotores o microesmerillones triples espaciados cada 60 a 80 cm.
+- 1 plomada pasante o con ojal de 15 a 30 gramos al final de la línea.
 
-## Anzuelos y Carnadas
+### Funcionamiento
+La boya sostiene la línea verticalmente mientras el plomo la mantiene tensa hacia abajo. Los anzuelos se ubican en brazoladas cortas (20 a 30 cm) para evitar que se enreden con la madre durante el lanzamiento y descenso.
 
-En todos los casos, los anzuelos número 1, 2 o 3 (formato MUSTAD 1687 o similares de paleta o de ojal fino) son los más recomendados. La carnada reina indiscutida es la mojarra viva, aunque el filete de dientudo también suele dar grandes sorpresas.
-`
+## 3. Línea Tramposa (Boya Piloto)
+
+Para días de agua planchada y vientos nulos donde el pejerrey muerde con extrema desconfianza y escupe el cebo ante la mínima resistencia:
+
+- Se intercala una microboya esférica (piloto o yo-yo) de apenas 10 a 15 mm sobre la brazolada, a unos 15 cm del anzuelo.
+- Cuando el pez arrastra la carnada, solo sumerge la pequeña boya piloto sin sentir la inercia de la boya principal de la madre, dándole al pescador el tiempo necesario para aplicar la clavada sin alertar a la presa.`
     },
     {
         id: 4,
         slug: 'pesca-carpas-lagos-cordobeses',
         title: 'Pesca de carpas en nuestros lagos cordobeses',
-        description: 'Técnicas, cebados y el armado de líneas tipo "feeder" y coreanas para pescar las grandes carpas de nuestros diques.',
+        description: 'Técnicas de cebado, líneas tipo feeder y montajes para la captura deportiva de carpas en diques de Córdoba.',
         date: '2026-03-14',
         dateDisplay: '14 de Marzo, 2026',
         author: 'Darío Hidalgo',
-        readTime: '7 min lectura',
-        content: `
-# Pesca de carpas en nuestros lagos cordobeses
+        readTime: '4 min lectura',
+        content: `La carpa común (*Cyprinus carpio*) es una especie introducida que ha proliferado en los principales cuerpos de agua de Córdoba, como el Dique San Roque, Los Molinos y el Embalse de Río Tercero. Por su gran tamaño, desconfianza natural y potencia de tracción, representa un desafío deportivo exigente para quienes buscan combates intensos desde la costa.
 
-La carpa (cyprinus carpio) se ha ganado un lugar de respeto en la pesca deportiva. Su brutal fuerza, carreras interminables y la astucia que requiere su captura, la convierten en un trofeo muy buscado en nuestros lagos y diques (como el San Roque, Los Molinos y Embalse). 
+## Comportamiento y Hábitos de Alimentación
 
-## La Paciencia como Técnica Principal
+La carpa es un pez omnívoro bentónico que explora el fondo removiendo lodo, piedras y materia vegetal en busca de semillas, larvas e insectos. Posee barbillones táctiles y un sistema olfativo muy desarrollado:
 
-Pescar carpas no es de ansiedad; requiere preparación del pesquero. Se dice que el "cebado" representa el 70% del éxito.
-- **Cebadores (Feeder):** Emplear líneas que lleven un resorte cebador (feeder) en el que se amasa pasta o masa atrayente. Al caer al agua, esto crea una nube de olor que atrae a los peces.
-- **El Cebado Previo:** Arrojar maíz fermentado o preparado, junto con pellets, en la zona de pesca escogida desde el día anterior o durante las primeras horas de la mañana, hará que las carpas se acerquen y se confíen.
+- **Alimentación matinal y vespertina:** Suele acercarse a las orillas someras en las primeras horas del día y al atardecer en busca de alimento.
+- **Sensibilidad a ruidos y sombras:** A pesar de su porte, es fácilmente asustadiza; caminar pesadamente sobre la orilla o proyectar sombras sobre el agua suele dispersar el cardumen.
 
-## Equipos Potentes
+## La Importancia del Cebado (Baiting)
 
-Si bien la carpa puede tomar una carnada pequeña, cuando se clava una de 5 o más kilos, la pelea es monumental.
-- **Cañas:** Se recomiendan cañas de 2.70 a 3.60 m con buena acción (pesada o medio-pesada) para soportar los embates y poder lanzar plomos y cajas cebadoras de peso.
-- **Reel:** Con buena capacidad de carga (tamaño 4000 a 6000), preferiblemente con sistema "Baitrunner" (doble freno), lo que permite que el pez tome hilo libremente en la primera corrida sin sentir resistencia ni llevarse la caña al agua.
-- **Nylon:** Un buen monofilamento de 0.35 mm a 0.40 mm es ideal por su resistencia a la abrasión (las carpas suelen buscar obstáculos en el fondo).
+En la pesca de carpa, el cebado previo suele determinar el éxito de la jornada:
 
-## Línea Coreana (Hair Rig)
+- **Cebadores (Feeder o Resorte):** Se utilizan resortes metálicos incorporados en la línea donde se amasa una pasta aglutinada a base de harina de maíz (polenta), harina de trigo, alimento balanceado triturado y esencias dulces (vainilla, anís o caramelo).
+- **Cebado de fondo previo:** Arrojar puñados de maíz hervido fermentado en la zona de pesca crea una zona de referencia a la que las carpas regresarán de forma continua.
 
-Para los más puristas del 'Carpmfishing', la línea coreana o un montaje *Hair Rig* es fundamental. El anzuelo queda completamente desnudo y la carnada (un grano de maíz duro o bollie) cuelga de un pequeño "pelo" de hilo debajo de la curva del anzuelo. Cuando la carpa absorbe la comida, el anzuelo desnudo entra en su boca y asegura una clavada perfecta en el labio inferior.
+## Montaje Hair Rig (Línea Coreana)
 
-## Masas y Carnadas
+El montaje tipo "Hair Rig" es uno de los métodos más efectivos y seguros para evitar tragar el anzuelo:
 
-La carpa es omnívora y su sentido del gusto y olfato están muy desarrollados. Las masas dulces (con esencia de vainilla, anís, ajo, polenta y harina de trigo) o los clásicos granos de maíz cocido y fermentado nunca fallan. 
+- El anzuelo queda expuesto y desnudo.
+- El grano de maíz duro hervido cuelga de un pequeño lazo de hilo trenzado suave (el "pelo") atado debajo de la curvatura del anzuelo.
+- La carpa succiona el cebo y, al expulsar el sedimento sobrante por las branquias, el anzuelo se clava limpiamente en el labio inferior, facilitando la desclavada sin daño profundo.
 
-Armate de paciencia, prepara buenos posacañas y ajusta bien el freno del reel. ¡La alarma de pique no tardará en sonar!
-`
+## Configuración del Equipo
+
+- **Caña:** De 2.70 a 3.60 metros, acción parabólica o semi-parabólica, capaz de soportar plomadas con resorte cebador de 40 a 80 gramos.
+- **Reel:** Tamaño 4000 a 6000, preferentemente con sistema baitrunner (bobina libre ajustable), que permite que el pez tome línea en la primera corrida sin arrastrar la caña al agua.
+- **Nylon:** Monofilamento de 0.35 a 0.40 mm con buena resistencia a la fricción contra piedras y estructuras sumergidas.`
     },
     {
         id: 5,
         slug: 'como-armar-lineas-de-vuelo-pejerrey',
         title: 'Cómo armar líneas de vuelo para pejerrey',
-        description: 'Paso a paso detallado para armar una línea de vuelo profesional para pejerrey, ideal para lograr sutileza y efectividad.',
+        description: 'Guía paso a paso para armar una línea de vuelo precisa y sutil para la pesca de pejerrey en días de pique esquivo.',
         date: '2026-03-21',
         dateDisplay: '21 de Marzo, 2026',
         author: 'Darío Hidalgo',
-        readTime: '6 min lectura',
-        content: `
-# Cómo armar líneas de vuelo para pejerrey
+        readTime: '4 min lectura',
+        content: `La **línea de vuelo** es una variante del aparejo tradicional de pejerrey diseñada para pescar con máxima naturalidad. A diferencia de las líneas fijas pesadas, este montaje utiliza plomadas livianas pasantes y boyas corredizas que permiten que la carnada baje despacio por la columna de agua sin ofrecer rigidez mecánica.
 
-Aquí tenés el paso a paso detallado para armar una **línea de vuelo profesional** para pejerrey, ideal para lograr sutileza y efectividad:
+## Materiales Requeridos
 
-## Materiales necesarios
-* **Tanza madre:** Nylon 0.30 (preferentemente negra).
-* **Tanza para chicotes (brazoladas):** Nylon 0.25 transparente.
-* **Plomito:** De 5 gramos (o de 2 a 3 gramos dependiendo de cómo quieras que trabaje la boya).
-* **Anzuelos:** Tipo Akita (ideales para pejerrey mediano y grande).
-* **Esmerillones:** Tipo "sampo especial".
-* **Esmerillones con mosquetón:** Para la boya y el enganche de la línea.
-* **Perlitas:** Chicas para la línea y dos perlas grandes para la caña.
-* **Multifilamento o hilo:** Para hacer nudos corredizos.
-* **Boya:** A elección (trabajando parada o acostada según el gramaje del plomo).
+- **Tanza madre para el aparejo:** 1 metro de monofilamento 0.30 mm (preferentemente de tono oscuro o neutro).
+- **Brazoladas (chicotes):** Monofilamento o fluorocarbono transparente 0.23 a 0.25 mm.
+- **Plomito pasante:** De 2 a 5 gramos, según la intensidad del viento y la corriente superficial.
+- **Anzuelos:** Número 3 a 5 (tipo Akita Kitsune o serie 1687 de alambre fino).
+- **Esmerillones:** 2 esmerillones micro comunes y 2 esmerillones con mosquetón.
+- **Perlitas plásticas calibradas:** Para amortiguar topes y nudos.
+- **Hilo de atar o multifilamento:** Para nudos corredizos.
+- **Boya:** Boya alargada o zanahoria con capacidad acorde al plomo elegido.
 
-## Paso a paso para armar la línea
+## Procedimiento Paso a Paso
 
-### 1. Preparar la tanza madre y el primer esmerillón
-Tomá la tanza madre (0.30) y atá el primer esmerillón en un extremo. Para el nudo: pasá la tanza por el ojal, dale unas 5 vueltas sobre la línea principal, volvé a pasar la punta por el ojal que se formó al principio, tirá para ceñir y cortá el sobrante bien al ras.
+### 1. Preparación de la madre
+Tomá un tramo de 1 metro de tanza 0.30 mm. En el extremo superior, atá un esmerillón simple utilizando un nudo clinch mejorado (5 vueltas ceñidas con lubricación previa).
 
-### 2. Colocar perlas y esmerillón central
-Por el otro extremo de la tanza madre, enhebrá una **perlita, luego un esmerillón y otra perlita**. Esto quedará suelto por ahora.
+### 2. Montaje del esmerillón central corredizo
+Por el extremo libre, enhebrá una perlita pequeña, el segundo esmerillón (que servirá de punto de fijación para la primera brazolada) y otra perlita.
+Fijá la posición del conjunto realizando dos nudos corredizos de hilo o multifilamento bien ajustados a cada lado de las perlas. Este esmerillón debe girar libremente sin deslizarse a lo largo de la madre.
 
-### 3. Hacer los nudos corredizos tope
-Para que las perlas y el esmerillón no giren por toda la línea, vas a fijarlos haciendo **dos nudos corredizos muy apretados** con hilo o multifilamento.
-* Doblá el multifilamento a la mitad sobre la tanza madre.
-* Pasá uno de los extremos por el medio del ojal unas 4 o 5 veces y ceñí.
-* **Truco profesional:** Para que el nudo no se mueva con los tirones, ayudate envolviendo un extremo en una lapicera y agarrando el otro con una pinza; tirá con mucha fuerza.
-* Hacé un segundo nudo igual al lado de las perlas. De esta manera, el esmerillón central quedará atrapado entre ambos topes, girando libremente sin enredarse.
+### 3. Lastre y cierre inferior
+Enhebrá el plomo pasante en la parte inferior de la madre y rematá con el segundo esmerillón atado al extremo final.
 
-### 4. Colocar el plomo y el esmerillón final
-Enhebrá el plomito pasante en la tanza madre y, a continuación, atá el segundo esmerillón en el extremo final utilizando el mismo nudo de 5 vueltas del paso 1. La línea terminada (la madre) debe medir aproximadamente **1 metro**.
+### 4. Confección de las brazoladas
+Cortá dos tramos de 80 a 100 cm de monofilamento transparente 0.25 mm:
+- La primera brazolada se ata al esmerillón central.
+- La segunda brazolada se ata al esmerillón inferior (debajo del plomo).
+- Asegurate de que el largo de ambas brazoladas esté escalonado para que los anzuelos no se toquen ni se enreden durante la deriva.
 
-### 5. Armar los chicotes (brazoladas)
-Cortá dos tramos de **1 metro de tanza transparente 0.25**.
-* Atá el primer chicote al esmerillón central (el que está entre las perlas) y el segundo chicote al esmerillón que está debajo del plomo.
-* Asegurate de que el chicote superior no toque el plomo. Cortá el segundo chicote a la medida exacta para que quede parejo con el lugar donde arranca el primero.
+### 5. Atado del anzuelo
+Atá cada anzuelo mediante un **nudo loco** (lazo cerrado holgado alrededor del ojal). Este lazo permite que la mojarra nade con soltura y mantenga una postura natural ante la corriente.
 
-### 6. Atar los anzuelos con "Nudo Loco"
-El nudo loco es clave para darle mayor movilidad a la carnada bajo el agua.
-* Pasá la tanza por la argolla del anzuelo.
-* Pellizcá las dos líneas juntas formando un circulito.
-* Pasá el anzuelo **dos veces** por el medio de esa orejita que armaste.
-* Tirá despacio para ceñir y cortá el sobrante. Repetí con el otro anzuelo.
-
-### 7. Montar la línea y la boya en la caña
-En la tanza que viene del reel, pasá **dos perlas grandes y un esmerillón con mosquetón en el medio** (allí irá enganchada la boya). En la punta de esa tanza, atá otro esmerillón con mosquetón que servirá para enganchar la línea de vuelo que acabás de armar.
-
-### 8. Regular la profundidad con la boya
-Sobre la línea del reel, hacé **dos nudos corredizos** por encima del mosquetón de la boya.
-* **Tip clave:** El primer nudo corredizo (el tope superior) debe hacerse a una distancia equivalente al **largo de la boya más grande que uses**. Esto evita que la boya se enrede con los chicotes al momento de lanzar.
-* Deslizando estos nudos corredizos hacia arriba o hacia abajo vas a poder ir regulando la profundidad a la que querés pescar (1 metro, 2 metros, 3 metros, etc.).
-
----
-**Fuente:** [Buen pique pesca](https://www.youtube.com/watch?v=ZN3KpNf31zU)
-`
+### 6. Calibración de la boya en la caña
+En la línea que viene del reel, colocá un nudo corredizo tope, una perlita, el esmerillón con mosquetón donde engancharás la boya, y finalmente el mosquetón de conexión con la madre del aparejo. Regulando la posición del nudo corredizo superior en la caña, podés ajustar la profundidad de pesca entre 1 y 4 metros según la ubicación del cardumen.`
     },
     {
         id: 6,
         slug: 'pesca-con-mosca-sierras-cordoba',
         title: 'Introducción a la pesca con mosca (Fly Fishing) en las sierras de Córdoba',
-        description: 'Todo lo que necesitas saber para iniciarte en la pesca con mosca de truchas en los prístinos ríos serranos de Córdoba.',
+        description: 'Técnicas, equipos ligeros, patrones de moscas y normativa oficial para la pesca de truchas en ríos de montaña cordobeses.',
         date: '2026-06-10',
         dateDisplay: '10 de Junio, 2026',
         author: 'Darío Hidalgo',
-        readTime: '8 min lectura',
-        content: `
-# Introducción a la pesca con mosca (Fly Fishing) en las sierras de Córdoba
+        readTime: '5 min lectura',
+        content: `La pesca con mosca en las Sierras de Córdoba se desarrolla en cursos de agua de cabecera caracterizados por aguas cristalinas, lechos de granito y caudales moderados. Ríos como Los Espinillos, Río del Medio, San Miguel, Quillinzo y arroyos de altura en Pampa de Achala albergan truchas arcoíris (*Oncorhynchus mykiss*) y truchas de arroyo fontinalis (*Salvelinus fontinalis*).
 
-La pesca con mosca en Córdoba es, para muchos, la cúspide de la pesca deportiva. Nuestros ríos serranos de aguas transparentes, como el Río Los Espinillos, el Río Medio o el San Miguel, albergan formidables poblaciones de truchas Arcoíris y Fontinalis. 
+## Características de la Pesca Serrana
 
-## Equipamiento Básico para las Sierras
+A diferencia de los grandes ríos patagónicos de curso ancho, la pesca en las sierras cordobesas es predominantemente técnica y de aproximación sigilosa ("small stream fly fishing"):
 
-A diferencia de la Patagonia donde se usan equipos pesados debido al viento y el tamaño de los ríos, en Córdoba pescamos en "mountain streams" (arroyos de montaña), lo que demanda equipos ligeros y precisión técnica.
+- Las truchas habitan correderas cortas, pozones pequeños y bolsillos de agua detrás de grandes piedras.
+- Al tratarse de aguas de montaña muy transparentes, cualquier sombra, pisada brusca o silueta sobre el horizonte alerta inmediatamente al pez.
+- Se debe pescar progresando río arriba (aguas arriba), aproximándose desde la espalda de los peces, que se orientan contra la corriente para esperar el alimento.
 
-* **La Caña:** Lo ideal es una caña de mosca (Fly Rod) número #3 o #4. Las cañas más livianas permiten presentar la mosca de forma más delicada sobre la superficie del agua sin espantar a las truchas, que en piscinas pequeñas suelen ser muy asustadizas.
-* **El Reel y la Línea:** Un reel acorde al número de la caña. La línea fundamental debe ser WF (Weight Forward) de flote (Floating), ya que la mayoría de nuestras capturas se darán en la superficie o a muy poca profundidad profunda.
-* **El Leader y Tippet:** Usa un leader cónico de unos 9 pies de largo, terminado en un tippet muy fino (5X o 6X). La cristalinidad del agua en las alturas de Pampa de Achala no perdona groserías.
+## Equipo Recomendado
 
-## Las Mejores Moscas para Córdoba
+- **Caña:** Numeración #2 a #4, con un largo de 7.6 a 8.6 pies. Las cañas cortas facilitan lances precisos entre vegetación ribereña y rocas.
+- **Línea:** Línea de flote (Weight Forward o Double Taper) calibre acorde a la caña. La línea WF3F o WF4F cubre la gran mayoría de las situaciones.
+- **Líder y Tippet:** Líder cónico monofilamento de 9 pies terminado en tippet fino de 5X o 6X (0.13 a 0.15 mm). La sutileza en la presentación sobre el agua es fundamental.
 
-Nuestras truchas tienen una dieta variada y específica según la época del año y la hora del día. Aquí te presento las "infalibles" para tu caja:
+## Selección de Moscas para Cuencas Serranas
 
-1. **Secas (Dry Flies):** Imitan insectos posados en la superficie del agua. Las fundamentales son la *Parachute Adams* (imita a un adulto de efemeróptero) y las imitaciones de tucuras (saltamontes) como la *Madame X* en verano.
-2. **Ninfas (Nymphs):** Son las imitaciones de insectos en su etapa larvaria bajo el agua. Representan el 80% de la dieta de la trucha. Las infaltables: *Hare's Ear Nymph* (Oreja de Liebre) y la *Pheasant Tail Nymph* con cabeza o bead head dorada para lograr un rápido hundimiento.
-3. **Streamers:** Útiles cuando el río viene crecido o un poco turbio. Imitan peces pasto pequeños o sanguijuelas. Un *Woolly Bugger* negro o verde oliva en tamaño #8 a #12 nunca debería faltar.
+1. **Moscas secas:** Imitaciones de efímeras y dípteros adultos como *Parachute Adams* (#16 a #20), *Elk Hair Caddis* (#14 a #18) y terrestres en época cálida como imitaciones de hormigas y tucuras (*Madame X* o *Chernobyl Ant* en #12).
+2. **Ninfas:** Representan la mayor parte de la dieta de la trucha serrana. Modelos clásicos como *Pheasant Tail* (cola de faisán) y *Hare's Ear* (oreja de liebre) con cabeza de tungsteno o bronce (*bead head*) para alcanzar el fondo de los pozones con rapidez.
+3. **Streamers livianos:** En correderas con agua tomada tras una lluvia suave, pequeñas *Woolly Bugger* en tonos oliva o negro (#10 a #12) simulan alevines o pequeños invertebrados acuáticos.
 
-## La Técnica en los Ríos Cordobeses
+## Normativa Vigente en Córdoba
 
-Pescar en las sierras exige caminar y ser observador (pesca a pez visto). Debes progresar remontando el río (caminando aguas arriba). Esto es crucial porque las truchas siempre están "mirando" contra la corriente para atrapar el alimento que baja. Si caminas aguas abajo, te verán llegar y huirán despavoridas antes de que puedas lanzar tu mosca.
-
-Recuerda siempre mantener un bajo perfil, utilizar ropa de colores neutros (verde musgo, gris, marrón) que se mimetice con la piedra y la vegetación, y pisar con cuidado.
-
-**Importante:** En Córdoba, la pesca de salmónidos está estrictamente regida bajo la modalidad *Catch and Release* (Pesca y Devolución obligatoria) en casi la totalidad de su temporada. Recuerda no manipular al pez fuera del agua más de 5 segundos, mojar tus manos antes de tocarlo para cuidar su mucosa protectora y utilizar anzuelos sin rebaba. ¡La conservación de nuestras truchas es responsabilidad de todos!
-`
+En la provincia de Córdoba, la pesca de salmónidos está regulada anualmente por la Secretaría de Ambiente. En la totalidad de las cuencas de trucha rige la modalidad **Captura y Devolución obligatoria** con uso exclusivo de anzuelos simples sin rebaba (o con rebaba totalmente aplastada). El uso de carnadas naturales o anzuelos triples está estrictamente prohibido en estos cursos de agua.`
     },
     {
         id: 7,
         slug: 'mantenimiento-equipos-de-pesca',
         title: 'Guía definitiva para el mantenimiento de reeles y cañas',
-        description: 'Aprende a limpiar y lubricar tus equipos de pesca para que duren toda la vida y no te fallen en el momento clave.',
+        description: 'Procedimientos de limpieza, lubricación y revisión periódica para prolongar la vida útil de tus cañas y reeles de pesca.',
         date: '2026-07-02',
         dateDisplay: '02 de Julio, 2026',
         author: 'Darío Hidalgo',
-        readTime: '5 min lectura',
-        content: `
-# Guía definitiva para el mantenimiento de reeles y cañas
+        readTime: '4 min lectura',
+        content: `El correcto mantenimiento preventivo del equipo de pesca evita fallas mecánicas durante la jornada, preserva la suavidad del freno y previene cortes imprevistos de la línea madre producidos por componentes deteriorados.
 
-No hay sensación más amarga en la pesca que tener prendido el "pescado de tu vida" y que la fricción del reel se clave, o que un pasahílos oxidado corte tu multifilamento. El mantenimiento preventivo del equipo de pesca no es opcional, es una obligación de todo pescador deportivo responsable, ya sea que pesques en agua dulce (ríos, diques) o en el mar.
+## Cuidados Periódicos de la Caña de Pescar
 
-## Cuidado Básico de las Cañas
+A menudo se almacena la caña directamente en su funda o baúl tras una salida, permitiendo que la humedad y los minerales del agua degraden sus componentes.
 
-La caña de pescar suele ser el elemento más descuidado. A menudo se tiran desarmadas en el portabaúl y quedan allí hasta la próxima salida.
+### 1. Limpieza exterior
+Tras cada jornada en diques o ríos con materia orgánica y algas en suspensión, limpiá los tramos con un paño suave ligeramente humedecido en agua dulce tibia. Secá de inmediato con microfibra, prestando especial atención a las juntas de enchufe y a la rosca del portarreel.
 
-**1. Limpieza después de la salida:**
-Ya sea que hayas estado pescando en un dique como el San Roque (donde suele haber algas suspendidas) o en un polvo camino serrano, cuando llegues a casa deberías pasarles un paño húmedo humedecido levemente en agua dulce. Secalas inmediatamente con un paño de microfibra, incidiendo especialmente alrededor del asiento del reel.
+### 2. Prueba del hisopo de algodón en los pasahílos
+Los aros cerámicos (óxido de aluminio o carburo de silicio SiC) pueden presentar microfisuras invisibles a simple vista causadas por golpes fortuitos o el choque de esmerillones. Un pasahílo rajado actúa como una cuchilla sobre el multifilamento:
+- Pasá un hisopo o bolita de algodón por el interior de cada anillo cerámico en ambos sentidos.
+- Si las fibras de algodón se enganchan en alguna muesca, ese pasahílo tiene una fisura y debe ser sustituido antes de la próxima salida.
 
-**2. Revisión de pasahílos:**
-Los micropelos de carburo de silicio (SiC) o cerámica dentro del pasahílos pueden rajarse con un golpe invisible a simple vista. Una cerámica rajada funciona como un cuchillo microscópico para tu línea madre. **El truco de algodón:** Pasa un poco de algodón o un hisopo suavemente por el interior de cada pasahílo. Si una hebra de algodón se engancha, ese pasahílo está dañado y debes reemplazarlo urgentemente antes de arruinar tus líneas.
+## Mantenimiento Preventivo de Reeles (Frontales y Rotativos)
 
-## Mantenimiento a Fondo del Reel (Frontal o Rotativo)
+Los mecanismos internos de un reel combinan engranajes helicoidales, coronas de bronce o duraluminio y rodamientos sellados de precisión. El sedimento fino arrastrado por el viento serrano y el polvillo de orilla son sus mayores agresores.
 
-Los reeles son micromáquinas complejas llenas de engranajes diminutos, rodamientos y arandelas de freno. Su mayor enemigo no es el agua en sí, sino las minúsculas partículas de arena, limo y agua sucia en general que penetran en sus mecanismos internos formando una pasta abrasiva destructiva.
-
-**¿Qué necesitas para el mantenimiento?**
-* Un paño de microfibra.
-* Aceite ligero especial para rodamientos (suelen venir goteritos específicos, NO usar aceite de cocina de auto normal tipo WD40, es perjudicial a largo plazo ya que quita lubricación natural).
-* Grasa de teflón para marina, o específica de pesca para engranajes (Corona y Piñón). Un cepillo suave o pincel.
-
-**Paso a paso de limpieza general:**
-
-1. **Afloja los frenos:** Una vez terminada la temporada o jornada de pesca, NUNCA guardes el reel con la estrella de freno ajustada. Esto comprime permanentemente los discos (arandelas de carbono/fieltro) reduciendo drásticamente su vida útil y capacidad de frenado.
-2. **Remueve el polvo:** Pasa un pincel limpio y seco para quitar la tierra superficial pesada.
-3. **Lubricación periódica leve:** Extrae el carretel o tambor. Aplica **una o dos gotas de aceite** únicamente en cada cojinete (rulemanes) visible (como el de la guía de la línea, o del sistema antireverse, que suele verse cerca del rotor). No inundes tu equipo. ¡El exceso de aceite actúa como un imán para atrapar polvo! 
-4. **Engrase profundo (anual o cada muchos meses de uso muy rudo):** Se trata de desmontar las tapas laterales. Esto requiere cierto cuidado e idealmente ver el plano explosivo. Aplicar con un pincel la grasa especial en los engranajes principales (Piñón y Corona dentados). Luego cerrar cuidando cada junta y tornillo. Si no confías en tu capacidad de reensamblado (a mucha gente le han "quedado tornillos sobrando"), acude a una casa de pesca especializada y abona el servicio. ¡Te saldrá mucho más barato que reemplazar un reel oxidado!
-
-Cuida de tu equipo y este cuidará de vos el día que pique la "Gran Tararira" que estabas buscando.
-`
+### Cuidados básicos
+1. **Aflojar la estrella de freno al guardar:** Al finalizar la salida, desajustá completamente el freno de arrastre. Dejar el freno apretado comprime permanentemente los discos de fieltro o carbono, restándoles progresividad y reduciendo su vida útil.
+2. **Limpieza en seco superficial:** Retirá tierra y partículas adheridas con un pincel suave de cerdas finas antes de cualquier desarme.
+3. **Lubricación con productos específicos:** Utilizá aceites ligeros de baja viscosidad específicos para rodamientos de pesca y grasa de teflón para engranajes (piñón y corona). Evitá aerosoles solventes multiuso agresivos que degradan los sellos plásticos y disuelven la lubricación interna de los rulemanes.
+4. **Desarme cuidadoso:** Si vas a retirar las tapas laterales para engrasar la corona, trabajá sobre una superficie limpia con un paño blanco y consultá el plano de despiece (diagrama de partes) del fabricante para respetar el orden exacto de arandelas y tornillos.`
     },
     {
         id: 8,
         slug: 'pesca-bagre-monstruo',
-        title: 'Rastreo del gran Bagre Sapo (Moncholo) en los ríos de Córdoba',
-        description: 'Técnicas nocturnas y armados de línea para la pesca del misterioso bagre de las aguas turbias de nuestra región.',
+        title: 'Pesca del Bagre Sapo (Moncholo) en los ríos y diques de Córdoba',
+        description: 'Aparejos de fondo, carnadas y sectores recomendados para la pesca de fondo del bagre en aguas cordobesas en el marco de la normativa vigente.',
         date: '2026-08-14',
         dateDisplay: '14 de Agosto, 2026',
         author: 'Darío Hidalgo',
-        readTime: '6 min lectura',
-        content: `
-# Rastreo del Gran Bagre Sapo (Moncholo) en los ríos de Córdoba
+        readTime: '4 min lectura',
+        content: `El bagre sapo (*Rhamdia quelen*), conocido regionalmente como moncholo o bagre negro, es un silúrido autóctono presente en cuencas fluviales y embalses de Córdoba, como el Río Segundo (Xanaes), Río Tercero (Ctalamochita), Dique Pichanas y Cruz del Eje. Aunque biológicamente presenta hábitos de forrajeo crepusculares y nocturnos, en los cuerpos de agua públicos provinciales la pesca deportiva está restringida por la veda nocturna (Resolución N° 01/2024 de la Secretaría de Ambiente) al horario diurno entre la salida y la puesta del sol. Por lo tanto, los momentos más rendidores dentro del marco legal corresponden a las horas del atardecer o jornadas nubladas tras lluvias serranas.
 
-A diferencia de las vistosas e inquietas tarariras o de la nobleza de la trucha serrana, existe un gigante sigiloso y voraz que caza al ras del fondo: el gran "Bagre Sapo" (Rhamdia quelen), muy frecuente en las cuencas del Río Segundo, del Río Tercero o sus remansos en canales o lagunas comunicantes y también en varios de nuestros diques.
+## Hábitat y Lectura del Pesquero
 
-Aunque es una especie de pesca fundamentalmente nocturna gracias a los finos bigotes quimiorreceptores sensoriales, durante días nublados de invierno tras tormentas fuertes y corrientes fangosas también suelen cazarse de día.
+A diferencia de especies visuales como el pejerrey, el bagre se orienta principalmente mediante sus barbillones táctiles y su aparato olfativo, alimentándose en el lecho fangoso o rocoso:
 
-## El Equipo Adecuado para Fondos Complicados
+- **Pozones profundos y remansos:** Sectores donde la corriente del río disminuye su velocidad y deposita sedimentos orgánicos.
+- **Curvas de río con barrancas:** Zonas de fondo quebrado con raíces sumergidas o piedras donde permanece refugiado durante las horas de mayor insolación.
+- **Días nublados o aguas turbias:** Tras precipitaciones serranas que enturbian el agua, los bagres activan su alimentación diurna aprovechando la menor visibilidad.
 
-El Bagre Sapo es un luchador pesado. Sus potentes espinas dorsales y su gran masa corporal (ejemplares en ciertos ríos pueden pasar fácilmente el kilogramos) requieren equipos sobredimensionados para evitar perderlos en palos caídos o vegetación subacuática.
+## Aparejo de Fondo con Plomada Corrediza
 
-* **Caña y Reel:** Una caña sólida, y un reel frontal robusto (tamaños mayores a 3000), con nylon espeso (0.40 a 0.50 mm de sección).
-* **Las plomadas (Importante):** Generalmente se utilizan líneas "paternoster de fondo", "línea de dos anzuelos fija" o lo preferido en corrientes rápidas: **el aparejo corredizo**. Aquí el nylon madre pasa por medio de la argolla de la plomada pasante mediante un pequeño tubo o perla y remata en un esmerillón, el cual va atado al anzuelo. Cuando este predador tome el cebo, la línea pasa libremente por dentro de la plomada apoyada en el lecho; el pez no detecta absolutamente el peso del plomo (esencial con peces astutos o recelosos), hasta que el pescador ejecuta la vigorosa clavada. 
+Para evitar que el pez perciba la resistencia de la plomada al succionar el cebo, el aparejo corredizo es la opción técnica más efectiva:
 
-## La Carnada Mágica
+- **Madre de la línea:** Monofilamento de 0.40 a 0.50 mm para resistir la abrasión en fondos con piedras y palos sumergidos.
+- **Plomada pasante:** Plomo tipo bala o torpedo (de 20 a 50 gramos según la correntada), que corre libremente sobre la línea madre antes de un esmerillón con perla amortiguadora.
+- **Brazolada:** Tramo de 40 a 60 cm de fluorocarbono o monofilamento reforzado de 0.35 mm, que remata en un anzuelo garra de águila o baitholder tamaño 1/0 a 3/0.
+- **Ventaja mecánica:** Cuando el bagre toma el cebo y se desplaza, la línea corre por dentro del plomo sin arrastrarlo, permitiendo una clavada firme y limpia.
 
-Los bagres de río carecen de visión de primer nivel y su universo transcurre olfateando el limo en la oscuridad absoluta. Sus bigotes y terminaciones nerviosas son rastreadores biológicos de alta sensibilidad.
-Así que no hay carnada de color que importe. Lo importante acá es el aroma fétido/sanguinolento:
+## Carnadas Tradicionales
 
-- **Lombriz de Tierra Múltiple (Racimo):** Excelente carnada "universal", aunque corres riesgo de alimentar a pescaditos pequeños indeseados ("descarnadores").
-- **Hígado Vacuno / Corazón Vacuno fresco o macerado:** Clásico bagrero de la vieja escuela. Gran desprendimiento de rastros hematológicos odoríferos en el remolino.
-- **Tripa de Pollo y Mondongo dejado al sol durante muchas horas:** La opción maloliente que es infalible con los grandes monstruos. Mientras peor el olor, suele ser mayor magnetismo para el pez buscador de carroña. Cuidate mucho las manos del olor con esta carnada mediante guantes profilácticos.
+- **Lombriz de tierra en racimo:** Varios ejemplares encarnados juntos en el anzuelo generan movimiento continuo y emanación de fluidos en el fondo.
+- **Vísceras y carnes frescas:** Tiras de hígado vacuno o corazón vacuno fresco, que desprenden rastros olfativos constantes arrastrados por la corriente.
+- **Filete de mojarra o sábalo:** Trozos compactos atados con hilo elástico de pesca para evitar que los peces pequeños descarnen el anzuelo antes de la llegada del bagre.
 
-## Los Mejores Sectores de Pesca
+## Recomendaciones de Seguridad
 
-Es fundamental "saber" leer la superficie del agua en días lluviosos. No malgastes tu cebo en correderas o pozones llanos de arena blanca donde cazan los pejerreyes en temporada de desove invernal o truchas. Búscalos en **"las curvas con barrancas desmoronadas"**, en los remansos adyacentes donde el agua gira casi quieta cerca de montículos fangosos repletos de vegetación en descomposición donde suelen estar los nidos y zonas de alimentación nocturna de nuestro gigantesco bagre. Una pequeña luz de casco de color roja/ultravioleta protegerá el ambiente natural oscuro atrayendo muchísima más fortuna.
-`
+El bagre cuenta con espinas rígidas y aserradas en sus aletas pectorales y dorsal (chuzas). Al manipular la captura durante el atardecer o con baja luz, utilizá una pinza sacanzuelos y sostené al pez firmemente por el vientre detrás de las aletas dorsales para evitar pinchaduras accidentales.`
     },
     {
         id: 9,
         slug: 'pesca-devolucion-el-futuro',
-        title: 'Captura y Devolución: El futuro de la pesca',
-        description: 'Por qué la práctica del "Catch and release" es crucial para la supervivencia de nuestras pasiones y nuestros ecosistemas locales.',
+        title: 'Captura y Devolución: El futuro de la pesca deportiva',
+        description: 'Fundamentos biológicos y técnicas correctas de manipulación para maximizar la supervivencia de los peces tras la liberación.',
         date: '2026-09-01',
         dateDisplay: '01 de Septiembre, 2026',
         author: 'Darío Hidalgo',
         readTime: '4 min lectura',
-        content: `
-# Captura y Devolución (Catch and Release): El futuro de la pesca 
+        content: `La práctica de **Captura y Devolución** (Catch and Release) se ha consolidado como un principio fundamental para garantizar la sustentabilidad de los ecosistemas acuáticos en Córdoba. En cuencas cerradas y embalses de capacidad hídrica variable, la presión de pesca sin control puede diezmar rápidamente las poblaciones de peces deportivos.
 
-Durante muchas décadas, el éxito de una "buena jornada de pesca" se medía por la saturación o cantidad y peso que mostraba la conservadora portátil tras llegar al puerto al final de un atardecer radiante. Hoy, gracias a las leyes científicas de biología, ecofisiología hídrica pero especialmente, al compromiso moral renovado y consciente nacido en las nuevas generaciones mundiales, sabemos mejor los grandes costos de aquello. 
+## La Importancia de los Grandes Reproductores
 
-En "PescaApp" somos promotores acérrimos del movimiento filosófico mundialmente expandido como "Catch and release" (Pesca - Captura - Devolución viva de la especie). 
+En especies como la tararira (*Hoplias argentinensis*) o el pejerrey (*Odontesthes bonariensis*), los ejemplares de gran tamaño son hembras reproductoras maduras con alta fertilidad:
 
-## La Matemática de una Tararira Autóctona
+- Una hembra adulta de gran porte produce proporcionalmente más óvulos viables y de mayor diámetro que varias hembras jóvenes de menor talla.
+- Retener ejemplares récord rompe la estructura etaria de la población y disminuye el reclutamiento de alevines en las temporadas siguientes.
+- La liberación de estas piezas clave asegura la continuidad biológica y la calidad deportiva del pesquero.
 
-A diferencia de vacas en el pasto con un ritmo productivo diseñado y acelerado artificialmente para la mesa de las grandes ciudades, ecosistemas "cerrados", semiáridos, y de cuencas de aguas limitadas a nivel subterráneo como los que posee geográficamente nuestra querida Provincia De Córdoba; limitan con muchísima fragilidad el éxito masivo repoblacional de los alevinos anuales en nuestras grandes superficies. 
+## Pautas Clave para una Devolución Exitosa
 
-Ejemplo práctico con **tarariras**: El crecimiento de estos magníficos súper-depredadores topes de gama autóctonos en la provincia de Córdoba no se mide en meses, o un fin de semana ni una llovizna local de primavera. Dependiendo de las extremas variaciones hídricas e incluso la sequía extrema y los índices de materia alimentaria disponible de menor jerarquía; una "tararira record" luchadora y agresiva, de tamaño superior enorme de 3-4 kgs, tiene entre muchísimos años o fácilmente décadas largas de "edades acumuladas y estrés superado".
-Un ejemplar extraordinario reproductor y base super importante de todo su subnicho, puede tardarse **siete a diez larguísimos años completos de biología hídrica ininterrumpida**.  Matar "porque es la gran presea récord dominguera" borra incontables crías sanas biológicas que ese animal podría producir durante todas las temporadas subsiguientes para todos nosotros y las generaciones posteriores de pescadores nóveles.  Las "fábricas de pesca en el lago" son puramente las "grandes madres".
- 
-## Reglas básicas para una devolución del pez realmente exitosa: 
+Liberar un pez no consiste únicamente en arrojarlo de nuevo al agua; para que sobreviva, deben respetarse pautas de manipulación basadas en evidencia ictiológica:
 
-1. **Minimice la Lucha con el pez cansado:** No utilice cañas excesivamente frágiles o sedales (líneas de hilo finitas al máximo) de puro gusto en pos de forzar un récord extremo, ya que jugar muchísimo rato, por más de minutos largos, sube agónicamente muchísimo la toxicidad sistémica ácida/metabólica de nuestro adversario acuático durante el pánico agotador, reduciéndose las chances del organismo al retornar al agua.  
-2. **"Sin rebaba / Barbless hooks":** Consiga una pinza metálica común y aplaste completamente todas las muertes laterales de metal puntiagudas de sus triples oxidados o anzuelos "mata-carne". Las extracciones, se volverán cien veces veloces y "suaves", evitando las trágicas y hemorrágicas heridas severas faciales para nuestras especies amigas y de paso... evitamos sacarnos por horas anzuelos clavados en la piel humana... Es ciencia y pragmatismo combinado.
-3. **Las Manos, Mojadas:** ¡Cuidado! ¡NUNCA la aprese bajo ningún punto o motivo usando telas de toalla felpudas o arena con fuerza! Removiendo por accidente su vital capa mocosa cutánea; les provocas automáticamente un inminente futuro cuadro general masivo severo y mortal de infecciones agresivas dermatológicas al pobrecito animalito en poco tiempo tras nadar alejándose (lo verías nadar irse maravillosamente, y le otorgaste trágicamente el boleto por muerte garantizada dolorosa pocos días tarde lejos cerca de algas). Use un Copo de malla y mano húmeda.
-
-Cada especie local viva vuelta libre, no es alimento efímero perdido por gusto; **¡Representa cientos pescadores luchando años subsiguientes!**
-`
+1. **Minimizar el tiempo de pelea:** Utilizar equipos con suficiente potencia evita combates excesivamente prolongados que acumulan ácido láctico en los tejidos musculares del pez, reduciendo el agotamiento metabólico severo.
+2. **Manipular siempre con manos mojadas:** Frotar al pez con toallas secas o sostenerlo sobre arena remueve la capa de mucus cutáneo protector. Esta película mucosa actúa como barrera primaria contra infecciones bacterianas y fúngicas en el agua.
+3. **Uso de copos con red de goma:** Los copos de malla sin nudos o con red siliconada reducen el desgarro de aletas y la pérdida de escamas durante el izado.
+4. **Anzuelos sin rebaba (barbless):** Aplastar la rebaba con una pinza agiliza la extracción del anzuelo y disminuye las lesiones en tejidos orales y mandibulares.
+5. **Tiempo mínimo fuera del agua:** Si se toman fotografías, mantener al pez sumergido hasta el momento exacto y no exponerlo al aire por más de 15 a 20 segundos.
+6. **Reanimación antes de soltar:** En aguas calmas, sostener al pez horizontalmente en el agua hasta que recupere el equilibrio por sí mismo y nade con fuerza. En ríos con corriente, orientar su cabeza río arriba para que el flujo de agua oxigenada pase por sus branquias de manera natural.`
     },
     {
         id: 10,
         slug: 'el-pique-del-silencio-pesca-kayak',
-        title: 'Pescar en Kayak: El silencio absoluto en las Sierras',
-        description: 'Ventajas de ingresar al agua sin motor y aproximarse de forma sigilosa para maximizar tus lances en aguas poco profundas.',
+        title: 'Pesca en Kayak: Guía de técnicas, sigilo y seguridad en Córdoba',
+        description: 'Técnicas de kayak fishing en diques serranos, aproximación silenciosa, requisitos legales de Seguridad Náutica y recomendaciones prácticas.',
         date: '2026-09-18',
         dateDisplay: '18 de Septiembre, 2026',
         author: 'Darío Hidalgo',
-        readTime: '7 min lectura',
-        content: `
-# Pescar en Kayak: El silencio absoluto en las Sierras
+        readTime: '6 min lectura',
+        content: `La pesca en kayak (kayak fishing) es una modalidad cada vez más elegida en los embalses y cursos de agua de Córdoba. Su calado reducido y la posibilidad de impulsarse a remo o pedales permiten explorar bahías bajas, pedregales y sectores de vegetación ribereña a los que resulta complejo acceder a pie o con embarcaciones mayores.
 
-Las embarcaciones motorizadas grandes (como cruceros o lanchones con cabina cerrada con potentes máquinas ruidosas), siempre son útiles fenomenales para un desplazamiento ultra rápido y confort super moderno cruzando hacia áreas maravillosas o islotes geográficos muy alejados dentro del vasto Mar de Ansenuza de Miramar o un Dique masivo imponente (Como en la gran pared profunda norte cerca al club nautico principal general frente).
+## Ventajas Técnicas del Desplazamiento a Remo
 
-Sin embargo existe un mundo y arte superior muy diferente en muchísimos puntos biológicos silenciosos de nuestra amada Córdoba (Zonas rocosas inaccesibles lodosas al este o áreas "de playita hundida y bajita" costera tapada por arboleda espesa gigante)...  Allí entra mágicamente la **revolución "Kayak-Fishing" (El rey kayak del silencio de caza real).**
+En embalses serranos como San Roque, Los Molinos o Embalse de Río Tercero, el empleo del kayak ofrece alternativas tácticas puntuales:
 
-## El Principio de Acceso Subrepticio Furtivo 
+- **Bajo impacto acústico y menor perturbación superficial:** El avance a remo o pedales minimiza las ondas continuas y las vibraciones mecánicas que generan los motores a explosión, lo que favorece la aproximación a zonas poco profundas donde habitan especies de orilla como la tararira o la carpa.
+- **Acceso a estructuras costeras y aguas someras:** Facilita navegar sobre planicies de juncos, troncos sumergidos y ensenadas estrechas sin riesgo de encallar o dañar propulsores.
+- **Pesca al garete controlado:** Permite derivar suavemente con brisas moderadas para cubrir amplios sectores de agua buscando pejerreyes en superficie o media agua.
 
-Los ruidos inmensamente fuertes crasos metálicos y vibraciones en un líquido conductor físico (el sonar viaja miles de veces más fuerte allí) suelen alejar cientos espantados kilómetros enteros radiales inmediatos a muchos peces cazadores maduros ultra precavidos con muchos milenios de linajes vivos frente allí a nuestros diques serranos. Al flotar maravillosamente en algo orgánico sin emitir motor vibraciones nocivas masivas constantes contra nuestro hermoso pejerrey; un kayak sit friendly simple moderno a puro remo con pala doble se adentra de lleno "deslizando" sobre todo tipo de ramajes de vegetaciones subacuáticas someras (con un calado de agua hídrico nulo muy ínfimo) pudiendo lanzar una imitación plástica sintética y colorida espectacular a la exactísima zona central perfecta escondida donde duerme enigmática y acechan un animal fabuloso cazador.  Allí no entra jamás, una vieja chata a motor.
+## Requisitos Legales Obligatorios en la Provincia de Córdoba
 
-### Seguridad Extrema y Primer Plano Acuático: 
+La navegación deportiva en lagos y ríos cordobeses está regulada por la **Dirección de Seguridad Náutica de la Provincia de Córdoba** (dependiente del Ministerio de Seguridad) bajo la Ley Provincial de Náutica N° 5040 y sus resoluciones complementarias. Para embarcaciones menores a remo o propulsión humana (kayaks, canoas), son de cumplimiento legal obligatorio:
 
-A simple ojo es súper idílico; es una fusión asombrosa total entre "tierra naturaleza absoluta" sin la gran distancia que la borda muy alta gigante pone.
+1. **Chaleco salvavidas reglamentario (DAF - Dispositivo de Ayuda a la Flotación):** Debe estar homologado, en buen estado de conservación y colocado de forma permanente y ajustada durante toda la navegación. La normativa exige vestirlo puesto en el cuerpo, no transportarlo guardado dentro del casco. Fuente oficial: [Dirección de Seguridad Náutica de Córdoba](https://www.cba.gov.ar/seguridad-nautica/).
+2. **Silbato náutico adosado al chaleco:** Elemento de señalización acústica de emergencia que debe permanecer sujeto al salvavidas para emitir avisos sonoros de auxilio o en condiciones de visibilidad reducida.
+3. **Navegación exclusivamente en horario diurno:** En la provincia de Córdoba rige la prohibición de navegación nocturna para kayaks y embarcaciones menores sin motor, permitiéndose su uso únicamente entre la salida y la puesta del sol.
+4. **Carnet de pesca deportiva digital:** Para pescar desde cualquier embarcación en aguas públicas provinciales, es obligatorio contar con la licencia digital vigente tramitada ante la Secretaría de Ambiente. Fuente oficial: [Portal Oficial Caza y Pesca Córdoba](https://cazaypesca.cba.gov.ar/).
 
-¡Atención!, la pesca en kayak demanda gran atención a todo esto local y reglas precisas severas si buscas diversión pacífica excelente en el interior.
+## Recomendaciones Prácticas de Seguridad
 
-1. **Viento Cortante:** Debes mirar con mucha antelación todos los portales profesionales (la sección de PescaApp "Navegando Climático Meteo" oficial por suerte!). Kayaks voluminosos amplios cerrados arriba e impulsado o no en pedales por su piloto suelen transformarse dramáticamente en difíciles o agotadores, imposibilitados regresos penosos sin un entrenamiento real ante el "Sur / Viento sur pampero repentino cortante helado y muy muy bravo en la tarde" (con olas crestas temibles). Las sorpresas se evitan programando siempre estar del margen correctísimo o de orilla del viento en reparo total seguro al oeste geográficamente del lago frente!
-2. **Vida a Salvo siempre (Chalecos / DAA Oficial DAF Salvavidas de diseño ergonómico de pesca y un Pito Silbato atado extra obligatorio al chaleco siempre frente fuerte sonoro):** Nunca subestimar accidentes torpes que te hunden o giran dando vuelta (por apurado levantar pesado el premio atrapado gigantesco pez), agua invernal muy helada paralizante te saca fuerzas en un momento instantáneo breve. Nadie discute con la fuerza biológica congelante líquida helada.
+Los siguientes elementos complementan el equipo reglamentario y representan pautas preventivas aconsejadas para una jornada segura en embalses serranos:
 
-Ingresa sumamente respetuoso sin gritar hacia la cueva húmeda baja litorales al "Tarango / Tararira". Sé un gran vigía pacífico explorador con caña muy corta liviana "Fast Action Cortita"... Lanza lateral por bajito el "señuelo artificial rana goma"... Clava seguro muy fuerte vertical ... ¡y que salpique esplendorosamente cerca todo de vida en tu cara a pura emoción pescadora libre inigualable!
-`
+- **Cabo de fondeo con zafado rápido:** Si se decide fondear para pescar anclado, es recomendable emplear un sistema con boya de flotación y traba o fusible de desenganche rápido, de modo que pueda soltarse al instante ante una emergencia o aumento imprevisto del viento.
+- **Pitas o correas de sujeción (leash):** Utilizar cuerdas elásticas de amarre para la pala de remo y las cañas de pesca reduce el riesgo de extravío ante un vuelco accidental o una maniobra imprevista.
+- **Indumentaria térmica y protección:** En embalses serranos, la temperatura del agua suele ser baja en épocas de otoño, invierno y primavera temprana. Vestir prendas térmicas sintéticas, cortavientos o neopreno ayuda a reducir el riesgo de enfriamiento o shock térmico en caso de inmersión involuntaria.
+- **Plan de salida y comunicación:** Avisar siempre a familiares o en el club náutico de bajada el sector previsto de navegación y la hora estimada de regreso.
+
+## Consideraciones Meteorológicas en los Diques Serranos
+
+El factor de mayor riesgo para un kayakista en Córdoba es la variación súbita del viento local. El ingreso de frentes del sector sur (pampero) suele desatar ráfagas intensas en lapsos breves, formando olas cortas y empinadas que dificultan el avance a remo contra corriente.
+
+Antes de ingresar al agua, verificá el pronóstico del viento y ráfagas, navegá con preferencia por costas de reparo y evitá cruces abiertos de grandes distancias si se prevé inestabilidad climática.`
     }
 ];
-

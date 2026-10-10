@@ -1,5 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { SearchButton } from './SearchModal'
+import { BrowserRouter } from 'react-router-dom'
+import SearchModal, { SearchButton } from './SearchModal'
+
+const renderWithRouter = (ui) => {
+  return render(
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      {ui}
+    </BrowserRouter>
+  )
+}
 
 describe('SearchButton', () => {
   describe('rendering', () => {
@@ -47,5 +56,34 @@ describe('SearchButton', () => {
       const buttons = screen.getAllByRole('button')
       expect(buttons.length).toBeGreaterThan(0)
     })
+
+    it('button has accessible name "Buscar"', () => {
+      render(<SearchButton onClick={() => {}} />)
+      expect(screen.getByRole('button', { name: /buscar/i })).toBeInTheDocument()
+    })
+  })
+})
+
+describe('SearchModal component accessibility', () => {
+  it('renders accessible dialog with close button and accessible input label', () => {
+    renderWithRouter(<SearchModal isOpen={true} onClose={() => {}} />)
+    expect(screen.getByRole('dialog', { name: /búsqueda rápida/i })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /cerrar búsqueda/i })).toBeInTheDocument()
+    expect(screen.getByRole('searchbox', { name: /buscar nudos, especies/i })).toBeInTheDocument()
+  })
+
+  it('calls onClose when close button is clicked', () => {
+    const handleClose = vi.fn()
+    renderWithRouter(<SearchModal isOpen={true} onClose={handleClose} />)
+    const closeBtn = screen.getByRole('button', { name: /cerrar búsqueda/i })
+    fireEvent.click(closeBtn)
+    expect(handleClose).toHaveBeenCalled()
+  })
+
+  it('calls onClose when Escape key is pressed', () => {
+    const handleClose = vi.fn()
+    renderWithRouter(<SearchModal isOpen={true} onClose={handleClose} />)
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(handleClose).toHaveBeenCalled()
   })
 })

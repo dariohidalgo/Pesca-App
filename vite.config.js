@@ -8,4 +8,15 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'leaflet-vendor': ['leaflet', 'react-leaflet'],
+          'firebase-vendor': ['firebase/app', 'firebase/firestore'],
+          'lucide-vendor': ['lucide-react']
+        }
+      }
+    }
+  }
 })

@@ -46,8 +46,8 @@ describe('NavBar', () => {
     it('mobile menu becomes visible when toggle button is clicked', () => {
       const { container } = renderWithRouter(<NavBar />);
       
-      // Find the mobile toggle button (inside lg:hidden div)
-      const toggleButton = container.querySelector('button[aria-label="Toggle menu"]');
+      // Find the mobile toggle button with accessible label
+      const toggleButton = screen.getByRole('button', { name: /abrir menú/i });
       fireEvent.click(toggleButton);
       
       // Mobile menu should now be visible
@@ -106,16 +106,15 @@ describe('NavBar', () => {
       expect(mobileMenu).toHaveClass('invisible');
       
       // Open mobile menu
-      const toggleButton = container.querySelector('button[aria-label="Toggle menu"]');
-      fireEvent.click(toggleButton);
+      const openButton = screen.getByRole('button', { name: /abrir menú/i });
+      fireEvent.click(openButton);
       
       // Menu should be open
       expect(mobileMenu).toHaveClass('visible');
       
-      // Simulate navigation by clicking a link that calls setIsOpen(false)
-      // The NavBar has onClick={() => setIsOpen(false)} on mobile links
-      // We can test the toggle button again to close
-      fireEvent.click(toggleButton);
+      // Simulate closing via toggle button which now has 'Cerrar menú' label
+      const closeButton = screen.getByRole('button', { name: /cerrar menú/i });
+      fireEvent.click(closeButton);
       
       // Menu should be closed
       expect(mobileMenu).toHaveClass('invisible');

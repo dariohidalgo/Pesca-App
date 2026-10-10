@@ -22,7 +22,85 @@
     <loc>https://www.pescacordoba.com.ar/diques</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/diques/san-roque</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/diques/los-molinos</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/diques/embalse</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/diques/cruz-del-eje</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/diques/pichanas</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas/flote-pejerrey-tres-boyas</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas/paternoster-pejerrey</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas/fondo-carpa-feeder</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas/fondo-pesado-tararira-bagre</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/lineas/flote-boya-plop</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/planificador</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/partes</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/nudos</loc>
@@ -38,9 +116,9 @@
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/blog</loc>
-    <lastmod>2026-03-21</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/blog/secretos-pesca-tarariras-verano</loc>
@@ -67,10 +145,46 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.pescacordoba.com.ar/blog/como-armar-lineas-de-vuelo-pejerrey</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/blog/pesca-con-mosca-sierras-cordoba</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/blog/mantenimiento-equipos-de-pesca</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/blog/pesca-bagre-monstruo</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/blog/pesca-devolucion-el-futuro</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.pescacordoba.com.ar/blog/el-pique-del-silencio-pesca-kayak</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.pescacordoba.com.ar/reglamento</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/sumar-servicio</loc>
@@ -82,18 +196,18 @@
     <loc>https://www.pescacordoba.com.ar/nosotros</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/privacidad</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.pescacordoba.com.ar/terminos</loc>
     <lastmod>2026-03-21</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

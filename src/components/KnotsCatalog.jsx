@@ -2,6 +2,7 @@ import { Layers, Tag, X } from 'lucide-react';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import SchemaOrg from './SchemaOrg';
+import AdBanner from './AdBanner';
 
 const KNOTS_DATA = [
     {
@@ -9,7 +10,7 @@ const KNOTS_DATA = [
         "name": "Medio nudo barril asegurado",
         "description": "Nudo simple y resistente para sujetar anzuelos y emerillones a líneas de hasta 25 kg.",
         "category": "Línea al aparejo final",
-        "image": "/img/Medio nudo barril asegurado.webp",
+        "image": "/img/nudo2.gif",
         "steps": [
             "Atraviese la anilla y retuerza el extremo con el cuerpo de la línea.",
             "Realice de 3 a 6 vueltas y pase el extremo por la primera.",
@@ -24,7 +25,7 @@ const KNOTS_DATA = [
         "name": "Nudo Palomar",
         "description": "Rápido de hacer y suficientemente sólido para la mayoría de las situaciones.",
         "category": "Línea al aparejo final",
-        "image": "/img/nudopalomar.jpg",
+        "image": "/img/Nudo1.gif",
         "steps": [
             "Haga un bucle en la línea y páselo por la anilla del anzuelo.",
             "Forme un medio nudo.",
@@ -54,7 +55,7 @@ const KNOTS_DATA = [
         "name": "Nudo Uni",
         "description": "Ampliamente utilizado para sujetar anzuelos, anillas y emerillones.",
         "category": "Línea al aparejo final",
-        "image": "/img/NudoUni.webp",
+        "image": "/img/Nudo3.gif",
         "steps": [
             "Atraviese la anilla dejando que el anzuelo cuelgue de un bucle.",
             "Forme otro bucle rodeando la línea principal.",
@@ -108,6 +109,23 @@ const KNOTS_DATA = [
         "badges": [
             "Línea a bajo"
         ]
+    },
+    {
+        "id": "nudo-doble-uni",
+        "name": "Nudo Doble Uni (Unir tanza)",
+        "description": "El nudo por excelencia para empalmar dos tanzas o líneas de pesca (monofilamento con monofilamento o multifilamento), logrando una unión corrediza sumamente resistente.",
+        "category": "Nudos de línea a bajo de línea",
+        "image": "/img/unir tanza.gif",
+        "steps": [
+            "Coloque las dos líneas en paralelo apuntando en direcciones opuestas.",
+            "Forme un bucle con la primera línea y dé 4 o 5 vueltas abrazando ambas líneas.",
+            "Repita el mismo procedimiento con la segunda línea hacia el lado contrario.",
+            "Lubrique y tire de ambas líneas principales para que los dos nudos se deslicen y traben firmemente entre sí en el centro."
+        ],
+        "badges": [
+            "Línea a bajo",
+            "Empalme de tanzas"
+        ]
     }
 ];
 
@@ -119,6 +137,10 @@ export default function KnotsCatalog() {
             <Helmet>
                 <title>Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba</title>
                 <meta name="description" content="Aprende a atar los nudos de pesca más efectivos: Palomar, Centauri, Uni, Albright y más. Guía visual paso a paso para pescadores." />
+                <link rel="canonical" href="https://www.pescacordoba.com.ar/nudos" />
+                <meta property="og:title" content="Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba" />
+                <meta property="og:url" content="https://www.pescacordoba.com.ar/nudos" />
+                <meta property="og:type" content="website" />
             </Helmet>
 
             <SchemaOrg schema={{
@@ -177,7 +199,8 @@ export default function KnotsCatalog() {
                 {KNOTS_DATA.map((knot) => (
                     <div
                         key={knot.id}
-                        className="bg-white dark:bg-slate-900 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col"
+                        id={knot.id}
+                        className="scroll-mt-24 bg-white dark:bg-slate-900 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-700 overflow-hidden hover:shadow-xl hover:-translate-y-1 cursor-pointer transition-all duration-300 flex flex-col"
                         onClick={() => setSelectedKnot(knot)}
                     >
                         <div className="relative h-48 bg-slate-200 dark:bg-slate-700 overflow-hidden group">
@@ -208,6 +231,10 @@ export default function KnotsCatalog() {
                         </div>
                     </div>
                 ))}
+            </div>
+
+            <div className="mt-12">
+                <AdBanner slot="3228900466" />
             </div>
 
             {/* Modal */}

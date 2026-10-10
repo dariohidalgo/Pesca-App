@@ -1,12 +1,45 @@
 {
-    "rewrites": [
+  "headers": [
+    {
+      "source": "/ads.txt",
+      "headers": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api/$1"
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
         },
         {
-            "source": "/((?!node_modules/|@vite/|@fs/|@id/|@react-refresh|src/|public/|.*\\..*).*)",
-            "destination": "/index.html"
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
-    ]
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/((?!api/|node_modules/|@|src/|public/|.*\\..*).*)",
+      "destination": "/index.html"
+    }
+  ]
 }

@@ -79,6 +79,10 @@ const ServiceForm = () => {
             <Helmet>
                 <title>Sumar Servicio de Pesca - Pesca Córdoba</title>
                 <meta name="description" content="Publicá tu servicio de guía de pesca, alquiler de botes o venta de carnada en Pesca Córdoba. Llegá a cientos de pescadores." />
+                <link rel="canonical" href="https://www.pescacordoba.com.ar/sumar-servicio" />
+                <meta property="og:title" content="Sumar Servicio de Pesca - Pesca Córdoba" />
+                <meta property="og:url" content="https://www.pescacordoba.com.ar/sumar-servicio" />
+                <meta property="og:type" content="website" />
             </Helmet>
 
             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Cargar Nuevo Servicio</h2>
