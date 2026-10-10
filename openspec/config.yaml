@@ -1,0 +1,73 @@
+# openspec/config.yaml — SDD project configuration (created by sdd-init)
+schema: spec-driven
+
+context: |
+  Tech stack: React 19 + Vite 7 (JSX, no TypeScript) SPA with Node SSR/prerender, Tailwind CSS 4, React Router 7, Firebase/Firestore, Leaflet/react-leaflet, suncalc; ESM ("type": "module").
+  Architecture: src/components (co-located *.test.jsx), src/hooks, src/data, src/firebase; SEO via scripts/prerender.js + public/sitemap.xml, checked by npm run verify:seo; deploy on Vercel.
+  Testing: Vitest 4 + jsdom + @testing-library/react (84 tests / 17 files, all green); coverage via @vitest/coverage-v8, no threshold configured.
+  Style: ESLint 9 flat config (npm run lint — 16 pre-existing errors), no Prettier, no type checker; conventional commits; Spanish-language product/README.
+
+detected: 2026-10-10
+
+strict_tdd: true
+
+testing:
+  detected: 2026-10-10
+  strict_tdd: true
+  runner: vitest 4.1.5
+  commands:
+    unit: npm run test:run
+    watch: npm run test
+    coverage: npm run test:coverage
+    lint: npm run lint
+    seo: npm run verify:seo
+  layers:
+    unit: "vitest (jsdom, setup: src/test/setupTests.js)"
+    integration: "@testing-library/react + user-event (co-located *.test.jsx)"
+    e2e: none detected (no playwright/cypress/selenium)
+  coverage:
+    available: true
+    provider: v8
+    reporters: [text, json, html]
+    threshold: 0
+  quality:
+    linter:
+      available: true
+      tool: eslint 9 (flat config, eslint.config.js)
+      status: "FAILING at init — 16 pre-existing errors (react-hooks/set-state-in-effect, etc.); treat as debt, not introduced by SDD changes"
+    type_checker:
+      available: false
+      note: "no typescript installed; @types/react present only for editor hints"
+    formatter:
+      available: false
+      note: "no prettier/biome config found"
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes
+    - Keep changes within the 400-line review budget or split into chained changes
+    - State SEO/prerender impact when touching routing, metadata, or sitemap
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Document architecture decisions with rationale
+    - Include sequence diagrams for complex flows
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+    - Every behavior change includes a co-located Vitest test task
+  apply:
+    notes:
+      - Follow existing code patterns (co-located *.test.jsx, plain JSX, Tailwind classes)
+      - Do not touch unrelated files; keep diffs reviewable under budget
+    tdd: true
+    test_command: npm run test:run
+  verify:
+    test_command: npm run test:run
+    build_command: npm run build
+    lint_command: npm run lint
+    seo_command: npm run verify:seo
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
