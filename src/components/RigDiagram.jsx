@@ -13,6 +13,8 @@ export default function RigDiagram({ rigId, className = '', showControls = true 
   const [isExpanded, setIsExpanded] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
   const expandBtnRef = useRef(null);
+  const dialogRef = useRef(null);
+  const closeBtnRef = useRef(null);
 
   const isThumbnail = !showControls || className.includes('pointer-events-none');
 
@@ -28,14 +30,75 @@ export default function RigDiagram({ rigId, className = '', showControls = true 
     }, 0);
   }, []);
 
+  // Permitir apertura directa mediante parámetro URL (?expand=true)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('expand') === 'true') {
+      setIsExpanded(true);
+    }
+  }, []);
+
+  // Bloquear desplazamiento del body mientras el visor está abierto
   useEffect(() => {
     if (!isExpanded) return;
+
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = prevBodyOverflow;
+      document.documentElement.style.overflow = prevHtmlOverflow;
+    };
+  }, [isExpanded]);
+
+  // Foco inicial dentro del visor al abrir
+  useEffect(() => {
+    if (!isExpanded) return;
+
+    const timer = setTimeout(() => {
+      closeBtnRef.current?.focus();
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [isExpanded]);
+
+  // Atajos de teclado: Escape para cerrar y trampa de foco (Tab / Shift+Tab)
+  useEffect(() => {
+    if (!isExpanded) return;
+
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         e.preventDefault();
         handleCloseExpanded();
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        if (!dialogRef.current) return;
+        const focusableElements = dialogRef.current.querySelectorAll(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement || !dialogRef.current.contains(document.activeElement)) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        } else {
+          if (document.activeElement === lastElement || !dialogRef.current.contains(document.activeElement)) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       }
     };
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isExpanded, handleCloseExpanded]);
@@ -113,74 +176,90 @@ export default function RigDiagram({ rigId, className = '', showControls = true 
           onClick={handleCloseExpanded}
         >
           <div
+            ref={dialogRef}
             className="relative flex flex-col w-full h-full max-w-6xl mx-auto bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Barra de herramientas accesible */}
-            <div className="flex items-center justify-between gap-3 px-4 py-3 bg-slate-950 border-b border-slate-800 shrink-0">
-              <div className="flex items-center gap-2">
-                <Layers className="h-5 w-5 text-blue-400 shrink-0" aria-hidden="true" />
-                <span className="text-sm font-bold text-white truncate">
-                  Esquema Técnico Ampliado
-                </span>
-              </div>
+            {/* Barra de herramientas adaptable */}
+            <div className="shrink-0 w-full min-w-0 bg-slate-950 border-b border-slate-800 px-3 py-2.5 sm:px-5 sm:py-3 overflow-hidden">
+              <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 sm:gap-4">
+                {/* Título */}
+                <div className="order-1 flex items-center gap-2 min-w-0 max-w-[calc(100%-52px)] sm:max-w-none">
+                  <Layers className="h-5 w-5 text-blue-400 shrink-0" aria-hidden="true" />
+                  <span className="text-sm font-bold text-white truncate">
+                    Esquema Técnico Ampliado
+                  </span>
+                </div>
 
-              {/* Controles de Zoom */}
-              <div className="flex items-center gap-1 sm:gap-2">
-                <button
-                  type="button"
-                  onClick={() => setZoomLevel(prev => Math.max(0.75, Number((prev - 0.25).toFixed(2))))}
-                  disabled={zoomLevel <= 0.75}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  aria-label="Reducir zoom"
-                  title="Reducir zoom"
-                >
-                  <ZoomOut className="h-4 w-4" />
-                </button>
+                {/* Botón cerrar: order-2 en móvil (junto al título en fila 1), order-3 en sm */}
+                <div className="order-2 sm:order-3 sm:pl-2 sm:border-l sm:border-slate-800 shrink-0">
+                  <button
+                    ref={closeBtnRef}
+                    type="button"
+                    onClick={handleCloseExpanded}
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-red-900/60 active:bg-red-900 hover:text-red-200 text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-400"
+                    aria-label="Cerrar esquema ampliado"
+                    title="Cerrar vista ampliada (ESC)"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
 
-                <span className="text-xs font-mono font-bold text-slate-300 min-w-[44px] text-center">
-                  {Math.round(zoomLevel * 100)}%
-                </span>
+                {/* Controles de zoom: order-3 en móvil (w-full para ocupar segunda fila), order-2 en sm (w-auto) */}
+                <div className="order-3 sm:order-2 w-full sm:w-auto flex items-center justify-between sm:justify-end gap-1.5 sm:gap-2 pt-1 sm:pt-0 border-t border-slate-800/60 sm:border-t-0">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setZoomLevel(prev => Math.max(0.75, Number((prev - 0.25).toFixed(2))))}
+                      disabled={zoomLevel <= 0.75}
+                      className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 disabled:opacity-40 text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      aria-label="Reducir zoom"
+                      title="Reducir zoom"
+                    >
+                      <ZoomOut className="h-4 w-4" />
+                    </button>
 
-                <button
-                  type="button"
-                  onClick={() => setZoomLevel(prev => Math.min(2.5, Number((prev + 0.25).toFixed(2))))}
-                  disabled={zoomLevel >= 2.5}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  aria-label="Aumentar zoom"
-                  title="Aumentar zoom"
-                >
-                  <ZoomIn className="h-4 w-4" />
-                </button>
+                    <span
+                      data-testid="zoom-level"
+                      className="text-xs font-mono font-bold text-slate-300 min-w-[44px] text-center"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
+                      {Math.round(zoomLevel * 100)}%
+                    </span>
 
-                <button
-                  type="button"
-                  onClick={() => setZoomLevel(1)}
-                  className="hidden sm:inline-flex items-center gap-1 min-h-[44px] px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  aria-label="Restablecer zoom al 100%"
-                  title="Restablecer tamaño original"
-                >
-                  <RotateCcw className="h-3.5 w-3.5" />
-                  <span>100%</span>
-                </button>
+                    <button
+                      type="button"
+                      onClick={() => setZoomLevel(prev => Math.min(2.5, Number((prev + 0.25).toFixed(2))))}
+                      disabled={zoomLevel >= 2.5}
+                      className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 disabled:opacity-40 text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      aria-label="Aumentar zoom"
+                      title="Aumentar zoom"
+                    >
+                      <ZoomIn className="h-4 w-4" />
+                    </button>
+                  </div>
 
-                <div className="w-px h-6 bg-slate-800 mx-1" />
-
-                {/* Botón de cierre accesible */}
-                <button
-                  type="button"
-                  onClick={handleCloseExpanded}
-                  className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-slate-800 hover:bg-red-900/60 hover:text-red-200 text-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-red-400"
-                  aria-label="Cerrar esquema ampliado"
-                  title="Cerrar vista ampliada (ESC)"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setZoomLevel(1)}
+                    className="inline-flex items-center gap-1.5 min-h-[44px] px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 active:bg-slate-700 text-slate-300 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-label="Restablecer zoom al 100%"
+                    title="Restablecer tamaño original"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5" />
+                    <span>100%</span>
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Contenedor del visor interactivo con scroll bidireccional y zoom */}
-            <div className="flex-1 overflow-auto overscroll-contain p-4 sm:p-8 flex items-center justify-center bg-slate-900 touch-pan-x touch-pan-y">
+            <div
+              className="flex-1 w-full overflow-auto overscroll-contain p-4 sm:p-8 flex items-center justify-center bg-slate-900 touch-pan-x touch-pan-y"
+              tabIndex={0}
+              aria-label="Área de desplazamiento del esquema técnico"
+            >
               <div
                 className="transition-transform duration-150 origin-top flex justify-center min-w-full"
                 style={{ transform: `scale(${zoomLevel})` }}
@@ -190,7 +269,7 @@ export default function RigDiagram({ rigId, className = '', showControls = true 
             </div>
 
             {/* Pie informativo */}
-            <div className="px-4 py-2 bg-slate-950 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+            <div className="shrink-0 px-4 py-2 bg-slate-950 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
               <span>Deslizá para explorar medidas y componentes o ajustá el zoom.</span>
               <span className="hidden sm:inline">Presioná ESC para cerrar</span>
             </div>
