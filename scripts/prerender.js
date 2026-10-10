@@ -17,44 +17,26 @@ if (!global.navigator) {
   global.navigator = dom.window.navigator;
 }
 
-const routes = [
-  '/',
-  '/diques',
-  '/diques/san-roque',
-  '/diques/los-molinos',
-  '/diques/embalse',
-  '/diques/cruz-del-eje',
-  '/diques/pichanas',
-  '/lineas',
-  '/lineas/flote-pejerrey-tres-boyas',
-  '/lineas/paternoster-pejerrey',
-  '/lineas/fondo-carpa-feeder',
-  '/lineas/fondo-pesado-tararira-bagre',
-  '/lineas/flote-boya-plop',
-  '/planificador',
-  '/partes',
-  '/mapa',
-  '/calendario',
-  '/nudos',
-  '/reglamento',
-  '/botes',
-  '/blog',
-  '/blog/secretos-pesca-tarariras-verano',
-  '/blog/mejores-equipos-pejerrey-invierno-cordoba',
-  '/blog/armado-lineas-infalibles-pejerrey',
-  '/blog/pesca-carpas-lagos-cordobeses',
-  '/blog/como-armar-lineas-de-vuelo-pejerrey',
-  '/blog/pesca-con-mosca-sierras-cordoba',
-  '/blog/mantenimiento-equipos-de-pesca',
-  '/blog/pesca-bagre-monstruo',
-  '/blog/pesca-devolucion-el-futuro',
-  '/blog/el-pique-del-silencio-pesca-kayak',
-  '/sumar-servicio',
-  '/nosotros',
-  '/privacidad',
-  '/terminos',
-  '/404'
-];
+function loadManifest() {
+  const manifestPath = path.resolve(distDir, 'routes-manifest.json');
+  if (!fs.existsSync(manifestPath)) {
+    throw new Error(`Route manifest not found at ${manifestPath}. Run generate-routes.mjs first.`);
+  }
+  return JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+}
+
+function getPrerenderRoutes(manifest) {
+  const routes = [];
+  for (const route of manifest.routes) {
+    if (route.path === '*') continue; // Skip catch-all
+    routes.push(route.path);
+  }
+  // Always include 404 page
+  routes.push('/404');
+  return routes;
+}
+
+const routes = getPrerenderRoutes(loadManifest());
 
 async function prerender() {
   const templatePath = path.resolve(distDir, 'index.html');

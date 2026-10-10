@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
@@ -7,7 +7,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import 'leaflet/dist/leaflet.css';
 import ErrorBoundary from './components/ErrorBoundary'
 
-createRoot(document.getElementById('root')).render(
+hydrateRoot(document.getElementById('root'), (
   <StrictMode>
     <HelmetProvider>
       <ErrorBoundary>
@@ -16,8 +16,8 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </ErrorBoundary>
     </HelmetProvider>
-  </StrictMode>,
-)
+  </StrictMode>
+))
 
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
