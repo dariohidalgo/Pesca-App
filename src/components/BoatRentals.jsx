@@ -63,7 +63,7 @@ const BoatRentals = () => {
       <SEO
         title="Alquiler de Botes y Guías de Pesca en Córdoba - Pesca Córdoba"
         description="Guía de servicios de alquiler de botes, trackers, balsas y guías de pesca en los principales diques de Córdoba: San Roque, Los Molinos y Embalse."
-        canonical="https://www.pescacordoba.com.ar/botes"
+        canonical="https://pesca-app.com/botes"
       />
 
       <SchemaOrg schema={{
@@ -71,7 +71,7 @@ const BoatRentals = () => {
         "@type": "WebPage",
         "name": "Guías y Botes de Pesca en Córdoba",
         "description": "Directorio de servicios de alquiler de botes, guías de pesca y embarcaciones en los diques de Córdoba.",
-        "url": "https://www.pescacordoba.com.ar/botes"
+        "url": "https://pesca-app.com/botes"
       }} />
 
       <div className="text-center mb-12">

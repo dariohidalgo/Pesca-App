@@ -44,7 +44,7 @@ export default function DamDetail() {
       <SEO
         title={`${dam.name} - Guía de Pesca y Accesos - Pesca Córdoba`}
         description={dam.shortDescription}
-        canonical={`https://www.pescacordoba.com.ar/diques/${dam.slug || dam.id}`}
+        canonical={`https://pesca-app.com/diques/${dam.slug || dam.id}`}
         noindex={isDraft}
       />
 
@@ -53,7 +53,7 @@ export default function DamDetail() {
         "@type": "Guide",
         "name": `Guía de Pesca Deportiva en ${dam.name}`,
         "description": dam.shortDescription,
-        "url": `https://www.pescacordoba.com.ar/diques/${dam.id}`,
+        "url": `https://pesca-app.com/diques/${dam.id}`,
         "about": {
           "@type": "BodyOfWater",
           "name": dam.name,

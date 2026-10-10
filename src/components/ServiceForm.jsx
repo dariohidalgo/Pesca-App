@@ -79,7 +79,7 @@ const ServiceForm = () => {
             <SEO
                 title="Sumar Servicio de Pesca Náutica - Pesca Córdoba"
                 description="Publicá tu servicio de guía de pesca, alquiler de botes o venta de carnada en Pesca Córdoba para llegar a la comunidad de pescadores."
-                canonical="https://www.pescacordoba.com.ar/sumar-servicio"
+                canonical="https://pesca-app.com/sumar-servicio"
             />
 
             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Cargar Nuevo Servicio</h2>

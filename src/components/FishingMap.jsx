@@ -96,7 +96,7 @@ export default function FishingMap() {
       <SEO
         title="Mapa de Pesqueros y Puntos de Pesca en Córdoba - Pesca Córdoba"
         description="Mapa interactivo de pesqueros en Córdoba: accesos públicos de pesca, bajadas de embarcaciones, campings y puntos útiles con coordenadas georreferenciadas."
-        canonical="https://www.pescacordoba.com.ar/mapa"
+        canonical="https://pesca-app.com/mapa"
       />
 
       <SchemaOrg schema={{
@@ -104,7 +104,7 @@ export default function FishingMap() {
         "@type": "ItemList",
         "name": "Mapa de Puntos Útiles de Pesca en Córdoba",
         "description": "Accesos públicos, bajadas de lanchas, campings y servicios geolocalizados para pesca deportiva.",
-        "url": "https://www.pescacordoba.com.ar/mapa",
+        "url": "https://pesca-app.com/mapa",
         "numberOfItems": filteredPoints.length,
         "itemListElement": filteredPoints.map((p, i) => ({
           "@type": "ListItem",

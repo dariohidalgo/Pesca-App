@@ -13,7 +13,7 @@ export default function BlogList() {
             <SEO
                 title="Blog de Pesca Deportiva en Córdoba - Pesca Córdoba"
                 description="Artículos técnicos sobre pesca en Córdoba: equipos para pejerrey, técnicas para tarariras, armado de líneas, conservación y seguridad náutica."
-                canonical="https://www.pescacordoba.com.ar/blog"
+                canonical="https://pesca-app.com/blog"
             />
 
             <SchemaOrg schema={{
@@ -21,14 +21,14 @@ export default function BlogList() {
                 "@type": "CollectionPage",
                 "name": "Blog de Pesca Deportiva",
                 "description": "Artículos y guías sobre pesca deportiva en Córdoba.",
-                "url": "https://www.pescacordoba.com.ar/blog",
+                "url": "https://pesca-app.com/blog",
                 "mainEntity": {
                     "@type": "ItemList",
                     "numberOfItems": POSTS.length,
                     "itemListElement": POSTS.map((post, i) => ({
                         "@type": "ListItem",
                         "position": i + 1,
-                        "url": `https://www.pescacordoba.com.ar/blog/${post.slug}`
+                        "url": `https://pesca-app.com/blog/${post.slug}`
                     }))
                 }
             }} />

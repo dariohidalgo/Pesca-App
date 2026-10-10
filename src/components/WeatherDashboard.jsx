@@ -68,7 +68,7 @@ export default function WeatherDashboard() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const canonicalUrl = 'https://www.pescacordoba.com.ar/';
+    const canonicalUrl = 'https://pesca-app.com/';
 
     useEffect(() => {
         let isMounted = true;
@@ -171,7 +171,7 @@ export default function WeatherDashboard() {
             <SEO
                 title="Pesca Córdoba - Guías por Dique, Partes, Mapa y Pronóstico"
                 description="Plataforma de pesca deportiva en Córdoba. Pronóstico de viento y presión, fichas de diques, partes de pesca fechados, tutoriales de líneas y mapa de pesqueros."
-                canonical="https://www.pescacordoba.com.ar/"
+                canonical="https://pesca-app.com/"
             />
 
             <SchemaOrg schema={{

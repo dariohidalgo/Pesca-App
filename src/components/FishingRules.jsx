@@ -26,7 +26,7 @@ export default function FishingRules() {
       <SEO
         title="Reglamento Oficial y Permisos de Pesca - Pesca Córdoba"
         description="Normativa oficial de pesca deportiva en Córdoba: carnet digital CiDi, vedas, cupos por dique (Resolución N° 318/2026) y seguridad náutica (Ley N° 5040)."
-        canonical="https://www.pescacordoba.com.ar/reglamento"
+        canonical="https://pesca-app.com/reglamento"
       />
 
       {/* Encabezado */}

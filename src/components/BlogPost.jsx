@@ -15,7 +15,7 @@ export default function BlogPost() {
         return <Navigate to="/blog" replace />;
     }
 
-    const canonicalUrl = `https://www.pescacordoba.com.ar/blog/${post.slug}`;
+    const canonicalUrl = `https://pesca-app.com/blog/${post.slug}`;
 
     return (
         <>
@@ -26,7 +26,7 @@ export default function BlogPost() {
                 type="article"
                 publishedTime={post.date}
                 author={post.author}
-                image="https://www.pescacordoba.com.ar/img/SEO.webp"
+                image="https://pesca-app.com/img/SEO.webp"
             />
 
             <SchemaOrg schema={{
@@ -34,7 +34,7 @@ export default function BlogPost() {
                 "@type": "Article",
                 "headline": post.title,
                 "description": post.description,
-                "image": "https://www.pescacordoba.com.ar/img/SEO.webp",
+                "image": "https://pesca-app.com/img/SEO.webp",
                 "author": {
                     "@type": "Person",
                     "name": post.author
@@ -44,7 +44,7 @@ export default function BlogPost() {
                     "name": "Pesca Córdoba",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://www.pescacordoba.com.ar/pesca.svg"
+                        "url": "https://pesca-app.com/pesca.svg"
                     }
                 },
                 "datePublished": post.date,
@@ -58,8 +58,8 @@ export default function BlogPost() {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://www.pescacordoba.com.ar/" },
-                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.pescacordoba.com.ar/blog" },
+                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pesca-app.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pesca-app.com/blog" },
                     { "@type": "ListItem", "position": 3, "name": post.title, "item": canonicalUrl }
                 ]
             }} />

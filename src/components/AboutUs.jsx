@@ -8,14 +8,14 @@ const AboutUs = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const canonicalUrl = 'https://www.pescacordoba.com.ar/nosotros';
+    const canonicalUrl = 'https://pesca-app.com/nosotros';
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
             <SEO
                 title="Sobre Nosotros y Proyecto Editorial - Pesca Córdoba"
                 description="Conocé qué es Pesca Córdoba, su propósito editorial, quién administra la plataforma y cómo se elabora la información técnica."
-                canonical="https://www.pescacordoba.com.ar/nosotros"
+                canonical="https://pesca-app.com/nosotros"
             />
 
             <SchemaOrg schema={{

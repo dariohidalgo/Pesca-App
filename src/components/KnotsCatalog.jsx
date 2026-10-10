@@ -137,7 +137,7 @@ export default function KnotsCatalog() {
             <SEO
                 title="Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba"
                 description="Aprende a atar los nudos de pesca más efectivos para multifilamento y monofilamento: Palomar, Centauri, Uni, Albright y Clinch Mejorado con guías visuales."
-                canonical="https://www.pescacordoba.com.ar/nudos"
+                canonical="https://pesca-app.com/nudos"
             />
 
             <SchemaOrg schema={{
@@ -153,7 +153,7 @@ export default function KnotsCatalog() {
                         "@type": "HowTo",
                         "name": knot.name,
                         "description": knot.description,
-                        "image": `https://www.pescacordoba.com.ar${knot.image}`,
+                        "image": `https://pesca-app.com${knot.image}`,
                         "step": knot.steps.map((step, j) => ({
                             "@type": "HowToStep",
                             "position": j + 1,

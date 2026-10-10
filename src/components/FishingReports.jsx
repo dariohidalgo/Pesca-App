@@ -83,7 +83,7 @@ export default function FishingReports() {
       <SEO
         title="Partes de Pesca Reales y Fechados - Pesca Córdoba"
         description="Partes de pesca deportiva fechados y moderados en los diques de Córdoba. Estado del pique, carnadas y modalidades según la experiencia de pescadores locales."
-        canonical="https://www.pescacordoba.com.ar/partes"
+        canonical="https://pesca-app.com/partes"
       />
 
       <SchemaOrg schema={{
@@ -91,7 +91,7 @@ export default function FishingReports() {
         "@type": "CollectionPage",
         "name": "Partes de Pesca Deportiva en Córdoba",
         "description": "Reportes y experiencias de pescadores locales en los diques cordobeses.",
-        "url": "https://www.pescacordoba.com.ar/partes"
+        "url": "https://pesca-app.com/partes"
       }} />
 
       {/* Encabezado */}

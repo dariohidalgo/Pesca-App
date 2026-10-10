@@ -31,7 +31,7 @@ export default function RigDetail() {
       <SEO
         title={`Tutorial: ${rig.title} - Pesca Córdoba`}
         description={`Tutorial paso a paso para armar la ${rig.title}. Materiales, medidas exactas, nudos y esquema visual para pescar en Córdoba.`}
-        canonical={`https://www.pescacordoba.com.ar/lineas/${rig.slug || rig.id}`}
+        canonical={`https://pesca-app.com/lineas/${rig.slug || rig.id}`}
       />
 
       <SchemaOrg schema={{

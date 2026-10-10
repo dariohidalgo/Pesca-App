@@ -101,7 +101,7 @@ export default function TripPlanner() {
       <SEO
         title="Planificador de Salida de Pesca en Córdoba - Pesca Córdoba"
         description="Planificá tu jornada de pesca en Córdoba: checklists interactivos de equipo, montajes según especie, accesos verificados y recordatorios de seguridad."
-        canonical="https://www.pescacordoba.com.ar/planificador"
+        canonical="https://pesca-app.com/planificador"
       />
 
       <SchemaOrg schema={{
@@ -110,7 +110,7 @@ export default function TripPlanner() {
         "name": "Planificador de Salida de Pesca Córdoba",
         "applicationCategory": "SportsApplication",
         "description": "Asistente de planificación técnica para jornadas de pesca deportiva en diques cordobeses.",
-        "url": "https://www.pescacordoba.com.ar/planificador"
+        "url": "https://pesca-app.com/planificador"
       }} />
 
       {/* Cabecera (Oculta en impresión compacta) */}

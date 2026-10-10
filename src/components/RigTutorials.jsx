@@ -36,7 +36,7 @@ export default function RigTutorials() {
       <SEO
         title="Tutoriales Visuales de Líneas de Pesca - Pesca Córdoba"
         description="Aprende a armar líneas y aparejos de pesca para diques de Córdoba: flote 3 boyas, paternoster, feeder de carpa, boya plop y fondo con esquemas interactivos."
-        canonical="https://www.pescacordoba.com.ar/lineas"
+        canonical="https://pesca-app.com/lineas"
       />
 
       <SchemaOrg schema={{
@@ -44,13 +44,13 @@ export default function RigTutorials() {
         "@type": "ItemList",
         "name": "Tutoriales Visuales de Líneas de Pesca",
         "description": "Montajes y líneas de pesca deportiva con esquemas explicativos paso a paso para Córdoba.",
-        "url": "https://www.pescacordoba.com.ar/lineas",
+        "url": "https://pesca-app.com/lineas",
         "numberOfItems": RIG_TUTORIALS.length,
         "itemListElement": RIG_TUTORIALS.map((r, i) => ({
           "@type": "ListItem",
           "position": i + 1,
           "name": r.title,
-          "url": `https://www.pescacordoba.com.ar/lineas/${r.id}`
+          "url": `https://pesca-app.com/lineas/${r.id}`
         }))
       }} />
 

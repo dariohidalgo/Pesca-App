@@ -8,14 +8,14 @@ const TermsConditions = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const canonicalUrl = 'https://www.pescacordoba.com.ar/terminos';
+  const canonicalUrl = 'https://pesca-app.com/terminos';
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
       <SEO
         title="Términos y Condiciones de Uso - Pesca Córdoba"
         description="Términos y condiciones de uso de Pesca Córdoba. Normas de uso, alcance informativo y responsabilidades."
-        canonical="https://www.pescacordoba.com.ar/terminos"
+        canonical="https://pesca-app.com/terminos"
       />
 
       <SchemaOrg schema={{

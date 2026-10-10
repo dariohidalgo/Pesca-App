@@ -26,7 +26,7 @@ const formatTime = (date) => {
 
 export default function SolunarCalendar() {
   const [date] = useState(new Date());
-  const canonicalUrl = 'https://www.pescacordoba.com.ar/calendario';
+  const canonicalUrl = 'https://pesca-app.com/calendario';
 
   const data = useMemo(() => {
     const moonIllumination = SunCalc.getMoonIllumination(date);
@@ -102,7 +102,7 @@ export default function SolunarCalendar() {
       <SEO
         title="Calendario Solunar y Fases de la Luna - Pesca Córdoba"
         description="Calendario solunar para pescadores en Córdoba. Horarios de mayor actividad de pique y cálculo astronómico de fases lunares para optimizar tu jornada."
-        canonical="https://www.pescacordoba.com.ar/calendario"
+        canonical="https://pesca-app.com/calendario"
       />
 
       <SchemaOrg schema={{

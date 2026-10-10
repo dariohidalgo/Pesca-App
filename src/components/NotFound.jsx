@@ -8,7 +8,7 @@ export default function NotFound() {
       <SEO
         title="Página no encontrada - Pesca Córdoba"
         description="La página que buscás no existe o fue movida."
-        canonical="https://www.pescacordoba.com.ar/404"
+        canonical="https://pesca-app.com/404"
         noindex={true}
       />
 

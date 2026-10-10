@@ -69,7 +69,7 @@ export default function FishingReportDetail() {
       <SEO
         title={`Parte de Pesca: ${report.targetSpecies} en ${report.damName || report.damId} - Pesca Córdoba`}
         description={`Reporte de pesca deportiva del ${report.tripDate} en ${report.damName || report.damId}. Modalidad ${report.modality}, aparejo: ${report.baitAndRig}.`}
-        canonical={`https://www.pescacordoba.com.ar/partes/${report.id}`}
+        canonical={`https://pesca-app.com/partes/${report.id}`}
       />
 
       <SchemaOrg schema={{

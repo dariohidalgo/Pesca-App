@@ -68,14 +68,14 @@ const DAM_REFERENCE_DATA = [
 ];
 
 export default function DamLevels() {
-  const canonicalUrl = 'https://www.pescacordoba.com.ar/diques';
+  const canonicalUrl = 'https://pesca-app.com/diques';
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <SEO
         title="Nivel y Fichas Técnicas de Diques - Pesca Córdoba"
         description="Datos de referencia hidrográfica, cotas de vertedero y comportamiento de pesca en los principales diques y embalses de Córdoba."
-        canonical="https://www.pescacordoba.com.ar/diques"
+        canonical="https://pesca-app.com/diques"
       />
 
       <SchemaOrg schema={{

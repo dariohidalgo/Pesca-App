@@ -8,14 +8,14 @@ const PrivacyPolicy = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const canonicalUrl = 'https://www.pescacordoba.com.ar/privacidad';
+  const canonicalUrl = 'https://pesca-app.com/privacidad';
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
       <SEO
         title="Política de Privacidad - Pesca Córdoba"
         description="Política de privacidad de Pesca Córdoba. Información sobre el uso de cookies, publicidad de Google AdSense, analítica y protección de datos."
-        canonical="https://www.pescacordoba.com.ar/privacidad"
+        canonical="https://pesca-app.com/privacidad"
       />
 
       <SchemaOrg schema={{

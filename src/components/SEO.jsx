@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const DEFAULT_IMAGE = 'https://www.pescacordoba.com.ar/img/SEO.webp';
+const DEFAULT_IMAGE = 'https://pesca-app.com/img/SEO.webp';
 const SITE_NAME = 'Pesca Córdoba';
 
 export default function SEO({
