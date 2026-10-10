@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   Scale,
   FileText,
@@ -23,17 +23,11 @@ export default function FishingRules() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Reglamento Oficial y Permisos de Pesca - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Normativa oficial de pesca deportiva en Córdoba: Resolución N° 250/2024, Resolución N° 318/2026, carnet digital CiDi, vedas, cupos por dique y seguridad náutica (Ley N° 5040)."
-        />
-        <link rel="canonical" href="https://www.pescacordoba.com.ar/reglamento" />
-        <meta property="og:title" content="Reglamento Oficial y Permisos de Pesca - Pesca Córdoba" />
-        <meta property="og:url" content="https://www.pescacordoba.com.ar/reglamento" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Reglamento Oficial y Permisos de Pesca - Pesca Córdoba"
+        description="Normativa oficial de pesca deportiva en Córdoba: carnet digital CiDi, vedas, cupos por dique (Resolución N° 318/2026) y seguridad náutica (Ley N° 5040)."
+        canonical="https://www.pescacordoba.com.ar/reglamento"
+      />
 
       {/* Encabezado */}
       <div className="mb-8 text-center sm:text-left">

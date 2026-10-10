@@ -1,56 +1,60 @@
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import SchemaOrg from './SchemaOrg';
 
-const DEFAULT_META = {
-  title: 'Pesca Córdoba - Guía, Pronóstico y Nudos',
-  description: 'La mejor guía de pesca deportiva en Córdoba. Descubre nudos, especies de peces, pronóstico del clima y los mejores lugares para pescar en Argentina.',
-  keywords: 'pesca, córdoba, pesca deportiva, nudos de pesca, especies de peces, clima para pesca, lugares de pesca, argentina',
-  image: 'https://www.pescacordoba.com.ar/seo.jpg',
-  url: 'https://www.pescacordoba.com.ar/',
-};
+const DEFAULT_IMAGE = 'https://www.pescacordoba.com.ar/img/SEO.webp';
+const SITE_NAME = 'Pesca Córdoba';
 
-export default function SEO({ meta = {} }) {
-  const title = meta.title || DEFAULT_META.title;
-  const description = meta.description || DEFAULT_META.description;
-  const keywords = meta.keywords || DEFAULT_META.keywords;
-  const image = meta.image || DEFAULT_META.image;
-  const url = meta.url || DEFAULT_META.url;
+export default function SEO({
+  title,
+  description,
+  canonical,
+  image = DEFAULT_IMAGE,
+  type = 'website',
+  publishedTime,
+  author,
+  noindex = false,
+}) {
+  useEffect(() => {
+    if (typeof document !== 'undefined' && title) {
+      document.title = title;
+    }
+  }, [title]);
+
+  const robotsContent = noindex ? 'noindex, follow' : 'index, follow';
 
   return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-        <meta name="title" content={title} />
-        <meta name="description" content={description} />
-        <meta name="keywords" content={keywords} />
+    <Helmet>
+      {/* Título único y específico */}
+      <title>{title}</title>
 
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content={image} />
+      {/* Meta descripción única y específica */}
+      <meta name="description" content={description} />
 
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={url} />
-        <meta property="twitter:title" content={title} />
-        <meta property="twitter:description" content={description} />
-        <meta property="twitter:image" content={image} />
-      </Helmet>
+      {/* Enlace canónico absoluto */}
+      <link rel="canonical" href={canonical} />
 
-      <SchemaOrg schema={{
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Pesca Córdoba",
-        "url": url,
-        "description": description,
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": `${url}?q={search_term_string}`,
-          "query-input": "required name=search_term_string"
-        }
-      }} />
-    </>
+      {/* Directivas de indexación */}
+      <meta name="robots" content={robotsContent} />
+
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonical} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+
+      {/* Metadatos editoriales condicionales */}
+      {author && <meta name="author" content={author} />}
+      {author && <meta property="article:author" content={author} />}
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    </Helmet>
   );
 }

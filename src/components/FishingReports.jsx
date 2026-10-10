@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   FileText,
   Fish,
@@ -80,13 +80,11 @@ export default function FishingReports() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Partes de Pesca Reales y Fechados - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Partes de pesca deportiva fechados y moderados en los diques de Córdoba. Estado del pique, carnadas y modalidades según la experiencia de pescadores locales."
-        />
-      </Helmet>
+      <SEO
+        title="Partes de Pesca Reales y Fechados - Pesca Córdoba"
+        description="Partes de pesca deportiva fechados y moderados en los diques de Córdoba. Estado del pique, carnadas y modalidades según la experiencia de pescadores locales."
+        canonical="https://www.pescacordoba.com.ar/partes"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

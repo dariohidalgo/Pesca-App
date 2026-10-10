@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   Calendar,
   Compass,
@@ -98,13 +98,11 @@ export default function TripPlanner() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 print:p-0 print:max-w-none">
-      <Helmet>
-        <title>Planificador de Salida de Pesca - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Planificá tu salida de pesca en Córdoba: lista interactiva de equipo, montajes según especie, accesos verificados y recordatorios de seguridad."
-        />
-      </Helmet>
+      <SEO
+        title="Planificador de Salida de Pesca en Córdoba - Pesca Córdoba"
+        description="Planificá tu jornada de pesca en Córdoba: checklists interactivos de equipo, montajes según especie, accesos verificados y recordatorios de seguridad."
+        canonical="https://www.pescacordoba.com.ar/planificador"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

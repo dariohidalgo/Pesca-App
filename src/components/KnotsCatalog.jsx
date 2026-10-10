@@ -1,6 +1,6 @@
 import { Layers, Tag, X } from 'lucide-react';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
 
@@ -134,14 +134,11 @@ export default function KnotsCatalog() {
 
     return (
         <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 mt-10">
-            <Helmet>
-                <title>Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba</title>
-                <meta name="description" content="Aprende a atar los nudos de pesca más efectivos: Palomar, Centauri, Uni, Albright y más. Guía visual paso a paso para pescadores." />
-                <link rel="canonical" href="https://www.pescacordoba.com.ar/nudos" />
-                <meta property="og:title" content="Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba" />
-                <meta property="og:url" content="https://www.pescacordoba.com.ar/nudos" />
-                <meta property="og:type" content="website" />
-            </Helmet>
+            <SEO
+                title="Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba"
+                description="Aprende a atar los nudos de pesca más efectivos para multifilamento y monofilamento: Palomar, Centauri, Uni, Albright y Clinch Mejorado con guías visuales."
+                canonical="https://www.pescacordoba.com.ar/nudos"
+            />
 
             <SchemaOrg schema={{
                 "@context": "https://schema.org",

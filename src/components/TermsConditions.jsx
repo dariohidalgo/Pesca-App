@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Scale, CheckCircle2, AlertCircle, Info, Mail } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import SchemaOrg from './SchemaOrg';
 
 const TermsConditions = () => {
@@ -12,15 +12,11 @@ const TermsConditions = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
-      <Helmet>
-        <title>Términos y Condiciones de Uso - Pesca Córdoba</title>
-        <meta name="description" content="Términos y condiciones de uso de la plataforma Pesca Córdoba. Normas de uso, alcance informativo y responsabilidades." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Términos y Condiciones - Pesca Córdoba" />
-        <meta property="og:description" content="Términos y condiciones de uso de la plataforma Pesca Córdoba." />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Términos y Condiciones de Uso - Pesca Córdoba"
+        description="Términos y condiciones de uso de Pesca Córdoba. Normas de uso, alcance informativo y responsabilidades."
+        canonical="https://www.pescacordoba.com.ar/terminos"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

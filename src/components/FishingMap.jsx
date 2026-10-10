@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   MapPin,
   ShieldCheck,
@@ -93,13 +93,11 @@ export default function FishingMap() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-      <Helmet>
-        <title>Mapa de Puntos Útiles de Pesca en Córdoba - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Mapa interactivo y lista accesible de puntos útiles: accesos públicos de pesca, bajadas de embarcaciones, estacionamientos, campings y servicios con coordenadas georreferenciadas."
-        />
-      </Helmet>
+      <SEO
+        title="Mapa de Pesqueros y Puntos de Pesca en Córdoba - Pesca Córdoba"
+        description="Mapa interactivo de pesqueros en Córdoba: accesos públicos de pesca, bajadas de embarcaciones, campings y puntos útiles con coordenadas georreferenciadas."
+        canonical="https://www.pescacordoba.com.ar/mapa"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

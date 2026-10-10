@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Fish, MapPin, Mail, User, Compass, Shield, BookOpen } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 
@@ -12,15 +12,11 @@ const AboutUs = () => {
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
-            <Helmet>
-                <title>Sobre Nosotros y Proyecto Editorial - Pesca Córdoba</title>
-                <meta name="description" content="Conocé qué es Pesca Córdoba, su propósito editorial, quién administra la plataforma y cómo se elabora la información." />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="Sobre Nosotros - Pesca Córdoba" />
-                <meta property="og:description" content="Propósito editorial, transparencia y herramientas de Pesca Córdoba." />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:type" content="website" />
-            </Helmet>
+            <SEO
+                title="Sobre Nosotros y Proyecto Editorial - Pesca Córdoba"
+                description="Conocé qué es Pesca Córdoba, su propósito editorial, quién administra la plataforma y cómo se elabora la información técnica."
+                canonical="https://www.pescacordoba.com.ar/nosotros"
+            />
 
             <SchemaOrg schema={{
                 "@context": "https://schema.org",

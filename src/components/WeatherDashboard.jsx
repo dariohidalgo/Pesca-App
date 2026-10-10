@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SunCalc from 'suncalc';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink } from 'lucide-react';
 import AdBanner from './AdBanner';
 import SchemaOrg from './SchemaOrg';
@@ -168,15 +168,11 @@ export default function WeatherDashboard() {
 
     return (
         <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl mt-6">
-            <Helmet>
-                <title>Pronóstico de Pique y Clima para Pesca en Córdoba</title>
-                <meta name="description" content="Pronóstico del tiempo, viento, presión barométrica y fase lunar para la pesca deportiva en los principales diques de Córdoba." />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content="Pronóstico de Pique y Clima para Pesca en Córdoba" />
-                <meta property="og:description" content="Pronóstico del tiempo, viento, presión barométrica y fase lunar para la pesca deportiva en los diques de Córdoba." />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="og:type" content="website" />
-            </Helmet>
+            <SEO
+                title="Pesca Córdoba - Guías por Dique, Partes, Mapa y Pronóstico"
+                description="Plataforma de pesca deportiva en Córdoba. Pronóstico de viento y presión, fichas de diques, partes de pesca fechados, tutoriales de líneas y mapa de pesqueros."
+                canonical="https://www.pescacordoba.com.ar/"
+            />
 
             <SchemaOrg schema={{
                 "@context": "https://schema.org",

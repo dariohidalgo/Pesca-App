@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [
     tailwindcss(),
     react()
@@ -11,12 +11,15 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'leaflet-vendor': ['leaflet', 'react-leaflet'],
-          'firebase-vendor': ['firebase/app', 'firebase/firestore'],
-          'lucide-vendor': ['lucide-react']
-        }
+        ...(isSsrBuild ? {} : {
+          manualChunks: {
+            'leaflet-vendor': ['leaflet', 'react-leaflet'],
+            'firebase-vendor': ['firebase/app', 'firebase/firestore'],
+            'lucide-vendor': ['lucide-react']
+          }
+        })
       }
     }
   }
-})
+}))
+

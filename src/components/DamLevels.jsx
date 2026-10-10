@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Waves, ExternalLink, Info, MapPin, Fish, AlertCircle } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
@@ -72,15 +72,11 @@ export default function DamLevels() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Nivel y Fichas Técnicas de Diques - Pesca Córdoba</title>
-        <meta name="description" content="Datos de referencia hidrográfica, cotas de vertedero y comportamiento de pesca en los principales diques y embalses de Córdoba." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Nivel y Fichas Técnicas de Diques - Pesca Córdoba" />
-        <meta property="og:description" content="Datos de referencia hidrográfica, cotas de vertedero y comportamiento de pesca en los principales diques de Córdoba." />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Nivel y Fichas Técnicas de Diques - Pesca Córdoba"
+        description="Datos de referencia hidrográfica, cotas de vertedero y comportamiento de pesca en los principales diques y embalses de Córdoba."
+        canonical="https://www.pescacordoba.com.ar/diques"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

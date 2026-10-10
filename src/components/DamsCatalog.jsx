@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   Waves,
   MapPin,
@@ -38,13 +38,11 @@ export default function DamsCatalog() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Guías de Pesca por Dique y Niveles de Agua - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Guías completas de pesca deportiva para los principales diques de Córdoba: San Roque, Los Molinos, Embalse, Cruz del Eje y Pichanas. Accesos, especies, equipos y niveles de cota actualizados."
-        />
-      </Helmet>
+      <SEO
+        title="Guías de Pesca por Dique y Niveles de Agua - Pesca Córdoba"
+        description="Guías completas de pesca deportiva para los principales diques de Córdoba: San Roque, Los Molinos, Embalse, Cruz del Eje y Pichanas. Accesos, especies, equipos y niveles de cota actualizados."
+        canonical="https://www.pescacordoba.com.ar/diques"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

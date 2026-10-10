@@ -12,7 +12,7 @@ export const POSTS = [
 
 ## Zonas de Acecho en los Embalses Cordobeses
 
-En embalses como el San Roque, Los Molinos y Cruz del Eje, las tarariras no suelen patrullar aguas abiertas ni fondos profundos. Sus apostaderos característicos son:
+En embalses como el [San Roque](/diques/san-roque), [Los Molinos](/diques/los-molinos) y [Cruz del Eje](/diques/cruz-del-eje), las tarariras no suelen patrullar aguas abiertas ni fondos profundos. Sus apostaderos característicos son:
 
 - **Colas de dique y desembocaduras de arroyos:** Lugares donde el sedimento fino y la poca profundidad generan mayor temperatura en el agua.
 - **Costas con vegetación densa:** Juncales, espadañas y ramas sumergidas donde se mimetiza para emboscar mojarras, dientudos y anfibios.
@@ -29,13 +29,13 @@ Para lograr clavadas efectivas en una boca ósea y resistente, el equipo debe co
 
 ## Selección de Señuelos por Momento del Día
 
-1. **Primeras y últimas horas de luz (Superficie):** Paseantes (walk-the-dog) y poppers que generen perturbación sonora y visual en el espejo de agua.
+1. **Primeras y últimas horas de luz (Superficie):** Paseantes (walk-the-dog) y poppers que generen perturbación sonora y visual en el espejo de agua. También podés consultar el armado de la [línea con boya plop](/lineas/flote-boya-plop).
 2. **Pleno sol sobre vegetación (Anti-enganche):** Ranas huecas de goma (hollow body frogs) con anzuelo doble pegado al lomo. Permiten deslizarse sobre mantos de algas sin engancharse.
 3. **Peces a media agua o días ventosos:** Spinnerbaits con pala willow/colorado, cucharas ondulantes con fleco de goma o señuelos de media agua tipo minnow en recuperación pausada con toques de puntera (twitching).
 
 ## Normativa y Conservación
 
-En la provincia de Córdoba, la Secretaría de Ambiente establece períodos de veda primaveral para proteger la reproducción de la especie. Recordá verificar la resolución anual antes de salir y practicar siempre captura y devolución con anzuelos simples o rebabas aplastadas para preservar las poblaciones de nuestros embalses.`
+En la provincia de Córdoba, la Secretaría de Ambiente establece períodos de veda primaveral para proteger la reproducción de la especie. Recordá verificar el [reglamento oficial y vedas](/reglamento) antes de salir y practicar siempre captura y devolución con anzuelos simples o rebabas aplastadas para preservar las poblaciones de nuestros embalses.`
     },
     {
         id: 2,
@@ -50,7 +50,7 @@ En la provincia de Córdoba, la Secretaría de Ambiente establece períodos de v
 
 ## La Caña: Longitud y Acción
 
-Para pescar en diques como el San Roque, Los Molinos, Embalse de Río Tercero o Cruz del Eje, la caña debe cumplir dos propósitos: permitir el manejo cómodo de aparejos con múltiples boyas y ofrecer una puntera sensible que no oponga resistencia excesiva cuando el pez toma la carnada.
+Para pescar en diques como el [San Roque](/diques/san-roque), [Los Molinos](/diques/los-molinos), [Embalse de Río Tercero](/diques/embalse) o [Cruz del Eje](/diques/cruz-del-eje), la caña debe cumplir dos propósitos: permitir el manejo cómodo de aparejos con múltiples boyas y ofrecer una puntera sensible que no oponga resistencia excesiva cuando el pez toma la carnada.
 
 - **Tipo:** Telescópica o por tramos, construida en grafito de alto módulo (IM6 a IM8).
 - **Largo:** De 4.00 a 4.50 metros para pesca de costa o embarcado en balsa/tracker. Esta longitud facilita el control de la línea y la clavada a distancia.
@@ -62,12 +62,12 @@ Un conjunto equilibrado reduce la fatiga tras varias horas sosteniendo la caña:
 
 - **Reel:** Frontal ultra liviano tamaño 1000 a 2500, con una relación de recogida de al menos 5.0:1 y carrete poco profundo para una salida de línea fluida.
 - **Línea madre:** El multifilamento de 0.12 a 0.16 mm es el estándar actual. Al carecer de elasticidad, transmite el toque al instante, incluso a 30 metros de distancia. Si preferís monofilamento de nylon, optá por calibres de 0.20 a 0.23 mm de baja memoria con aplicación de flotalíneas para que no se hunda.
-- **Brazoladas:** Siempre en fluorocarbono transparente de 0.22 a 0.26 mm. Su índice de refracción cercano al agua reduce la visibilidad ante peces recelosos en aguas claras.
+- **Brazoladas:** Siempre en fluorocarbono transparente de 0.22 a 0.26 mm. Su índice de refracción cercano al agua reduce la visibilidad ante peces recelosos en aguas claras. Podés unirlas con los [nudos recomendados para pesca](/nudos).
 
 ## Aparejos Principales: Flote vs. Paternoster
 
-1. **Línea de 3 boyas de flote:** Ideal para días templados o cuando el cardumen se encuentra en los primeros 40 a 80 cm de la superficie. Las boyas esféricas, chupetonas o cometa de madera balsa o poliuretano (en colores limón, fucsia o blanco y negro según el reflejo del sol) ofrecen mínima resistencia al avance del pez.
-2. **Línea paternoster o balancín:** Esencial en jornadas frías o con viento sostenido, cuando el pejerrey desciende a profundidades de entre 3 y 8 metros. Permite presentar 2 o 3 anzuelos escalonados a diferentes niveles sobre una misma vertical.
+1. **[Línea de 3 boyas de flote](/lineas/flote-pejerrey-tres-boyas):** Ideal para días templados o cuando el cardumen se encuentra en los primeros 40 a 80 cm de la superficie. Las boyas esféricas, chupetonas o cometa de madera balsa o poliuretano (en colores limón, fucsia o blanco y negro según el reflejo del sol) ofrecen mínima resistencia al avance del pez.
+2. **[Línea paternoster o balancín](/lineas/paternoster-pejerrey):** Esencial en jornadas frías o con viento sostenido, cuando el pejerrey desciende a profundidades de entre 3 y 8 metros. Permite presentar 2 o 3 anzuelos escalonados a diferentes niveles sobre una misma vertical.
 
 ## Anzuelos y Carnada
 

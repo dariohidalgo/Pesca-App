@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   FileText,
   Calendar,
@@ -66,13 +66,11 @@ export default function FishingReportDetail() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>{`Parte de Pesca: ${report.targetSpecies} en ${report.damName || report.damId} - Pesca Córdoba`}</title>
-        <meta
-          name="description"
-          content={`Reporte de pesca deportiva del ${report.tripDate} en ${report.damName || report.damId}. Modalidad ${report.modality}, aparejo: ${report.baitAndRig}.`}
-        />
-      </Helmet>
+      <SEO
+        title={`Parte de Pesca: ${report.targetSpecies} en ${report.damName || report.damId} - Pesca Córdoba`}
+        description={`Reporte de pesca deportiva del ${report.tripDate} en ${report.damName || report.damId}. Modalidad ${report.modality}, aparejo: ${report.baitAndRig}.`}
+        canonical={`https://www.pescacordoba.com.ar/partes/${report.id}`}
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

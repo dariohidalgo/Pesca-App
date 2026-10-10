@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Shield, Lock, Eye, FileText, ExternalLink, Cookie, Server } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import SchemaOrg from './SchemaOrg';
 
 const PrivacyPolicy = () => {
@@ -12,15 +12,11 @@ const PrivacyPolicy = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 md:py-20">
-      <Helmet>
-        <title>Política de Privacidad - Pesca Córdoba</title>
-        <meta name="description" content="Política de privacidad de Pesca Córdoba. Información sobre el uso de cookies, publicidad de Google AdSense, analítica y protección de datos." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Política de Privacidad - Pesca Córdoba" />
-        <meta property="og:description" content="Política de privacidad y cookies de Pesca Córdoba." />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Política de Privacidad - Pesca Córdoba"
+        description="Política de privacidad de Pesca Córdoba. Información sobre el uso de cookies, publicidad de Google AdSense, analítica y protección de datos."
+        canonical="https://www.pescacordoba.com.ar/privacidad"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import SunCalc from 'suncalc';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Moon, Sun, Sunrise, Sunset, Activity, CalendarDays, Clock, Info } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
@@ -99,15 +99,11 @@ export default function SolunarCalendar() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Calendario Solunar y Fases de la Luna - Pesca Córdoba</title>
-        <meta name="description" content="Calendario solunar, horarios de mayor actividad de pique y cálculo astronómico de fases de la luna para pescadores en Córdoba." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Calendario Solunar y Fases de la Luna - Pesca Córdoba" />
-        <meta property="og:description" content="Calendario solunar, horarios de mayor actividad de pique y cálculo astronómico de fases de la luna en Córdoba." />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Calendario Solunar y Fases de la Luna - Pesca Córdoba"
+        description="Calendario solunar para pescadores en Córdoba. Horarios de mayor actividad de pique y cálculo astronómico de fases lunares para optimizar tu jornada."
+        canonical="https://www.pescacordoba.com.ar/calendario"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Ship, Phone, Instagram, MapPin, Anchor, ExternalLink, MessageCircle, Plus } from 'lucide-react';
 
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Link } from 'react-router-dom';
 import { db } from '../firebase/config';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
@@ -60,14 +60,11 @@ const BoatRentals = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <Helmet>
-        <title>Alquiler de Botes y Guías de Pesca en Córdoba - Pesca Córdoba</title>
-        <meta name="description" content="Guía de alquiler de botes, trackers y guías de pesca en los principales diques de Córdoba: San Roque, Los Molinos, Cerro Pelado y más." />
-        <link rel="canonical" href="https://www.pescacordoba.com.ar/botes" />
-        <meta property="og:title" content="Alquiler de Botes y Guías de Pesca en Córdoba - Pesca Córdoba" />
-        <meta property="og:url" content="https://www.pescacordoba.com.ar/botes" />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      <SEO
+        title="Alquiler de Botes y Guías de Pesca en Córdoba - Pesca Córdoba"
+        description="Guía de servicios de alquiler de botes, trackers, balsas y guías de pesca en los principales diques de Córdoba: San Roque, Los Molinos y Embalse."
+        canonical="https://www.pescacordoba.com.ar/botes"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

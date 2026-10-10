@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Fish, Home, MapPin } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <Helmet>
-        <title>Página no encontrada - Pesca Córdoba</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+      <SEO
+        title="Página no encontrada - Pesca Córdoba"
+        description="La página que buscás no existe o fue movida."
+        canonical="https://www.pescacordoba.com.ar/404"
+        noindex={true}
+      />
 
       <div className="mb-8">
         <Fish className="h-24 w-24 text-slate-300 mx-auto mb-6" />

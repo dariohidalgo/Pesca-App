@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SchemaOrg from './SchemaOrg';
@@ -10,14 +10,11 @@ import AdBanner from './AdBanner';
 export default function BlogList() {
     return (
         <>
-            <Helmet>
-                <title>Blog de Pesca Deportiva - Pesca Córdoba</title>
-                <meta name="description" content="Artículos sobre técnicas, equipos, aparejos y consejos para la pesca deportiva en Córdoba. Guías de pejerrey, tararira, carpa y más." />
-                <link rel="canonical" href="https://www.pescacordoba.com.ar/blog" />
-                <meta property="og:title" content="Blog de Pesca Deportiva - Pesca Córdoba" />
-                <meta property="og:url" content="https://www.pescacordoba.com.ar/blog" />
-                <meta property="og:type" content="website" />
-            </Helmet>
+            <SEO
+                title="Blog de Pesca Deportiva en Córdoba - Pesca Córdoba"
+                description="Artículos técnicos sobre pesca en Córdoba: equipos para pejerrey, técnicas para tarariras, armado de líneas, conservación y seguridad náutica."
+                canonical="https://www.pescacordoba.com.ar/blog"
+            />
 
             <SchemaOrg schema={{
                 "@context": "https://schema.org",

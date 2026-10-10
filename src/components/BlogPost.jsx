@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import ReactMarkdown from 'react-markdown';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 import { Link, useParams, Navigate } from 'react-router-dom';
@@ -19,27 +19,22 @@ export default function BlogPost() {
 
     return (
         <>
-            <Helmet>
-                <title>{post.title} | Pesca Córdoba</title>
-                <meta name="description" content={post.description} />
-                <meta name="author" content={post.author} />
-                <link rel="canonical" href={canonicalUrl} />
-                <meta property="og:title" content={`${post.title} | Pesca Córdoba`} />
-                <meta property="og:description" content={post.description} />
-                <meta property="og:type" content="article" />
-                <meta property="og:url" content={canonicalUrl} />
-                <meta property="article:published_time" content={post.date} />
-                <meta property="article:author" content={post.author} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={post.title} />
-                <meta name="twitter:description" content={post.description} />
-            </Helmet>
+            <SEO
+                title={`${post.title} | Pesca Córdoba`}
+                description={post.description}
+                canonical={canonicalUrl}
+                type="article"
+                publishedTime={post.date}
+                author={post.author}
+                image="https://www.pescacordoba.com.ar/img/SEO.webp"
+            />
 
             <SchemaOrg schema={{
                 "@context": "https://schema.org",
                 "@type": "Article",
                 "headline": post.title,
                 "description": post.description,
+                "image": "https://www.pescacordoba.com.ar/img/SEO.webp",
                 "author": {
                     "@type": "Person",
                     "name": post.author
@@ -134,7 +129,44 @@ export default function BlogPost() {
                             </ReactMarkdown>
                         </div>
 
+                        {/* Enlaces contextuales a contenidos y guías relacionadas */}
                         <div className="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                                Guías y recursos relacionados
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                                <Link
+                                    to="/diques"
+                                    className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border border-slate-100 dark:border-slate-700/60 flex flex-col justify-between"
+                                >
+                                    <span className="font-semibold text-slate-900 dark:text-slate-100 mb-1">Guías por Dique</span>
+                                    <span className="text-xs text-slate-500 dark:text-slate-400">Accesos públicos, especies y estado en embalses cordobeses.</span>
+                                </Link>
+                                <Link
+                                    to="/lineas"
+                                    className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border border-slate-100 dark:border-slate-700/60 flex flex-col justify-between"
+                                >
+                                    <span className="font-semibold text-slate-900 dark:text-slate-100 mb-1">Tutoriales de Líneas</span>
+                                    <span className="text-xs text-slate-500 dark:text-slate-400">Esquemas paso a paso para flote, paternoster y fondo.</span>
+                                </Link>
+                                <Link
+                                    to="/reglamento"
+                                    className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border border-slate-100 dark:border-slate-700/60 flex flex-col justify-between"
+                                >
+                                    <span className="font-semibold text-slate-900 dark:text-slate-100 mb-1">Reglamento Oficial</span>
+                                    <span className="text-xs text-slate-500 dark:text-slate-400">Carnet CiDi, vedas y cupos vigentes en Córdoba.</span>
+                                </Link>
+                                <Link
+                                    to="/nudos"
+                                    className="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors border border-slate-100 dark:border-slate-700/60 flex flex-col justify-between"
+                                >
+                                    <span className="font-semibold text-slate-900 dark:text-slate-100 mb-1">Catálogo de Nudos</span>
+                                    <span className="text-xs text-slate-500 dark:text-slate-400">Atados confiables para anzuelos, esmerillones y líderes.</span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
                             <AdBanner slot="3228900466" />
                         </div>
                     </article>

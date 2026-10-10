@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   Layers,
   Fish,
@@ -33,13 +33,11 @@ export default function RigTutorials() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>Tutoriales Visuales de Líneas de Pesca - Pesca Córdoba</title>
-        <meta
-          name="description"
-          content="Aprende a armar líneas y aparejos de pesca para los diques de Córdoba con esquemas originales, medidas precisas, nudos y materiales. Flote 3 boyas, paternoster, feeder y fondo."
-        />
-      </Helmet>
+      <SEO
+        title="Tutoriales Visuales de Líneas de Pesca - Pesca Córdoba"
+        description="Aprende a armar líneas y aparejos de pesca para diques de Córdoba: flote 3 boyas, paternoster, feeder de carpa, boya plop y fondo con esquemas interactivos."
+        canonical="https://www.pescacordoba.com.ar/lineas"
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from './SEO';
 import {
   Waves,
   MapPin,
@@ -41,10 +41,12 @@ export default function DamDetail() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Helmet>
-        <title>{`Guía de Pesca: ${dam.name} - Pesca Córdoba`}</title>
-        <meta name="description" content={dam.shortDescription} />
-      </Helmet>
+      <SEO
+        title={`${dam.name} - Guía de Pesca y Accesos - Pesca Córdoba`}
+        description={dam.shortDescription}
+        canonical={`https://www.pescacordoba.com.ar/diques/${dam.slug || dam.id}`}
+        noindex={isDraft}
+      />
 
       <SchemaOrg schema={{
         "@context": "https://schema.org",
