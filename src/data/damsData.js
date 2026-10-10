@@ -3,7 +3,7 @@
  * Fuentes oficiales: Secretaría de Ambiente de Córdoba, APRHI (Administración Provincial de Recursos Hídricos)
  */
 
-import { UNVERIFIED_QUOTA_TEXT } from './officialRegulations';
+import { UNVERIFIED_QUOTA_TEXT } from './officialRegulations.js';
 
 export const DAMS_DATA = [
   {
@@ -12,6 +12,7 @@ export const DAMS_DATA = [
     name: 'Dique San Roque',
     department: 'Valle de Punilla / Villa Carlos Paz',
     status: 'published',
+    updated: '2026-10-02',
     coordinates: [-31.385, -64.448],
     surfaceKm2: 16,
     maxDepthMeters: 35.3,
@@ -154,6 +155,7 @@ export const DAMS_DATA = [
     name: 'Dique Los Molinos',
     department: 'Valle de Calamuchita / Potrero de Garay',
     status: 'published',
+    updated: '2026-10-02',
     coordinates: [-31.816, -64.551],
     surfaceKm2: 24.5,
     maxDepthMeters: 53.0,
@@ -281,6 +283,7 @@ export const DAMS_DATA = [
     name: 'Embalse de Río Tercero',
     department: 'Valle de Calamuchita / Embalse',
     status: 'published',
+    updated: '2026-10-02',
     coordinates: [-32.227, -64.417],
     surfaceKm2: 56.0,
     maxDepthMeters: 46.5,
@@ -408,6 +411,7 @@ export const DAMS_DATA = [
     name: 'Dique Cruz del Eje',
     department: 'Noroeste cordobés / Cruz del Eje',
     status: 'published',
+    updated: '2026-10-02',
     coordinates: [-30.7687, -64.7346],
     surfaceKm2: 30.0,
     maxDepthMeters: 37.2,
@@ -527,6 +531,7 @@ export const DAMS_DATA = [
     name: 'Dique Pichanas',
     department: 'Noroeste / Villa de Soto',
     status: 'published',
+    updated: '2026-10-02',
     coordinates: [-30.9142, -65.1755],
     surfaceKm2: 4.8,
     maxDepthMeters: 44.0,

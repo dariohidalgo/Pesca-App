@@ -14,6 +14,7 @@ export const RIG_TUTORIALS = [
     badge: 'Imprescindible',
     difficulty: 'Intermedio',
     category: 'Flote',
+    updated: '2026-01-15',
     purposeAndConditions: {
       summary: 'Diseñada para pescar pejerreyes que se alimentan entre la superficie y 1 metro de profundidad, típicamente durante días soleados con brisa suave que oxigena el agua.',
       bestConditions: 'Viento suave a moderado (8 a 15 km/h) que produce un leve oleaje para dar movimiento natural a las carnadas. Días templados o mediodías soleados donde el pejerrey asciende a calentar su cuerpo.',
@@ -133,6 +134,7 @@ export const RIG_TUTORIALS = [
     badge: 'Máxima efectividad invernal',
     difficulty: 'Avanzado',
     category: 'Profundidad',
+    updated: '2026-01-15',
     purposeAndConditions: {
       summary: 'El aparejo más rendidor para invierno en los diques cordobeses. Permite prospectar simultáneamente diferentes niveles de profundidad (por ejemplo a 3, 5 y 8 metros o más) mediante una boya boyarín pasante con nudo tope corredizo y una plomada final.',
       bestConditions: 'Agua fría de mayo a agosto, mañanas sin viento donde el pejerrey busca cardúmenes de plancton en aguas hondas (especialmente en diques profundos como Los Molinos o San Roque cerca del murallón).',
@@ -251,6 +253,7 @@ export const RIG_TUTORIALS = [
     badge: 'Poder y resistencia',
     difficulty: 'Fácil a Intermedio',
     category: 'Fondo',
+    updated: '2026-01-15',
     purposeAndConditions: {
       summary: 'Especialmente ideada para carpas de gran porte que pastan en el lecho fangoso o arenoso de los diques. El resorte retiene una pelota de masa aromática compactada que al disgregarse en el fondo genera una nube cebada atrayente justo al lado del anzuelo con carnada.',
       bestConditions: 'Primavera y verano, aguas cálidas de bahías, orillas con fondos de barro o pendientes suaves (Bialet Massé, Potrero de Garay, Rumipal). Tarde y horas previas a la puesta del sol (la actividad en aguas públicas provinciales está sujeta a veda nocturna).',
@@ -368,6 +371,7 @@ export const RIG_TUTORIALS = [
     badge: 'Anti-corte',
     difficulty: 'Fácil',
     category: 'Fondo',
+    updated: '2026-01-15',
     purposeAndConditions: {
       summary: 'Diseñada para la pesca de predadores con dentadura filosa o mandíbulas abrasivas en el fondo de bahías y remansos. El líder de acero termosellable o multifilamento grueso impide que la tararira corte la línea durante los cabezazos.',
       bestConditions: 'Atardeceres templados de verano hasta la puesta del sol (actividad sujeta a veda nocturna provincial en embalses públicos), aguas calmas y sectores cercanos a vegetación acuática o troncos.',
@@ -462,6 +466,7 @@ export const RIG_TUTORIALS = [
     badge: 'Acción de superficie',
     difficulty: 'Fácil',
     category: 'Superficie',
+    updated: '2026-01-15',
     purposeAndConditions: {
       summary: 'Una de las técnicas más excitantes de la pesca cordobesa en primavera y verano. La boya plop posee una concavidad delantera que, al recoger a tirones secos con la caña, produce un fuerte sonido de chapoteo ("plop") que imita a un animal herido en el agua, detonando el ataque voraz de la tararira.',
       bestConditions: 'Tardes calurosas de verano (aguas a más de 22°C), bahías someras con juncales, costas bajas y vegetación flotante.',
