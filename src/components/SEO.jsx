@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
-import { useEffect, useState } from 'react';
 import { useClientSEO } from '../hooks/useClientSEO';
-import { SITE_NAME, DEFAULT_IMAGE, LOGO_URL, canonicalUrl } from '../lib/domain';
+import { SITE_NAME, DEFAULT_IMAGE, canonicalUrl } from '../lib/domain';
 
 export default function SEO({
   title,
@@ -13,12 +12,6 @@ export default function SEO({
   author,
   noindex = false,
 }) {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   // Use client-side SEO manager on client side
   useClientSEO({
     title,
@@ -36,7 +29,7 @@ export default function SEO({
 
   // On server: render Helmet tags for SSR
   // On client: return null (useClientSEO handles meta tags via DOM API)
-  if (isClient) {
+  if (!import.meta.env.SSR) {
     return null;
   }
 

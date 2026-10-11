@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const schemaTypeToTestId = {
   WebSite: 'schema-website',
@@ -33,50 +33,28 @@ export default function SchemaOrg({ schema }) {
   const testId = getSchemaTestId(schema);
   const id = getSchemaId(schema);
   const content = JSON.stringify(schema);
-  const [isClient, setIsClient] = useState(false);
-
+  // The prerenderer moves the server payload into head. The client owns only
+  // that head node; its first render matches the empty prerendered wrapper.
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // On client: manage script tag in head for navigation updates
-  useEffect(() => {
-    // Always remove any existing script with this ID (from static HTML or previous navigation)
-    // to avoid duplicates caused by hydration fallback re-mounting
-    const existing = document.getElementById(id);
-    if (existing) {
-      existing.remove();
-    }
-    const script = document.createElement('script');
+    const script = document.getElementById(id) || document.createElement('script');
     script.id = id;
     script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(schema);
-    document.head.appendChild(script);
-
-    return () => {
-      const current = document.getElementById(id);
-      if (current) {
-        current.remove();
-      }
-    };
-  }, [id, schema]);
-
-  // Server: render script tag in hidden div for prerenderer to find and move to head
-  // Client: render empty hidden div (suppressHydrationWarning avoids mismatch warning)
-  // The useEffect above manages the live script in <head> on the client.
-  // This matches the original design: prerenderer extracts from body to head in static HTML.
-  if (isClient) {
-    return <div style={{ display: 'none' }} aria-hidden="true" suppressHydrationWarning />;
-  }
+    script.dataset.testid = testId;
+    if (script.textContent !== content) script.textContent = content;
+    if (!script.isConnected) document.head.appendChild(script);
+    return () => script.remove();
+  }, [id, testId, content]);
 
   return (
     <div style={{ display: 'none' }} aria-hidden="true">
-      <script
-        id={getSchemaId(schema)}
-        type="application/ld+json"
-        data-testid={getSchemaTestId(schema)}
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      {import.meta.env.SSR && (
+        <script
+          id={id}
+          type="application/ld+json"
+          data-testid={testId}
+          dangerouslySetInnerHTML={{ __html: content.replace(/</g, '\\u003c') }}
+        />
+      )}
     </div>
   );
 }

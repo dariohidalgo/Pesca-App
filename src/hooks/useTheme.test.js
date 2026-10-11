@@ -1,3 +1,6 @@
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { hydrateRoot } from 'react-dom/client'
 import { renderHook, act } from '@testing-library/react'
 import { useTheme } from './useTheme'
 
@@ -56,4 +59,26 @@ describe('useTheme hook', () => {
     const { result } = renderHook(() => useTheme())
     expect(result.current.theme).toBe('dark')
   })
+})
+
+it('hydrates server markup with a stored dark preference without errors', async () => {
+  function Probe() {
+    const { theme } = useTheme()
+    return React.createElement('button', null, theme)
+  }
+  localStorage.getItem.mockReturnValue(null)
+  window.matchMedia.mockReturnValue({ matches: false })
+  const container = document.createElement('div')
+  container.innerHTML = renderToString(React.createElement(Probe))
+  document.body.appendChild(container)
+  localStorage.getItem.mockReturnValue('dark')
+  const recoverable = vi.fn()
+  let root
+  await act(async () => {
+    root = hydrateRoot(container, React.createElement(Probe), { onRecoverableError: recoverable })
+  })
+  expect(recoverable).not.toHaveBeenCalled()
+  expect(container.textContent).toBe('dark')
+  await act(async () => root.unmount())
+  container.remove()
 })

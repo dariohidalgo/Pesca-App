@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import SchemaOrg from './SchemaOrg';
@@ -16,6 +16,25 @@ describe('SchemaOrg Component', () => {
     vi.clearAllMocks();
     // Clear any existing JSON-LD scripts in head from previous tests
     document.querySelectorAll('head script[type="application/ld+json"]').forEach(s => s.remove());
+  });
+
+  it('adopts prerendered head data and removes it on route unmount', () => {
+    const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: 'Server article' };
+    const prerendered = document.createElement('script');
+    prerendered.id = 'schema-ld-article';
+    prerendered.type = 'application/ld+json';
+    prerendered.textContent = JSON.stringify(schema);
+    document.head.appendChild(prerendered);
+
+    const { rerender, unmount } = renderWithHelmet(<SchemaOrg schema={schema} />);
+    expect(document.getElementById(prerendered.id)).toBe(prerendered);
+    expect(document.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(1);
+
+    rerender(<HelmetProvider><SchemaOrg schema={{ ...schema, headline: 'Next article' }} /></HelmetProvider>);
+    expect(JSON.parse(document.getElementById(prerendered.id).textContent).headline).toBe('Next article');
+    expect(document.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(1);
+    unmount();
+    expect(document.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(0);
   });
 
   describe('Stable ID per schema type for Helmet deduplication', () => {

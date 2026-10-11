@@ -3,9 +3,9 @@ import { test, expect } from '@playwright/test';
 const PRODUCTION_DOMAIN = 'https://www.pescacordoba.com.ar';
 
 test.describe('SEO Verification - Navigation & Client Behavior', () => {
-  // Helper to extract JSON-LD from <head> only (Google only reads head scripts)
+  // Inspect the whole document so body duplicates cannot escape verification.
   async function extractJsonLd(page) {
-    const scripts = await page.locator('head script[type="application/ld+json"]').all();
+    const scripts = await page.locator('script[type="application/ld+json"]').all();
     const results = [];
     for (const script of scripts) {
       const content = await script.textContent();
@@ -27,6 +27,7 @@ test.describe('SEO Verification - Navigation & Client Behavior', () => {
     await page.waitForLoadState('networkidle');
     
     // Title
+    await expect(page.locator('title')).toHaveCount(1);
     const title = await page.title();
     expect(title.length).toBeGreaterThan(0);
     
@@ -108,8 +109,7 @@ test.describe('SEO Verification - Navigation & Client Behavior', () => {
     }
     
     // No pesca-app.com references in metadata
-    const html = await page.content();
-    const metaSection = html.split('<body>')[0];
+    const metaSection = await page.locator('title, meta, link[rel="canonical"], script[type="application/ld+json"]').evaluateAll(nodes => nodes.map(node => node.outerHTML).join('\n'));
     expect(metaSection).not.toContain('pesca-app.com');
     
     return { title, jsonLd, canonical: expectedCanonical };
@@ -206,12 +206,17 @@ test.describe('SEO Verification - Navigation & Client Behavior', () => {
     });
     await verifyNoResidualMetadata(page, ['/', '/blog/mejores-equipos-pejerrey-invierno-cordoba', '/diques']);
     
-    // 8. Back to Home
-    await page.goto('/');
+    // 8. Return through the router, not a fresh document.
+    await page.locator('a[href="/"]').first().click();
     await page.waitForLoadState('networkidle');
     await verifyPageMetadata(page, '/', [], { allowWebSite: true, allowBreadcrumb: false });
     await verifyNoResidualMetadata(page, ['/diques/san-roque', '/diques']);
     
+    await page.goBack();
+    await verifyPageMetadata(page, '/diques/san-roque', [], { allowGuide: true });
+    await page.goForward();
+    await verifyPageMetadata(page, '/', [], { allowWebSite: true, allowBreadcrumb: false });
+
     // 9. Reload home
     await page.reload();
     await page.waitForLoadState('networkidle');
@@ -225,27 +230,8 @@ test.describe('SEO Verification - Navigation & Client Behavior', () => {
     );
     expect(hydrationWarnings.length).toBe(0);
     
-    // Filter out known benign React hydration errors during SPA navigation:
-    // - #418: date-fns locale mismatch in WeatherDashboard (React SSR limitation with useEffect data fetching)
-    // - removeChild: React internal error during hydration fallback recovery (benign, React recovers)
-const benignErrors = consoleData.pageErrors.filter(e => 
-      e.includes('Minified React error #418') || 
-      e.includes('Hydration failed because the server rendered HTML') ||
-      e.includes("Cannot read properties of null (reading 'removeChild')")
-    );
-    const realPageErrors = consoleData.pageErrors.filter(e => 
-      !e.includes('Minified React error #418') && 
-      !e.includes('Hydration failed because the server rendered HTML') &&
-      !e.includes("Cannot read properties of null (reading 'removeChild')")
-    );
-    if (benignErrors.length > 0) {
-      console.log('Filtered benign hydration errors:', benignErrors.length);
-    }
-    if (realPageErrors.length > 0) {
-      console.error('REAL page errors:', JSON.stringify(realPageErrors, null, 2));
-    }
-    expect(consoleData.errors.length).toBe(0);
-    expect(realPageErrors.length).toBe(0);
+    expect(consoleData.errors).toEqual([]);
+    expect(consoleData.pageErrors).toEqual([]);
   });
 });
 
@@ -282,27 +268,7 @@ test.describe('SEO Verification - Hydration & Console Errors', () => {
     // No console errors
     expect(consoleData.errors.length).toBe(0);
     
-// Filter out known benign React hydration errors:
-    // - #418: date-fns locale mismatch in WeatherDashboard (React SSR limitation with useEffect data fetching)
-    // - removeChild: React internal error during hydration fallback recovery (benign, React recovers)
-    const benignErrors = consoleData.pageErrors.filter(e => 
-      e.includes('Minified React error #418') || 
-      e.includes('Hydration failed because the server rendered HTML') ||
-      e.includes("Cannot read properties of null (reading 'removeChild')")
-    );
-    const realPageErrors = consoleData.pageErrors.filter(e => 
-      !e.includes('Minified React error #418') && 
-      !e.includes('Hydration failed because the server rendered HTML') &&
-      !e.includes("Cannot read properties of null (reading 'removeChild')")
-    );
-    if (benignErrors.length > 0) {
-      console.log('Filtered benign hydration errors:', benignErrors.length);
-    }
-    if (realPageErrors.length > 0) {
-      console.error('REAL page errors:', JSON.stringify(realPageErrors, null, 2));
-    }
-    expect(consoleData.errors.length).toBe(0);
-    expect(realPageErrors.length).toBe(0);
+    expect(consoleData.pageErrors).toEqual([]);
   });
 });
 

@@ -140,12 +140,12 @@ export default function NavBar({ onSearchOpen }) {
               <button
                 type="button"
                 className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 p-2.5 transition-colors dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800"
-                onClick={() => setIsOpen(true)}
-                aria-label="Abrir menú"
+                onClick={() => setIsOpen(open => !open)}
+                aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                 aria-expanded={isOpen}
                 aria-controls="mobile-navigation-menu"
               >
-                <Menu className="h-6 w-6" />
+                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </div>

@@ -1,71 +1,32 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { JSDOM } from 'jsdom';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-describe('Client Entry Point - hydrateRoot', () => {
-  let dom;
-  let originalWindow;
-  let originalDocument;
-  let originalNavigator;
-  let consoleErrorSpy;
+const { hydrateRoot, createRoot, render } = vi.hoisted(() => ({
+  hydrateRoot: vi.fn(), createRoot: vi.fn(), render: vi.fn(),
+}));
+vi.mock('react-dom/client', () => ({ hydrateRoot, createRoot }));
+vi.mock('./App.jsx', () => ({ default: () => null }));
 
+describe('Client entry chooses the matching render strategy', () => {
   beforeEach(() => {
-    dom = new JSDOM('<!doctype html><html><head></head><body><div id="root">SSR Content</div></body></html>', {
-      url: 'http://localhost/',
-      pretendToBeVisual: true,
-    });
-
-    originalWindow = global.window;
-    originalDocument = global.document;
-    originalNavigator = global.navigator;
-
-    global.window = dom.window;
-    global.document = dom.window.document;
-    global.navigator = dom.window.navigator;
-
-    // Mock requestIdleCallback and requestAnimationFrame
-    global.requestIdleCallback = vi.fn((cb) => setTimeout(cb, 0));
-    global.cancelIdleCallback = vi.fn();
-
-    consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-  });
-
-  afterEach(() => {
-    global.window = originalWindow;
-    global.document = originalDocument;
-    global.navigator = originalNavigator;
-    consoleErrorSpy.mockRestore();
     vi.resetModules();
+    vi.clearAllMocks();
+    createRoot.mockReturnValue({ render });
   });
 
-  it('imports hydrateRoot from react-dom/client instead of createRoot', async () => {
-    // This test verifies the source code uses hydrateRoot
-    const fs = await import('node:fs');
-    const path = await import('node:path');
-    const filePath = path.resolve(process.cwd(), 'src/main.jsx');
-    const content = fs.readFileSync(filePath, 'utf-8');
-
-    expect(content).toContain("import { hydrateRoot } from 'react-dom/client'");
-    expect(content).not.toContain("import { createRoot } from 'react-dom/client'");
-  });
-
-  it('calls hydrateRoot on the root element', async () => {
-    // Import the module which will execute hydrateRoot
-    await import('./main.jsx');
-
-    // Verify the root element has been hydrated (React 19 adds data attributes)
+  it('hydrates existing prerendered content', async () => {
+    document.body.innerHTML = '<div id="root"><main>SSR content</main></div>';
     const root = document.getElementById('root');
-    expect(root).toBeInTheDocument();
-    // The root should have React's internal markers after hydration
-    expect(root.firstChild).toBeTruthy();
+    await import('./main.jsx');
+    expect(hydrateRoot).toHaveBeenCalledWith(root, expect.anything());
+    expect(createRoot).not.toHaveBeenCalled();
+    expect(root.textContent).toBe('SSR content');
   });
 
-  it('does not throw hydration mismatch errors', async () => {
+  it('mounts an empty development root without attempting hydration', async () => {
+    document.body.innerHTML = '<div id="root"></div>';
     await import('./main.jsx');
-
-    // Check no hydration mismatch errors were logged
-    const hydrationErrors = consoleErrorSpy.mock.calls.filter(call =>
-      call[0]?.includes?.('hydrat') || call[0]?.includes?.('Hydration')
-    );
-    expect(hydrationErrors.length).toBe(0);
+    expect(createRoot).toHaveBeenCalledWith(document.getElementById('root'));
+    expect(render).toHaveBeenCalledOnce();
+    expect(hydrateRoot).not.toHaveBeenCalled();
   });
 });
