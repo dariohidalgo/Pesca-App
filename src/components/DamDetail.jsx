@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl, LOGO_URL, DEFAULT_IMAGE } from '../lib/domain';
 import {
   Waves,
   MapPin,
@@ -44,7 +45,7 @@ export default function DamDetail() {
       <SEO
         title={`${dam.name} - Guía de Pesca y Accesos - Pesca Córdoba`}
         description={dam.shortDescription}
-        canonical={`https://pesca-app.com/diques/${dam.slug || dam.id}`}
+        canonical={`/diques/${dam.slug || dam.id}`}
         noindex={isDraft}
       />
 
@@ -53,7 +54,7 @@ export default function DamDetail() {
         "@type": "Guide",
         "name": `Guía de Pesca Deportiva en ${dam.name}`,
         "description": dam.shortDescription,
-        "url": `https://pesca-app.com/diques/${dam.id}`,
+        "url": canonicalUrl(`/diques/${dam.id}`),
         "about": {
           "@type": "BodyOfWater",
           "name": dam.name,

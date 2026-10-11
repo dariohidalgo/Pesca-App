@@ -8,19 +8,14 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const distDir = path.resolve(rootDir, 'dist');
 
+const PRODUCTION_DOMAIN = 'https://www.pescacordoba.com.ar';
+
 export function loadManifest() {
   const manifestPath = path.resolve(distDir, 'routes-manifest.json');
   if (!fs.existsSync(manifestPath)) {
     throw new Error('Route manifest not found. Run build first.');
   }
   return JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-}
-
-function loadSitemapUrls() {
-  const sitemapPath = path.resolve(rootDir, 'public/sitemap.xml');
-  const sitemapContent = fs.readFileSync(sitemapPath, 'utf-8');
-  const locMatches = [...sitemapContent.matchAll(/<loc>https:\/\/pesca-app\.com([^<]*)<\/loc>/g)];
-  return new Set(locMatches.map(m => m[1] || '/'));
 }
 
 export function getRoutesToCheck(manifest) {
@@ -46,7 +41,7 @@ export function checkRouteWithJSDOM(route, html, expectedCanonical) {
 
   const titles = Array.from(doc.head.querySelectorAll('title'));
   const titleText = titles.length > 0 ? titles[0].textContent.trim() : '';
-
+  
   const metaDescs = Array.from(doc.head.querySelectorAll('meta[name="description"]'));
   const canonicalLinks = Array.from(doc.head.querySelectorAll('link[rel="canonical"]'));
   const canonicalHref = canonicalLinks.length > 0 ? canonicalLinks[0].getAttribute('href') : '';
@@ -109,7 +104,7 @@ export function checkRouteWithJSDOM(route, html, expectedCanonical) {
 }
 
 export async function checkRouteWithPlaywright(page, route, expectedCanonical) {
-  await page.goto(`http://localhost:3000${route}`, { waitUntil: 'networkidle' });
+  await page.goto(`${PRODUCTION_DOMAIN}${route}`, { waitUntil: 'networkidle' });
   
   const title = await page.title();
   
@@ -224,7 +219,7 @@ export async function runStaticVerification() {
   
   for (const route of routes) {
     const filePath = getFilePath(route);
-    const expectedCanonical = `https://pesca-app.com${route === '/404' ? '/404' : route}`;
+    const expectedCanonical = `${PRODUCTION_DOMAIN}${route === '/404' ? '/404' : route}`;
     
     if (!fs.existsSync(filePath)) {
       results.push({
@@ -255,7 +250,7 @@ export async function runStaticVerification() {
   return results;
 }
 
-export async function runBrowserVerification(baseURL = 'http://localhost:3000') {
+export async function runBrowserVerification(baseURL = PRODUCTION_DOMAIN) {
   const { chromium } = await import('@playwright/test');
   
   const browser = await chromium.launch();
@@ -269,7 +264,7 @@ export async function runBrowserVerification(baseURL = 'http://localhost:3000') 
   const results = [];
   
   for (const route of routes) {
-    const expectedCanonical = `https://pesca-app.com${route === '/404' ? '/404' : route}`;
+    const expectedCanonical = `${PRODUCTION_DOMAIN}${route === '/404' ? '/404' : route}`;
     const result = await checkRouteWithPlaywright(page, route, expectedCanonical);
     results.push(result);
   }
@@ -294,7 +289,7 @@ async function main() {
     reportErrors(results);
   } catch (error) {
     console.error('Error durante la verificación:', error instanceof Error ? error.message : error);
-    process.exit(1);
+    process.exit(1)
   }
 }
 

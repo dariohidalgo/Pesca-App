@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import { Fish, MapPin, Mail, User, Compass, Shield, BookOpen } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 
@@ -15,7 +16,7 @@ const AboutUs = () => {
             <SEO
                 title="Sobre Nosotros y Proyecto Editorial - Pesca Córdoba"
                 description="Conocé qué es Pesca Córdoba, su propósito editorial, quién administra la plataforma y cómo se elabora la información técnica."
-                canonical="https://pesca-app.com/nosotros"
+                canonical="nosotros"
             />
 
             <SchemaOrg schema={{

@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import SunCalc from 'suncalc';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import { Moon, Sun, Sunrise, Sunset, Activity, CalendarDays, Clock, Info } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
@@ -102,7 +103,7 @@ export default function SolunarCalendar() {
       <SEO
         title="Calendario Solunar y Fases de la Luna - Pesca Córdoba"
         description="Calendario solunar para pescadores en Córdoba. Horarios de mayor actividad de pique y cálculo astronómico de fases lunares para optimizar tu jornada."
-        canonical="https://pesca-app.com/calendario"
+        canonical="calendario"
       />
 
       <SchemaOrg schema={{

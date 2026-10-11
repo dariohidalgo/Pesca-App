@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Shield, Lock, Eye, FileText, ExternalLink, Cookie, Server } from 'lucide-react';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import SchemaOrg from './SchemaOrg';
 
 const PrivacyPolicy = () => {
@@ -15,7 +16,7 @@ const PrivacyPolicy = () => {
       <SEO
         title="Política de Privacidad - Pesca Córdoba"
         description="Política de privacidad de Pesca Córdoba. Información sobre el uso de cookies, publicidad de Google AdSense, analítica y protección de datos."
-        canonical="https://pesca-app.com/privacidad"
+        canonical="privacidad"
       />
 
       <SchemaOrg schema={{

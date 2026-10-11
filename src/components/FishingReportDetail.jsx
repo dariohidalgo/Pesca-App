@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import {
   FileText,
   Calendar,
@@ -69,7 +70,7 @@ export default function FishingReportDetail() {
       <SEO
         title={`Parte de Pesca: ${report.targetSpecies} en ${report.damName || report.damId} - Pesca Córdoba`}
         description={`Reporte de pesca deportiva del ${report.tripDate} en ${report.damName || report.damId}. Modalidad ${report.modality}, aparejo: ${report.baitAndRig}.`}
-        canonical={`https://pesca-app.com/partes/${report.id}`}
+        canonical={`/partes/${report.id}`}
       />
 
       <SchemaOrg schema={{

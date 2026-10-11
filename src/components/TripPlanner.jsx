@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import {
   Calendar,
   Compass,
@@ -101,7 +102,7 @@ export default function TripPlanner() {
       <SEO
         title="Planificador de Salida de Pesca en Córdoba - Pesca Córdoba"
         description="Planificá tu jornada de pesca en Córdoba: checklists interactivos de equipo, montajes según especie, accesos verificados y recordatorios de seguridad."
-        canonical="https://pesca-app.com/planificador"
+        canonical="planificador"
       />
 
       <SchemaOrg schema={{
@@ -110,7 +111,7 @@ export default function TripPlanner() {
         "name": "Planificador de Salida de Pesca Córdoba",
         "applicationCategory": "SportsApplication",
         "description": "Asistente de planificación técnica para jornadas de pesca deportiva en diques cordobeses.",
-        "url": "https://pesca-app.com/planificador"
+        url: canonicalUrl("/planificador")
       }} />
 
       {/* Cabecera (Oculta en impresión compacta) */}

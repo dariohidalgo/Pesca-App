@@ -1,6 +1,7 @@
 import React from 'react';
 import SEO from './SEO';
 import { Calendar, User, ArrowLeft } from 'lucide-react';
+import { canonicalUrl } from '../lib/domain';
 import { Link } from 'react-router-dom';
 import SchemaOrg from './SchemaOrg';
 import { POSTS } from '../data/posts';
@@ -13,7 +14,7 @@ export default function BlogList() {
             <SEO
                 title="Blog de Pesca Deportiva en Córdoba - Pesca Córdoba"
                 description="Artículos técnicos sobre pesca en Córdoba: equipos para pejerrey, técnicas para tarariras, armado de líneas, conservación y seguridad náutica."
-                canonical="https://pesca-app.com/blog"
+                canonical="blog"
             />
 
             <SchemaOrg schema={{
@@ -21,14 +22,14 @@ export default function BlogList() {
                 "@type": "CollectionPage",
                 "name": "Blog de Pesca Deportiva",
                 "description": "Artículos y guías sobre pesca deportiva en Córdoba.",
-                "url": "https://pesca-app.com/blog",
+                "url": canonicalUrl("/blog"),
                 "mainEntity": {
                     "@type": "ItemList",
                     "numberOfItems": POSTS.length,
                     "itemListElement": POSTS.map((post, i) => ({
                         "@type": "ListItem",
                         "position": i + 1,
-                        "url": `https://pesca-app.com/blog/${post.slug}`
+                        "url": canonicalUrl(`/blog/${post.slug}`)
                     }))
                 }
             }} />

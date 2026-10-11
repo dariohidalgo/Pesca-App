@@ -41,26 +41,6 @@ describe('scripts/verify-seo.mjs - JSDOM static verification', () => {
   describe('checkRouteWithJSDOM', () => {
     it('validates correct SEO tags in prerendered HTML', async () => {
       const mod = await import(scriptPath);
-      const html = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>Test Page</title>
-          <meta name="description" content="Test description">
-          <link rel="canonical" href="https://pesca-app.com/test">
-          <meta property="og:title" content="Test Page">
-          <meta property="og:description" content="Test description">
-          <meta property="og:image" content="https://pesca-app.com/image.jpg">
-          <meta property="og:url" content="https://pesca-app.com/test">
-          <meta name="twitter:title" content="Test Page">
-          <meta name="twitter:description" content="Test description">
-          <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite"}</script>
-        </head>
-        <body>
-          <div id="root">Test content that is long enough to pass the body length check</div>
-        </body>
-        </html>
-      `;
       
       // Make body content long enough (>500 chars)
       const longContent = 'Test content that is long enough to pass the body length check '.repeat(20);

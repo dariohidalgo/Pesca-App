@@ -23,19 +23,10 @@ import AboutUs from './components/AboutUs';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import NotFound from './components/NotFound';
-import SchemaOrg from './components/SchemaOrg';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col dark:bg-slate-800">
-      <SchemaOrg schema={{
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Pesca Córdoba",
-        "url": "https://www.pescacordoba.com.ar/",
-        "description": "Guías por dique, partes de pesca reales, mapa de accesos públicos, tutoriales de líneas y planificador de salida para la pesca deportiva en Córdoba."
-      }} />
-
+    <div suppressHydrationWarning className="min-h-screen bg-slate-50 font-sans text-slate-900 flex flex-col dark:bg-slate-800">
       <NavBar />
 
       <main className="flex-grow w-full pb-16 dark:bg-slate-800">

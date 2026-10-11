@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Scale, CheckCircle2, AlertCircle, Info, Mail } from 'lucide-react';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import SchemaOrg from './SchemaOrg';
 
 const TermsConditions = () => {
@@ -15,7 +16,7 @@ const TermsConditions = () => {
       <SEO
         title="Términos y Condiciones de Uso - Pesca Córdoba"
         description="Términos y condiciones de uso de Pesca Córdoba. Normas de uso, alcance informativo y responsabilidades."
-        canonical="https://pesca-app.com/terminos"
+        canonical="terminos"
       />
 
       <SchemaOrg schema={{

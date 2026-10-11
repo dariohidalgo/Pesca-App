@@ -4,6 +4,8 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import SEO from './SEO';
+import SchemaOrg from './SchemaOrg';
+import { canonicalUrl } from '../lib/domain';
 
 const ServiceForm = () => {
     const [formData, setFormData] = useState({
@@ -79,8 +81,16 @@ const ServiceForm = () => {
             <SEO
                 title="Sumar Servicio de Pesca Náutica - Pesca Córdoba"
                 description="Publicá tu servicio de guía de pesca, alquiler de botes o venta de carnada en Pesca Córdoba para llegar a la comunidad de pescadores."
-                canonical="https://pesca-app.com/sumar-servicio"
+                canonical="sumar-servicio"
             />
+
+            <SchemaOrg schema={{
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Sumar Servicio de Pesca Náutica",
+                "description": "Publicá tu servicio de guía de pesca, alquiler de botes o venta de carnada en Pesca Córdoba para llegar a la comunidad de pescadores.",
+                "url": canonicalUrl("/sumar-servicio")
+            }} />
 
             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">Cargar Nuevo Servicio</h2>
             <p className="text-slate-500 mb-8">Completa el formulario para cargar tu guía de pesca, alquiler de botes/balsas o venta de carnada. El servicio será visible una vez que sea autorizado.</p>

@@ -75,7 +75,7 @@ export default function DamLevels() {
       <SEO
         title="Nivel y Fichas Técnicas de Diques - Pesca Córdoba"
         description="Datos de referencia hidrográfica, cotas de vertedero y comportamiento de pesca en los principales diques y embalses de Córdoba."
-        canonical="https://pesca-app.com/diques"
+        canonical="diques"
       />
 
       <SchemaOrg schema={{

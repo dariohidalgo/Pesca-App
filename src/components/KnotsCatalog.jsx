@@ -1,6 +1,7 @@
 import { Layers, Tag, X } from 'lucide-react';
 import { useState } from 'react';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
 
@@ -137,7 +138,7 @@ export default function KnotsCatalog() {
             <SEO
                 title="Nudos de Pesca: Guía Visual Paso a Paso - Pesca Córdoba"
                 description="Aprende a atar los nudos de pesca más efectivos para multifilamento y monofilamento: Palomar, Centauri, Uni, Albright y Clinch Mejorado con guías visuales."
-                canonical="https://pesca-app.com/nudos"
+                canonical="nudos"
             />
 
             <SchemaOrg schema={{

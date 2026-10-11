@@ -6,6 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
+const PRODUCTION_DOMAIN = 'https://www.pescacordoba.com.ar';
+
 function loadManifest() {
   const manifestPath = path.resolve(rootDir, 'dist/routes-manifest.json');
   if (!fs.existsSync(manifestPath)) {
@@ -27,7 +29,6 @@ async function loadContentData() {
 }
 
 function getLastMod(route, contentData) {
-  // Map content source to the actual data array
   let entry;
   if (route.contentSource === 'posts.js') {
     const slug = route.params.includes('slug') ? route.path.replace('/blog/', '') : null;
@@ -42,7 +43,6 @@ function getLastMod(route, contentData) {
   
   if (!entry) return null;
   
-  // Use updated if present, otherwise date, but warn if updated < date
   const updated = entry.updated;
   const date = entry.date;
   
@@ -54,13 +54,11 @@ function getLastMod(route, contentData) {
 }
 
 function generateSitemapContent(manifest, contentData) {
-  const baseUrl = 'https://pesca-app.com';
-  const today = new Date().toISOString().split('T')[0];
+  const baseUrl = PRODUCTION_DOMAIN;
   
   let urls = '';
   
   for (const route of manifest.routes) {
-    // Skip catch-all route and dynamic routes without content source (patterns, not real URLs)
     if (route.path === '*') continue;
     if (route.type === 'dynamic' && !route.contentSource) continue;
     
@@ -74,14 +72,12 @@ function generateSitemapContent(manifest, contentData) {
       urls += `    <lastmod>${lastmod}</lastmod>\n`;
     }
     
-    // Changefreq heuristic
     if (route.type === 'static') {
       urls += `    <changefreq>weekly</changefreq>\n`;
     } else {
       urls += `    <changefreq>monthly</changefreq>\n`;
     }
     
-    // Priority heuristic
     if (route.path === '/') {
       urls += `    <priority>1.0</priority>\n`;
     } else if (route.type === 'static') {

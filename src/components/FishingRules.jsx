@@ -1,5 +1,7 @@
 import React from 'react';
 import SEO from './SEO';
+import SchemaOrg from './SchemaOrg';
+import { canonicalUrl } from '../lib/domain';
 import {
   Scale,
   FileText,
@@ -26,8 +28,16 @@ export default function FishingRules() {
       <SEO
         title="Reglamento Oficial y Permisos de Pesca - Pesca Córdoba"
         description="Normativa oficial de pesca deportiva en Córdoba: carnet digital CiDi, vedas, cupos por dique (Resolución N° 318/2026) y seguridad náutica (Ley N° 5040)."
-        canonical="https://pesca-app.com/reglamento"
+        canonical="reglamento"
       />
+
+      <SchemaOrg schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Reglamento Oficial y Permisos de Pesca",
+        "description": "Normativa oficial de pesca deportiva en Córdoba: carnet digital CiDi, vedas, cupos por dique (Resolución N° 318/2026) y seguridad náutica (Ley N° 5040).",
+        "url": canonicalUrl("/reglamento")
+      }} />
 
       {/* Encabezado */}
       <div className="mb-8 text-center sm:text-left">

@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from './SEO';
+import { DEFAULT_IMAGE, LOGO_URL, canonicalUrl } from '../lib/domain';
 import ReactMarkdown from 'react-markdown';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 import { Link, useParams, Navigate } from 'react-router-dom';
@@ -15,18 +16,18 @@ export default function BlogPost() {
         return <Navigate to="/blog" replace />;
     }
 
-    const canonicalUrl = `https://pesca-app.com/blog/${post.slug}`;
+    const postCanonicalUrl = canonicalUrl(`/blog/${post.slug}`);
 
     return (
         <>
             <SEO
                 title={`${post.title} | Pesca Córdoba`}
                 description={post.description}
-                canonical={canonicalUrl}
+                canonical={`/blog/${post.slug}`}
                 type="article"
                 publishedTime={post.date}
                 author={post.author}
-                image="https://pesca-app.com/img/SEO.webp"
+                image={DEFAULT_IMAGE}
             />
 
             <SchemaOrg schema={{
@@ -34,7 +35,7 @@ export default function BlogPost() {
                 "@type": "Article",
                 "headline": post.title,
                 "description": post.description,
-                "image": "https://pesca-app.com/img/SEO.webp",
+                image: DEFAULT_IMAGE,
                 "author": {
                     "@type": "Person",
                     "name": post.author
@@ -44,13 +45,13 @@ export default function BlogPost() {
                     "name": "Pesca Córdoba",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://pesca-app.com/pesca.svg"
+                        url: LOGO_URL
                     }
                 },
                 "datePublished": post.date,
                 "mainEntityOfPage": {
                     "@type": "WebPage",
-                    "@id": canonicalUrl
+                    "@id": postCanonicalUrl
                 }
             }} />
 
@@ -58,8 +59,8 @@ export default function BlogPost() {
                 "@context": "https://schema.org",
                 "@type": "BreadcrumbList",
                 "itemListElement": [
-                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://pesca-app.com/" },
-                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://pesca-app.com/blog" },
+                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": canonicalUrl("/") },
+                    { "@type": "ListItem", "position": 2, "name": "Blog", "item": canonicalUrl("/blog") },
                     { "@type": "ListItem", "position": 3, "name": post.title, "item": canonicalUrl }
                 ]
             }} />

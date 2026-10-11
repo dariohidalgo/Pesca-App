@@ -7,6 +7,14 @@ import { HelmetProvider } from 'react-helmet-async'
 import 'leaflet/dist/leaflet.css';
 import ErrorBoundary from './components/ErrorBoundary'
 
+// Clean up any SSR-rendered JSON-LD scripts in body (served by vite preview on first request)
+// before hydration completes. Only run in real browser (not JSDOM/Vitest).
+const isTestEnv = typeof process !== 'undefined' && process.env && (process.env.VITEST || process.env.NODE_ENV === 'test');
+const isJSDOM = typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.includes('jsdom');
+if (typeof document !== 'undefined' && typeof window !== 'undefined' && !isTestEnv && !isJSDOM) {
+  document.querySelectorAll('body script[type="application/ld+json"]').forEach(s => s.remove());
+}
+
 hydrateRoot(document.getElementById('root'), (
   <StrictMode>
     <HelmetProvider>

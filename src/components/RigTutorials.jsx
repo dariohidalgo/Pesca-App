@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import {
   Layers,
   Fish,
@@ -36,7 +37,7 @@ export default function RigTutorials() {
       <SEO
         title="Tutoriales Visuales de Líneas de Pesca - Pesca Córdoba"
         description="Aprende a armar líneas y aparejos de pesca para diques de Córdoba: flote 3 boyas, paternoster, feeder de carpa, boya plop y fondo con esquemas interactivos."
-        canonical="https://pesca-app.com/lineas"
+        canonical="lineas"
       />
 
       <SchemaOrg schema={{
@@ -44,7 +45,7 @@ export default function RigTutorials() {
         "@type": "ItemList",
         "name": "Tutoriales Visuales de Líneas de Pesca",
         "description": "Montajes y líneas de pesca deportiva con esquemas explicativos paso a paso para Córdoba.",
-        "url": "https://pesca-app.com/lineas",
+        url: canonicalUrl("/lineas"),
         "numberOfItems": RIG_TUTORIALS.length,
         "itemListElement": RIG_TUTORIALS.map((r, i) => ({
           "@type": "ListItem",

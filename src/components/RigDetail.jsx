@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl, LOGO_URL } from '../lib/domain';
 import {
   Layers,
   ArrowLeft,
@@ -31,7 +32,7 @@ export default function RigDetail() {
       <SEO
         title={`Tutorial: ${rig.title} - Pesca Córdoba`}
         description={`Tutorial paso a paso para armar la ${rig.title}. Materiales, medidas exactas, nudos y esquema visual para pescar en Córdoba.`}
-        canonical={`https://pesca-app.com/lineas/${rig.slug || rig.id}`}
+        canonical={`/lineas/${rig.slug || rig.id}`}
       />
 
       <SchemaOrg schema={{

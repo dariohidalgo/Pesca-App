@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
+import { canonicalUrl } from '../lib/domain';
 import {
   Waves,
   MapPin,
@@ -41,7 +42,7 @@ export default function DamsCatalog() {
       <SEO
         title="Guías de Pesca por Dique y Niveles de Agua - Pesca Córdoba"
         description="Guías completas de pesca deportiva para los principales diques de Córdoba: San Roque, Los Molinos, Embalse, Cruz del Eje y Pichanas. Accesos, especies, equipos y niveles de cota actualizados."
-        canonical="https://pesca-app.com/diques"
+        canonical="diques"
       />
 
       <SchemaOrg schema={{
@@ -49,13 +50,13 @@ export default function DamsCatalog() {
         "@type": "ItemList",
         "name": "Guías de Pesca en Diques de Córdoba",
         "description": "Información verificada, accesos, reglamentos y servicios de pesca en los diques cordobeses.",
-        "url": "https://pesca-app.com/diques",
+        url: canonicalUrl("/diques"),
         "numberOfItems": publishedDams.length,
         "itemListElement": publishedDams.map((dam, index) => ({
           "@type": "ListItem",
           "position": index + 1,
           "name": dam.name,
-          "url": `https://pesca-app.com/diques/${dam.id}`
+          "url": canonicalUrl(`/diques/${dam.id}`)
         }))
       }} />
 

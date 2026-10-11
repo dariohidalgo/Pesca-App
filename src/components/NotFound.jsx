@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
+import SchemaOrg from './SchemaOrg';
+import { canonicalUrl } from '../lib/domain';
 import { Fish, Home, MapPin } from 'lucide-react';
 
 export default function NotFound() {
@@ -8,9 +10,17 @@ export default function NotFound() {
       <SEO
         title="Página no encontrada - Pesca Córdoba"
         description="La página que buscás no existe o fue movida."
-        canonical="https://pesca-app.com/404"
+        canonical="404"
         noindex={true}
       />
+
+      <SchemaOrg schema={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Página no encontrada",
+        "description": "La página que buscás no existe o fue movida.",
+        "url": canonicalUrl("/404")
+      }} />
 
       <div className="mb-8">
         <Fish className="h-24 w-24 text-slate-300 mx-auto mb-6" />
