@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-10-15T08:00:00-03:00",
   "source": "Administración Provincial de Recursos Hídricos (APRHI)",
-  "sourceUrl": "https://portaldelagua.cba.gov.ar/",
+  "sourceUrl": "https://www.aprhi.gob.ar/",
   "dams": {
     "san-roque": {
       "id": "san-roque",

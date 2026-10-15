@@ -67,6 +67,7 @@ export default function WeatherDashboard() {
     const [weatherData, setWeatherData] = useState(null);
     const [dailyForecast, setDailyForecast] = useState([]);
     const [bestDayIndex, setBestDayIndex] = useState(null);
+    const [selectedDayModal, setSelectedDayModal] = useState(null);
     const [_loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -91,7 +92,7 @@ export default function WeatherDashboard() {
                         data = res.data;
                     }
                 } catch {
-                    const fallbackUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=America%2FArgentina%2FCordoba`;
+                    const fallbackUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max&timezone=America%2FArgentina%2FCordoba`;
                     const fallbackRes = await axios.get(fallbackUrl, { timeout: 8000 });
                     if (fallbackRes.data && (fallbackRes.data.current || fallbackRes.data.daily)) {
                         data = fallbackRes.data;
@@ -129,6 +130,18 @@ export default function WeatherDashboard() {
                         const tempMax = daily.temperature_2m_max ? daily.temperature_2m_max[i] : 0;
                         const tempMin = daily.temperature_2m_min ? daily.temperature_2m_min[i] : 0;
                         const weatherCode = daily.weather_code ? daily.weather_code[i] : 0;
+                        const windGustsMax = daily.wind_gusts_10m_max ? Math.round(daily.wind_gusts_10m_max[i]) : null;
+                        const windDirectionDominant = daily.wind_direction_10m_dominant !== undefined && daily.wind_direction_10m_dominant !== null
+                            ? Math.round(daily.wind_direction_10m_dominant[i])
+                            : null;
+                        const precipitationSum = daily.precipitation_sum ? daily.precipitation_sum[i] : 0;
+                        const precipitationProbability = daily.precipitation_probability_max ? daily.precipitation_probability_max[i] : null;
+                        const sunrise = daily.sunrise ? daily.sunrise[i] : null;
+                        const sunset = daily.sunset ? daily.sunset[i] : null;
+                        const uvIndexMax = daily.uv_index_max ? daily.uv_index_max[i] : null;
+                        const dayMoonPhase = SunCalc.getMoonIllumination(dateObj).phase;
+                        const dayMoonPhaseText = getMoonPhaseText(dayMoonPhase);
+                        const dayFishingIndex = calculateFishingIndex(windMax, 950, dayMoonPhase);
 
                         forecastList.push({
                             originalIndex: i,
@@ -137,7 +150,17 @@ export default function WeatherDashboard() {
                             windMax,
                             tempMax,
                             tempMin,
-                            weatherCode
+                            weatherCode,
+                            windGustsMax,
+                            windDirectionDominant,
+                            precipitationSum,
+                            precipitationProbability,
+                            sunrise,
+                            sunset,
+                            uvIndexMax,
+                            moonPhase: dayMoonPhase,
+                            moonPhaseText: dayMoonPhaseText,
+                            fishingIndex: dayFishingIndex
                         });
 
                         if (windMax < minWind) {
@@ -312,9 +335,11 @@ export default function WeatherDashboard() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {dailyForecast.map((day, index) => (
-                            <div
+                            <button
                                 key={day.date.toISOString()}
-                                className={`bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-5 transition-all ${
+                                type="button"
+                                onClick={() => setSelectedDayModal(day)}
+                                className={`w-full text-left bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-5 transition-all cursor-pointer hover:shadow-md hover:border-blue-300 dark:hover:border-slate-700 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                                     index === bestDayIndex
                                         ? 'ring-2 ring-emerald-500 dark:ring-emerald-400 shadow-lg shadow-emerald-500/20'
                                         : ''
@@ -357,9 +382,22 @@ export default function WeatherDashboard() {
                                         ✓ Mejor día para pescar esta semana
                                     </div>
                                 )}
-                            </div>
+                                <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                                    <span>Ver más datos</span>
+                                    <ChevronRight className="h-4 w-4" />
+                                </div>
+                            </button>
                         ))}
                     </div>
+
+                    <DayForecastModal
+                        isOpen={Boolean(selectedDayModal)}
+                        onClose={() => setSelectedDayModal(null)}
+                        day={selectedDayModal}
+                        locationName={selectedLocation?.name}
+                        isBestDay={Boolean(selectedDayModal && dailyForecast.indexOf(selectedDayModal) === bestDayIndex)}
+                        fishingIndex={selectedDayModal?.fishingIndex}
+                    />
                 </>
             )}
 

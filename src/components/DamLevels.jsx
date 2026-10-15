@@ -110,7 +110,7 @@ export default function DamLevels() {
             </div>
           </div>
           <a
-            href="https://portaldelagua.cba.gov.ar/"
+            href="https://www.aprhi.gob.ar/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm transition-colors shrink-0 shadow-sm"

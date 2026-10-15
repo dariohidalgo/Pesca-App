@@ -240,7 +240,7 @@ export default function DamsCatalog() {
               </div>
             </div>
             <a
-              href="https://portaldelagua.cba.gov.ar/"
+              href="https://www.aprhi.gob.ar/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xs shrink-0 transition-colors shadow-sm self-start sm:self-auto"
@@ -295,7 +295,7 @@ export default function DamsCatalog() {
                       <ArrowRight className="h-3 w-3" />
                     </Link>
                     <a
-                      href="https://portaldelagua.cba.gov.ar/"
+                      href="https://www.aprhi.gob.ar/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
