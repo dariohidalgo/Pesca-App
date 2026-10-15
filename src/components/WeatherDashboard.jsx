@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SunCalc from 'suncalc';
 import SEO from './SEO';
-import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink, ArrowUp } from 'lucide-react';
+import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink, ArrowUp, ChevronRight } from 'lucide-react';
 import AdBanner from './AdBanner';
 import SchemaOrg from './SchemaOrg';
 import { canonicalUrl, DEFAULT_IMAGE } from '../lib/domain';
@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { getCordobaTodayString, getCardinalDirection } from '../lib/weatherUtils';
 import DamWaterLevelIndicator from './DamWaterLevelIndicator';
+import DayForecastModal from './DayForecastModal';
 
 const LOCATIONS = [
     { id: 'san-roque', name: 'Dique San Roque', lat: -31.3789, lon: -64.4647 },

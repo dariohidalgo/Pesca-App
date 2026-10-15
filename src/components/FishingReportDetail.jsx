@@ -144,6 +144,17 @@ export default function FishingReportDetail() {
           </span>
         </div>
 
+        {/* Foto de la jornada */}
+        {report.photo && (
+          <div className="mb-8">
+            <img
+              src={report.photo}
+              alt={`Foto de salida en ${report.damName || report.damId}`}
+              className="w-full max-h-96 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm"
+            />
+          </div>
+        )}
+
         {/* Ficha técnica */}
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

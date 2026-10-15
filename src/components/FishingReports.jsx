@@ -73,10 +73,8 @@ export default function FishingReports() {
     });
   }, [reports, selectedDam, selectedSpecies, selectedModality]);
 
-  const handleReportSubmitted = (newRep) => {
-    if (import.meta.env.DEV) {
-      setReports(prev => [newRep, ...prev]);
-    }
+  const handleReportSubmitted = () => {
+    // Los reportes quedan en estado pendiente para moderación previa
   };
 
   return (
@@ -113,10 +111,10 @@ export default function FishingReports() {
 
         <button
           onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm shadow-sm transition-all self-start md:self-auto"
+          className="inline-flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm shadow-sm transition-all self-start md:self-auto cursor-pointer"
         >
           <PlusCircle className="h-4 w-4" />
-          <span>Enviar mi Parte</span>
+          <span>Subir mi Parte</span>
         </button>
       </div>
 
@@ -195,10 +193,10 @@ export default function FishingReports() {
           </p>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm shadow-sm transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-sm shadow-sm transition-all cursor-pointer"
           >
             <PlusCircle className="h-4 w-4" />
-            <span>Compartir mi Experiencia Real</span>
+            <span>Subir mi Parte</span>
           </button>
         </div>
       ) : (
@@ -277,9 +275,21 @@ export default function FishingReports() {
                     Observaciones del pescador:
                   </span>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {report.result?.notes}
+                    {report.result?.notes || report.comment || report.notes}
                   </p>
                 </div>
+
+                {/* Foto si está presente */}
+                {report.photo && (
+                  <div className="mb-4">
+                    <img
+                      src={report.photo}
+                      alt={`Foto de captura en ${report.damName || report.damId}`}
+                      className="w-full max-h-72 object-cover rounded-2xl border border-slate-200 dark:border-slate-800"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
                 <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                   <span className="text-slate-500 dark:text-slate-400">
