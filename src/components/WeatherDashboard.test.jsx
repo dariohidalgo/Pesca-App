@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { HelmetProvider } from 'react-helmet-async';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import axios from 'axios';
@@ -97,4 +97,58 @@ describe('WeatherDashboard Component', () => {
     expect(screen.getByText(/15 de octubre|15 octubre/i)).toBeInTheDocument();
     expect(screen.getByText(/16 de octubre|16 octubre/i)).toBeInTheDocument();
   });
+
+  it('opens modal with more data when clicking a forecast card, and closes it', async () => {
+    const mockWeatherData = {
+      current: {
+        surface_pressure: 950,
+        wind_speed_10m: 10,
+        wind_gusts_10m: 18,
+        wind_direction_10m: 90
+      },
+      daily: {
+        time: ['2026-10-15', '2026-10-16'],
+        temperature_2m_max: [22, 26],
+        temperature_2m_min: [11, 14],
+        wind_speed_10m_max: [14, 11],
+        wind_gusts_10m_max: [20, 19],
+        wind_direction_10m_dominant: [90, 180],
+        precipitation_sum: [0, 2.5],
+        precipitation_probability_max: [0, 45],
+        sunrise: ['2026-10-15T06:44', '2026-10-16T06:43'],
+        sunset: ['2026-10-15T19:33', '2026-10-16T19:34'],
+        weather_code: [0, 61]
+      }
+    };
+
+    axios.get.mockResolvedValueOnce({ data: mockWeatherData });
+
+    renderWithHelmet(<WeatherDashboard />);
+
+    await waitFor(() => {
+      expect(screen.getByText('10 km/h')).toBeInTheDocument();
+    });
+
+    // Card should have clickable role and show "Ver más datos"
+    const cards = screen.getAllByRole('button', { name: /ver más datos/i });
+    expect(cards.length).toBe(2);
+
+    // Click on future day card (index 1: 16 de octubre)
+    fireEvent.click(cards[1]);
+
+    // Modal should open
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByText(/Pronóstico detallado/i)).toBeInTheDocument();
+    expect(screen.getByText(/26° \/ 14°/i)).toBeInTheDocument();
+    expect(screen.getByText(/Ráfagas: 19 km\/h/i)).toBeInTheDocument();
+    expect(screen.getByText(/06:43 \/ 19:34/i)).toBeInTheDocument();
+    expect(screen.getByText(/45%/i)).toBeInTheDocument();
+
+    // Close modal via close button
+    const closeBtn = screen.getByRole('button', { name: /cerrar detalle del pronóstico/i });
+    fireEvent.click(closeBtn);
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
 });
+
