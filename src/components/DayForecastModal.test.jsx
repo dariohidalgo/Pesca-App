@@ -54,7 +54,7 @@ describe('DayForecastModal Component', () => {
     expect(screen.getByText(/24° \/ 12°/i)).toBeInTheDocument();
     expect(screen.getByText(/15 km\/h/i)).toBeInTheDocument();
     expect(screen.getByText(/Ráfagas: 26 km\/h/i)).toBeInTheDocument();
-    expect(screen.getByText(/S/i)).toBeInTheDocument();
+    expect(screen.getByText(/^S$/)).toBeInTheDocument();
     expect(screen.getByText(/Gibosa Creciente/i)).toBeInTheDocument();
     expect(screen.getByText(/06:42 \/ 19:35/i)).toBeInTheDocument();
     expect(screen.getByText(/5%/i)).toBeInTheDocument();
