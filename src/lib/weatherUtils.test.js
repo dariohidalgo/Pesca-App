@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getCordobaTodayString, getCardinalDirection } from './weatherUtils';
+import { getCordobaTodayString, getCardinalDirection, getWindArrowRotation, findBestFishingDayIndex } from './weatherUtils';
 
 describe('weatherUtils', () => {
   describe('getCordobaTodayString', () => {
@@ -73,6 +73,51 @@ describe('weatherUtils', () => {
       expect(getCardinalDirection(null)).toBe('');
       expect(getCardinalDirection(undefined)).toBe('');
       expect(getCardinalDirection(NaN)).toBe('');
+    });
+  });
+
+  describe('getWindArrowRotation', () => {
+    it('rotates arrow to point towards where the wind blows (meteorological convention)', () => {
+      // Viento del Oeste (270°): viene del oeste y sopla hacia el este (→, 90°)
+      expect(getWindArrowRotation(270)).toBe(90);
+
+      // Viento del Norte (0°): viene del norte y sopla hacia el sur (↓, 180°)
+      expect(getWindArrowRotation(0)).toBe(180);
+
+      // Viento del Sur (180°): viene del sur y sopla hacia el norte (↑, 0°)
+      expect(getWindArrowRotation(180)).toBe(0);
+
+      // Viento del Este (90°): viene del este y sopla hacia el oeste (←, 270°)
+      expect(getWindArrowRotation(90)).toBe(270);
+
+      // Diagonales
+      expect(getWindArrowRotation(225)).toBe(45); // SO sopla hacia NE (↗)
+      expect(getWindArrowRotation(315)).toBe(135); // NO sopla hacia SE (↘)
+      expect(getWindArrowRotation(45)).toBe(225); // NE sopla hacia SO (↙)
+      expect(getWindArrowRotation(135)).toBe(315); // SE sopla hacia NO (↖)
+    });
+
+    it('handles null, undefined or NaN safely', () => {
+      expect(getWindArrowRotation(null)).toBe(0);
+      expect(getWindArrowRotation(undefined)).toBe(0);
+      expect(getWindArrowRotation(NaN)).toBe(0);
+    });
+  });
+
+  describe('findBestFishingDayIndex', () => {
+    it('selects the day with lowest wind and stable conditions', () => {
+      const days = [
+        { windMax: 24, windGustsMax: 35, weatherCode: 3, precipitationProbability: 10, moonPhase: 0.2 },
+        { windMax: 11, windGustsMax: 15, weatherCode: 0, precipitationProbability: 0, moonPhase: 0.5 }, // Óptimo
+        { windMax: 12, windGustsMax: 20, weatherCode: 95, precipitationProbability: 80, moonPhase: 0.5 }, // Tormenta
+      ];
+
+      expect(findBestFishingDayIndex(days)).toBe(1);
+    });
+
+    it('returns -1 for empty or invalid array', () => {
+      expect(findBestFishingDayIndex([])).toBe(-1);
+      expect(findBestFishingDayIndex(null)).toBe(-1);
     });
   });
 });

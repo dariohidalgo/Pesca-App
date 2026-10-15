@@ -1,0 +1,170 @@
+@import "driver.js/dist/driver.css";
+
+/* Estilos personalizados para driver.js integrados con Tailwind y soporte Dark Mode */
+.driver-popover.pescaapp-tour-popover {
+  font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border: 1px solid #e2e8f0;
+  max-width: 340px;
+  z-index: 1000000000;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  padding-right: 1.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-close-btn {
+  color: #94a3b8;
+  top: 0.875rem;
+  right: 0.875rem;
+  transition: color 0.15s ease-in-out;
+  font-size: 1.25rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-close-btn:hover {
+  color: #0f172a;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-description {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #475569;
+  margin-top: 0.5rem;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-footer {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-progress-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-footer button {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  text-shadow: none;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-prev-btn {
+  background-color: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-prev-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-next-btn {
+  background-color: #2563eb; /* bg-blue-600 */
+  color: #ffffff;
+  border: 1px solid #1d4ed8;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.driver-popover.pescaapp-tour-popover .driver-popover-next-btn:hover {
+  background-color: #1d4ed8; /* hover:bg-blue-700 */
+}
+
+/* Soporte para Dark Mode */
+.dark .driver-popover.pescaapp-tour-popover {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: #1e293b;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-title {
+  color: #f8fafc;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-close-btn {
+  color: #64748b;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-close-btn:hover {
+  color: #f8fafc;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-description {
+  color: #94a3b8;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-progress-text {
+  color: #94a3b8;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-prev-btn {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-prev-btn:hover {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-next-btn {
+  background-color: #2563eb;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-next-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Flechas de orientación del Popover */
+.driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-left {
+  border-left-color: #ffffff;
+}
+.driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-right {
+  border-right-color: #ffffff;
+}
+.driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-top {
+  border-top-color: #ffffff;
+}
+.driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-bottom {
+  border-bottom-color: #ffffff;
+}
+
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-left {
+  border-left-color: #0f172a;
+}
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-right {
+  border-right-color: #0f172a;
+}
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-top {
+  border-top-color: #0f172a;
+}
+.dark .driver-popover.pescaapp-tour-popover .driver-popover-arrow-side-bottom {
+  border-bottom-color: #0f172a;
+}

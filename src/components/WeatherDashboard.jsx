@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SunCalc from 'suncalc';
 import SEO from './SEO';
-import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink, ArrowUp, ChevronRight } from 'lucide-react';
+import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink, ArrowUp, ChevronRight, Compass, X } from 'lucide-react';
 import AdBanner from './AdBanner';
 import SchemaOrg from './SchemaOrg';
 import { canonicalUrl, DEFAULT_IMAGE } from '../lib/domain';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { getCordobaTodayString, getCardinalDirection } from '../lib/weatherUtils';
+import { getCordobaTodayString, getCardinalDirection, getWindArrowRotation, findBestFishingDayIndex } from '../lib/weatherUtils';
 import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 import DayForecastModal from './DayForecastModal';
+import { startTour, TOUR_STORAGE_KEY } from '../lib/tour';
 
 const LOCATIONS = [
     { id: 'san-roque', name: 'Dique San Roque', lat: -31.3789, lon: -64.4647 },
@@ -70,6 +71,36 @@ export default function WeatherDashboard() {
     const [selectedDayModal, setSelectedDayModal] = useState(null);
     const [_loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showTourBanner, setShowTourBanner] = useState(false);
+
+    useEffect(() => {
+        try {
+            if (typeof window !== 'undefined' && !localStorage.getItem(TOUR_STORAGE_KEY)) {
+                setShowTourBanner(true);
+            }
+        } catch {
+            // Entorno restringido sin acceso a localStorage
+        }
+    }, []);
+
+    const handleStartTourFromBanner = () => {
+        try {
+            localStorage.setItem(TOUR_STORAGE_KEY, 'true');
+        } catch {
+            // Ignorar en entornos sin acceso a localStorage
+        }
+        setShowTourBanner(false);
+        startTour();
+    };
+
+    const handleDismissTourBanner = () => {
+        try {
+            localStorage.setItem(TOUR_STORAGE_KEY, 'true');
+        } catch {
+            // Ignorar en entornos sin acceso a localStorage
+        }
+        setShowTourBanner(false);
+    };
 
     useEffect(() => {
         let isMounted = true;
@@ -113,8 +144,6 @@ export default function WeatherDashboard() {
                 });
 
                 const forecastList = [];
-                let bestIdx = -1;
-                let minWind = Infinity;
 
                 if (daily && daily.time) {
                     const todayCordoba = getCordobaTodayString();
@@ -162,14 +191,10 @@ export default function WeatherDashboard() {
                             moonPhaseText: dayMoonPhaseText,
                             fishingIndex: dayFishingIndex
                         });
-
-                        if (windMax < minWind) {
-                            minWind = windMax;
-                            bestIdx = forecastList.length - 1;
-                        }
                     }
                 }
 
+                const bestIdx = findBestFishingDayIndex(forecastList, current.surface_pressure || 950);
                 setDailyForecast(forecastList);
                 setBestDayIndex(bestIdx);
             } catch (err) {
@@ -217,12 +242,46 @@ export default function WeatherDashboard() {
                 "url": canonicalUrl("/")
             }} />
 
+            {/* Banner de Onboarding no intrusivo */}
+            {showTourBanner && (
+                <div
+                    data-testid="tour-banner"
+                    className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50/90 via-sky-50 to-indigo-50/70 dark:from-slate-800 dark:via-slate-800 dark:to-blue-950/40 border border-blue-200/80 dark:border-blue-900/60 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 transition-all"
+                >
+                    <div className="flex items-start sm:items-center gap-3">
+                        <div className="p-2 bg-blue-600/10 dark:bg-blue-400/10 text-blue-600 dark:text-blue-400 rounded-xl shrink-0">
+                            <Compass className="h-5 w-5" />
+                        </div>
+                        <p className="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">
+                            ¿Nuevo en Pesca Córdoba? Hacé un recorrido rápido por las herramientas de la web
+                        </p>
+                    </div>
+                    <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
+                        <button
+                            type="button"
+                            onClick={handleStartTourFromBanner}
+                            className="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
+                        >
+                            Ver guía (30 seg)
+                        </button>
+                        <button
+                            type="button"
+                            onClick={handleDismissTourBanner}
+                            aria-label="Cerrar aviso de guía"
+                            className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-xl hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors cursor-pointer"
+                        >
+                            <X className="h-4 w-4" />
+                        </button>
+                    </div>
+                </div>
+            )}
+
             <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
                 <div>
                     <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">Pronóstico de Pique</h1>
                     <p className="text-slate-500 dark:text-slate-400 mt-1">Variables climáticas aplicadas a la pesca deportiva en Córdoba</p>
                 </div>
-                <div className="flex flex-col items-start md:items-end gap-2 w-full md:w-auto">
+                <div id="tour-dique-cota" className="flex flex-col items-start md:items-end gap-2 w-full md:w-auto">
                     <div className="relative w-full md:w-64">
                         <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                             <MapPin className="h-5 w-5 text-slate-400" />
@@ -280,7 +339,7 @@ export default function WeatherDashboard() {
                                             <div className="flex items-center gap-1 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md" title={`Dirección: ${weatherData.windDirection}°`}>
                                                 <ArrowUp
                                                     className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 transition-transform duration-300 inline-block"
-                                                    style={{ transform: `rotate(${weatherData.windDirection}deg)` }}
+                                                    style={{ transform: `rotate(${getWindArrowRotation(weatherData.windDirection)}deg)` }}
                                                     aria-hidden="true"
                                                 />
                                                 <span>{getCardinalDirection(weatherData.windDirection)}</span>
@@ -339,19 +398,23 @@ export default function WeatherDashboard() {
                                 key={day.date.toISOString()}
                                 type="button"
                                 onClick={() => setSelectedDayModal(day)}
-                                className={`w-full text-left bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 p-5 transition-all cursor-pointer hover:shadow-md hover:border-blue-300 dark:hover:border-slate-700 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                                className={`w-full text-left bg-white dark:bg-slate-900 rounded-2xl shadow-sm border p-5 transition-all cursor-pointer hover:shadow-md hover:border-blue-300 dark:hover:border-slate-700 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                                     index === bestDayIndex
-                                        ? 'ring-2 ring-emerald-500 dark:ring-emerald-400 shadow-lg shadow-emerald-500/20'
-                                        : ''
+                                        ? 'border-emerald-500/50 dark:border-emerald-500/50'
+                                        : 'border-slate-100 dark:border-slate-800'
                                 }`}
                             >
+                                {index === bestDayIndex && (
+                                    <div className="mb-2.5">
+                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-500/30">
+                                            ✓ Mejor día de la semana
+                                        </span>
+                                    </div>
+                                )}
                                 <div className="flex items-center justify-between mb-3">
-                                    <h3 className="font-bold text-slate-900 dark:text-white text-lg">
+                                    <h3 className="font-bold text-slate-900 dark:text-white text-lg capitalize">
                                         {format(day.date, 'EEEE d MMMM', { locale: es })}
                                     </h3>
-                                    {index === bestDayIndex && (
-                                        <Award className="h-5 w-5 text-amber-500" />
-                                    )}
                                 </div>
                                 <div className="flex items-center gap-2 mb-3">
                                     {getWeatherIcon(day.weatherCode)}
@@ -377,11 +440,6 @@ export default function WeatherDashboard() {
                                         <span>{getMoonPhaseText(SunCalc.getMoonIllumination(day.date).phase)}</span>
                                     </div>
                                 </div>
-                                {index === bestDayIndex && (
-                                    <div className="mt-3 p-2 bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-xl text-emerald-700 dark:text-emerald-300 text-xs font-medium">
-                                        ✓ Mejor día para pescar esta semana
-                                    </div>
-                                )}
                                 <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs text-blue-600 dark:text-blue-400 font-semibold">
                                     <span>Ver más datos</span>
                                     <ChevronRight className="h-4 w-4" />

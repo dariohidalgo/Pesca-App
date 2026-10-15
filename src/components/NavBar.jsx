@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Fish,
   BookOpen,
@@ -19,9 +19,11 @@ import {
   CloudSun,
   Anchor,
   Info,
+  Compass,
 } from 'lucide-react';
 import SearchModal, { SearchButton } from './SearchModal';
 import ThemeToggle from './ThemeToggle';
+import { startTour } from '../lib/tour';
 
 const NAV_GROUPS = [
   {
@@ -61,6 +63,7 @@ const NAV_GROUPS = [
     items: [
       { name: 'Reglamento', path: '/reglamento', icon: FileText },
       { name: 'Blog', path: '/blog', icon: BookOpen },
+      { name: 'Ver Guía de Uso', action: 'tour', icon: Compass },
     ],
   },
 ];
@@ -71,6 +74,7 @@ export default function NavBar({ onSearchOpen }) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [openMobileAccordion, setOpenMobileAccordion] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const timeoutRef = useRef(null);
   const navRef = useRef(null);
 
@@ -94,6 +98,7 @@ export default function NavBar({ onSearchOpen }) {
   }, [handleSearchToggle]);
 
   const isItemActive = useCallback((path) => {
+    if (!path) return false;
     if (path === '/') {
       return location.pathname === '/';
     }
@@ -214,67 +219,99 @@ export default function NavBar({ onSearchOpen }) {
             {/* Desktop Menu with 4 Dropdowns */}
             <div className="hidden lg:flex items-center gap-2 xl:gap-3">
               <div className="flex items-center gap-1 xl:gap-1.5 border-r border-slate-200 dark:border-slate-700 pr-3 mr-1">
-                {NAV_GROUPS.map((group) => {
-                  const isExpanded = activeDropdown === group.id;
-                  return (
-                    <div
-                      key={group.id}
-                      className="relative"
-                      onMouseEnter={() => handleMouseEnter(group.id)}
-                      onMouseLeave={handleMouseLeave}
-                      onFocus={() => handleMouseEnter(group.id)}
-                      onBlur={(e) => {
-                        if (!e.currentTarget.contains(e.relatedTarget)) {
-                          setActiveDropdown(null);
-                        }
-                      }}
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setActiveDropdown(prev => prev === group.id ? null : group.id)}
-                        aria-expanded={isExpanded}
-                        aria-haspopup="true"
-                        className={dropdownTriggerClass(group)}
-                      >
-                        <group.icon className="h-4 w-4 shrink-0" />
-                        <span>{group.title}</span>
-                        <ChevronDown
-                          className={`h-3.5 w-3.5 transition-transform duration-200 ${
-                            isExpanded ? 'rotate-180' : ''
-                          }`}
-                        />
-                      </button>
-
-                      {/* Dropdown panel */}
+                {(() => {
+                  const renderDropdown = (group) => {
+                    const isExpanded = activeDropdown === group.id;
+                    const triggerId = group.id === 'clima-pique' ? 'tour-nav-clima-pique' : undefined;
+                    return (
                       <div
-                        className={`absolute top-full left-0 pt-1.5 w-48 z-50 transition-all duration-150 ${
-                          isExpanded
-                            ? 'opacity-100 visible translate-y-0 pointer-events-auto'
-                            : 'opacity-0 invisible -translate-y-1 pointer-events-none'
-                        }`}
+                        key={group.id}
+                        className="relative"
+                        onMouseEnter={() => handleMouseEnter(group.id)}
+                        onMouseLeave={handleMouseLeave}
+                        onFocus={() => handleMouseEnter(group.id)}
+                        onBlur={(e) => {
+                          if (!e.currentTarget.contains(e.relatedTarget)) {
+                            setActiveDropdown(null);
+                          }
+                        }}
                       >
-                        <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-1.5 space-y-0.5">
-                          {group.items.map((item) => (
-                            <Link
-                              key={item.path}
-                              to={item.path}
-                              onClick={() => setActiveDropdown(null)}
-                              className={dropdownItemClass(item.path)}
-                            >
-                              <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                              <span>{item.name}</span>
-                            </Link>
-                          ))}
+                        <button
+                          type="button"
+                          id={triggerId}
+                          onClick={() => setActiveDropdown(prev => prev === group.id ? null : group.id)}
+                          aria-expanded={isExpanded}
+                          aria-haspopup="true"
+                          className={dropdownTriggerClass(group)}
+                        >
+                          <group.icon className="h-4 w-4 shrink-0" />
+                          <span>{group.title}</span>
+                          <ChevronDown
+                            className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                              isExpanded ? 'rotate-180' : ''
+                            }`}
+                          />
+                        </button>
+
+                        {/* Dropdown panel */}
+                        <div
+                          className={`absolute top-full left-0 pt-1.5 w-48 z-50 transition-all duration-150 ${
+                            isExpanded
+                              ? 'opacity-100 visible translate-y-0 pointer-events-auto'
+                              : 'opacity-0 invisible -translate-y-1 pointer-events-none'
+                          }`}
+                        >
+                          <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-xl shadow-xl border border-slate-200 dark:border-slate-800 p-1.5 space-y-0.5">
+                            {group.items.map((item) => (
+                              item.action === 'tour' ? (
+                                <button
+                                  key={item.name}
+                                  type="button"
+                                  onClick={() => {
+                                    setActiveDropdown(null);
+                                    startTour(navigate);
+                                  }}
+                                  className={`${dropdownItemClass(null)} w-full text-left cursor-pointer`}
+                                >
+                                  <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                                  <span>{item.name}</span>
+                                </button>
+                              ) : (
+                                <Link
+                                  key={item.path}
+                                  to={item.path}
+                                  onClick={() => setActiveDropdown(null)}
+                                  className={dropdownItemClass(item.path)}
+                                >
+                                  <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                                  <span>{item.name}</span>
+                                </Link>
+                              )
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    );
+                  };
+
+                  return (
+                    <>
+                      {renderDropdown(NAV_GROUPS[0])}
+                      <div id="tour-nav-lugares-tecnica" className="flex items-center gap-1 xl:gap-1.5">
+                        {renderDropdown(NAV_GROUPS[1])}
+                        {renderDropdown(NAV_GROUPS[2])}
+                      </div>
+                      {renderDropdown(NAV_GROUPS[3])}
+                    </>
                   );
-                })}
+                })()}
               </div>
 
               {/* Outside Dropdowns: Search, Theme Toggle, Sumar Servicio */}
               <div className="flex items-center gap-2">
-                <SearchButton onClick={handleSearchToggle} />
+                <div id="tour-search-button">
+                  <SearchButton onClick={handleSearchToggle} />
+                </div>
                 <ThemeToggle />
                 <div className="w-px h-6 bg-slate-200 dark:bg-slate-700" />
                 <Link
@@ -289,10 +326,13 @@ export default function NavBar({ onSearchOpen }) {
 
             {/* Mobile Header Bar */}
             <div className="lg:hidden flex items-center gap-2">
-              <SearchButton onClick={handleSearchToggle} />
+              <div id="tour-search-button-mobile">
+                <SearchButton onClick={handleSearchToggle} />
+              </div>
               <ThemeToggle />
               <button
                 type="button"
+                id="tour-mobile-menu-btn"
                 className="min-h-[44px] min-w-[44px] flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 p-2.5 transition-colors dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800"
                 onClick={toggleMobileMenu}
                 aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
@@ -358,15 +398,30 @@ export default function NavBar({ onSearchOpen }) {
                   >
                     <div className="space-y-0.5">
                       {group.items.map((item) => (
-                        <Link
-                          key={item.path}
-                          to={item.path}
-                          onClick={() => setIsOpen(false)}
-                          className={mobileNavLinkClass(item.path)}
-                        >
-                          <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
-                          <span>{item.name}</span>
-                        </Link>
+                        item.action === 'tour' ? (
+                          <button
+                            key={item.name}
+                            type="button"
+                            onClick={() => {
+                              setIsOpen(false);
+                              startTour(navigate);
+                            }}
+                            className={`${mobileNavLinkClass(null)} w-full text-left cursor-pointer`}
+                          >
+                            <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                            <span>{item.name}</span>
+                          </button>
+                        ) : (
+                          <Link
+                            key={item.path}
+                            to={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className={mobileNavLinkClass(item.path)}
+                          >
+                            <item.icon className="h-4 w-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                            <span>{item.name}</span>
+                          </Link>
+                        )
                       ))}
                     </div>
                   </div>

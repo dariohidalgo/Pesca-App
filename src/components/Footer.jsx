@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Fish, Mail, Heart } from 'lucide-react';
+import { startTour } from '../lib/tour';
 
 export default function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,6 +46,13 @@ export default function Footer() {
               <Link to="/nudos" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Catálogo de Nudos</Link>
               <Link to="/reglamento" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Reglamento Provincial</Link>
               <Link to="/botes" className="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Guías y Botes</Link>
+              <button
+                type="button"
+                onClick={() => startTour(navigate)}
+                className="text-left text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors cursor-pointer"
+              >
+                Ver Guía de Uso
+              </button>
             </div>
           </div>
 

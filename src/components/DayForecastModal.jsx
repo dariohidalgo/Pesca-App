@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import { getCardinalDirection, getWeatherDescription } from '../lib/weatherUtils';
+import { getCardinalDirection, getWeatherDescription, getWindArrowRotation } from '../lib/weatherUtils';
 
 const getWeatherIcon = (code) => {
   if (code === 0 || code === 1) return <Sun className="h-8 w-8 text-yellow-500" />;
@@ -88,7 +88,7 @@ export default function DayForecastModal({ isOpen, onClose, day, locationName, i
         {isBestDay && (
           <div className="mb-4 p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-2xl flex items-center gap-2.5 text-emerald-800 dark:text-emerald-300 text-sm font-semibold">
             <Award className="h-5 w-5 text-amber-500 shrink-0" />
-            <span>Mejor día para pescar esta semana por estabilidad de viento.</span>
+            <span>✓ Mejor día de la semana para pescar por estabilidad meteorológica.</span>
           </div>
         )}
 
@@ -161,7 +161,7 @@ export default function DayForecastModal({ isOpen, onClose, day, locationName, i
                 <>
                   <ArrowUp
                     className="h-4 w-4 text-emerald-600 dark:text-emerald-400 transition-transform inline-block"
-                    style={{ transform: `rotate(${day.windDirectionDominant}deg)` }}
+                    style={{ transform: `rotate(${getWindArrowRotation(day.windDirectionDominant)}deg)` }}
                     aria-hidden="true"
                   />
                   <p className="text-lg font-bold text-slate-900 dark:text-white">

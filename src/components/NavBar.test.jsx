@@ -1,6 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import NavBar from './NavBar';
+import { vi } from 'vitest';
+import * as tourModule from '../lib/tour';
+
+vi.mock('../lib/tour', () => ({
+  startTour: vi.fn(),
+}));
 
 // Helper to render NavBar with Router
 const renderWithRouter = (component) => {
@@ -169,6 +175,16 @@ describe('NavBar', () => {
       // Press Escape
       fireEvent.keyDown(desktopTrigger, { key: 'Escape' });
       expect(desktopTrigger).toHaveAttribute('aria-expanded', 'false');
+    });
+
+    it('renders "Ver Guía de Uso" button in Info dropdown and triggers startTour', () => {
+      renderWithRouter(<NavBar />);
+      
+      const tourButtons = screen.getAllByRole('button', { name: /ver guía de uso/i });
+      expect(tourButtons.length).toBeGreaterThan(0);
+
+      fireEvent.click(tourButtons[0]);
+      expect(tourModule.startTour).toHaveBeenCalled();
     });
   });
 });

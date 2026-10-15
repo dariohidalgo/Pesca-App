@@ -57,10 +57,13 @@ describe('WeatherDashboard Component', () => {
     // Verify secondary gusts text
     expect(screen.getByText('Ráfagas: 29 km/h')).toBeInTheDocument();
 
-    // Verify rotating arrow style
+    // Verify rotating arrow style (meteorological convention: wind from 225° SO blows to 45° NE ↗)
     const arrow = container.querySelector('svg.lucide-arrow-up');
     expect(arrow).toBeInTheDocument();
-    expect(arrow).toHaveStyle({ transform: 'rotate(225deg)' });
+    expect(arrow).toHaveStyle({ transform: 'rotate(45deg)' });
+
+    // Verify best day badge and border
+    expect(screen.getByText('✓ Mejor día de la semana')).toBeInTheDocument();
   });
 
   it('filters extended forecast so days prior to today in Cordoba are never displayed', async () => {
@@ -149,6 +152,72 @@ describe('WeatherDashboard Component', () => {
     fireEvent.click(closeBtn);
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+  });
+
+  describe('Onboarding tour banner', () => {
+    const mockWeatherData = {
+      current: {
+        surface_pressure: 955,
+        wind_speed_10m: 10,
+        wind_gusts_10m: 15,
+        wind_direction_10m: 180,
+      },
+      daily: {
+        time: ['2026-10-15'],
+        temperature_2m_max: [22],
+        temperature_2m_min: [12],
+        wind_speed_10m_max: [14],
+        weather_code: [0],
+      },
+    };
+
+    beforeEach(() => {
+      localStorage.getItem.mockReset();
+      localStorage.setItem.mockReset();
+      localStorage.getItem.mockReturnValue(null);
+      axios.get.mockResolvedValue({ data: mockWeatherData });
+    });
+
+    it('shows compact banner when pescaapp_tour_seen is not set', async () => {
+      renderWithHelmet(<WeatherDashboard />);
+
+      const bannerText = screen.getByText(/¿Nuevo en Pesca Córdoba\? Hacé un recorrido rápido por las herramientas de la web/i);
+      expect(bannerText).toBeInTheDocument();
+
+      const tourBtn = screen.getByRole('button', { name: /ver guía \(30 seg\)/i });
+      expect(tourBtn).toBeInTheDocument();
+
+      const closeBtn = screen.getByRole('button', { name: /cerrar aviso de guía/i });
+      expect(closeBtn).toBeInTheDocument();
+    });
+
+    it('clicking "Ver guía (30 seg)" marks localStorage and dismisses banner', async () => {
+      renderWithHelmet(<WeatherDashboard />);
+
+      const tourBtn = screen.getByRole('button', { name: /ver guía \(30 seg\)/i });
+      fireEvent.click(tourBtn);
+
+      expect(localStorage.setItem).toHaveBeenCalledWith('pescaapp_tour_seen', 'true');
+      expect(screen.queryByText(/¿Nuevo en Pesca Córdoba\?/i)).not.toBeInTheDocument();
+    });
+
+    it('clicking "X" marks localStorage and dismisses banner', async () => {
+      renderWithHelmet(<WeatherDashboard />);
+
+      const closeBtn = screen.getByRole('button', { name: /cerrar aviso de guía/i });
+      fireEvent.click(closeBtn);
+
+      expect(localStorage.setItem).toHaveBeenCalledWith('pescaapp_tour_seen', 'true');
+      expect(screen.queryByText(/¿Nuevo en Pesca Córdoba\?/i)).not.toBeInTheDocument();
+    });
+
+    it('does not display banner if pescaapp_tour_seen already exists', async () => {
+      localStorage.getItem.mockReturnValue('true');
+
+      renderWithHelmet(<WeatherDashboard />);
+
+      expect(screen.queryByText(/¿Nuevo en Pesca Córdoba\?/i)).not.toBeInTheDocument();
+    });
   });
 });
 

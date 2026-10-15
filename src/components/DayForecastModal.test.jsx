@@ -49,7 +49,7 @@ describe('DayForecastModal Component', () => {
 
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByText(/Dique Los Molinos/i)).toBeInTheDocument();
-    expect(screen.getByText(/Mejor día para pescar esta semana/i)).toBeInTheDocument();
+    expect(screen.getByText(/Mejor día de la semana/i)).toBeInTheDocument();
     expect(screen.getByText(/Cielo despejado/i)).toBeInTheDocument();
     expect(screen.getByText(/24° \/ 12°/i)).toBeInTheDocument();
     expect(screen.getByText(/15 km\/h/i)).toBeInTheDocument();
@@ -59,6 +59,10 @@ describe('DayForecastModal Component', () => {
     expect(screen.getByText(/06:42 \/ 19:35/i)).toBeInTheDocument();
     expect(screen.getByText(/5%/i)).toBeInTheDocument();
     expect(screen.getByText(/Condiciones óptimas para pesca/i)).toBeInTheDocument();
+
+    // Verify arrow points north (0deg) for south wind (180deg)
+    const arrow = screen.getByRole('dialog').querySelector('svg.lucide-arrow-up');
+    expect(arrow).toHaveStyle({ transform: 'rotate(0deg)' });
   });
 
   it('calls onClose when close button is clicked', () => {
