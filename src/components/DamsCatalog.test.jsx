@@ -22,6 +22,6 @@ describe('DamsCatalog Component', () => {
     const levelsTab = screen.getByText(/Cotas de Vertedero y Niveles/i);
     fireEvent.click(levelsTab);
     expect(screen.getByText(/Transparencia sobre Cotas Oficiales/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/Sin dato actualizado/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Cota:/i).length).toBeGreaterThan(0);
   });
 });

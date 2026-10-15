@@ -19,6 +19,7 @@ import {
   Anchor
 } from 'lucide-react';
 import { DAMS_DATA, getPublishedDams } from '../data/damsData';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
 
@@ -127,9 +128,12 @@ export default function DamsCatalog() {
                 >
                   <div>
                     <div className="mb-3">
-                      <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-                        {dam.department}
-                      </span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                          {dam.department}
+                        </span>
+                        <DamWaterLevelIndicator damId={dam.id} size="xs" />
+                      </div>
                       <h2 className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight mt-0.5">
                         {dam.name}
                       </h2>
@@ -263,9 +267,7 @@ export default function DamsCatalog() {
                           {dam.location} • {dam.basin}
                         </span>
                       </div>
-                      <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full border bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700">
-                        Sin dato actualizado
-                      </span>
+                      <DamWaterLevelIndicator damId={dam.id} size="xs" />
                     </div>
 
                     <div className="mb-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-4 border border-slate-100 dark:border-slate-800">
@@ -275,8 +277,11 @@ export default function DamsCatalog() {
                       <div className="text-3xl font-black text-cyan-600 dark:text-cyan-400">
                         {dam.spillwayLevel.toFixed(2)} m
                       </div>
+                      <div className="mt-3 pt-3 border-t border-slate-200/60 dark:border-slate-700/60">
+                        <DamWaterLevelIndicator damId={dam.id} showBar={true} variant="compact" />
+                      </div>
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
-                        Referencia técnica de llenado al nivel del labio del vertedero. Para conocer la cota medida en el día, consultá el parte diario oficial en el portal de Recursos Hídricos.
+                        Referencia técnica de llenado al nivel del labio del vertedero según mediciones oficiales de Recursos Hídricos (APRHI).
                       </p>
                     </div>
                   </div>

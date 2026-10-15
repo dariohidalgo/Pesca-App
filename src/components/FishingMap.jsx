@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { USEFUL_POINTS, POINT_CATEGORIES } from '../data/usefulPoints';
 import { DAMS_DATA } from '../data/damsData';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 import SchemaOrg from './SchemaOrg';
 
 // Iconos Leaflet personalizados con color según categoría
@@ -187,6 +188,9 @@ export default function FishingMap() {
               <option value="cruz-del-eje">Dique Cruz del Eje</option>
               <option value="pichanas">Dique Pichanas</option>
             </select>
+            {selectedDam !== 'todos' && (
+              <DamWaterLevelIndicator damId={selectedDam} size="xs" />
+            )}
           </div>
 
           <div className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">

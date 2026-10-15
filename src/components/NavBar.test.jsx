@@ -120,4 +120,55 @@ describe('NavBar', () => {
       expect(mobileMenu).toHaveClass('invisible');
     });
   });
+
+  describe('Scenario: 4 dropdown groups in desktop and mobile accordions', () => {
+    it('renders the 4 dropdown groups', () => {
+      renderWithRouter(<NavBar />);
+      
+      expect(screen.getAllByText('Clima y Pique').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Lugares').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Técnica').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Info').length).toBeGreaterThan(0);
+    });
+
+    it('renders Sumar Servicio button outside dropdowns', () => {
+      renderWithRouter(<NavBar />);
+      
+      const sumarButtons = screen.getAllByRole('link', { name: /sumar servicio/i });
+      expect(sumarButtons.length).toBeGreaterThan(0);
+      expect(sumarButtons[0]).toHaveAttribute('href', '/sumar-servicio');
+    });
+
+    it('toggles mobile accordion sections', () => {
+      const { container } = renderWithRouter(<NavBar />);
+      
+      // Open mobile drawer
+      const openButton = screen.getByRole('button', { name: /abrir menú/i });
+      fireEvent.click(openButton);
+      
+      // Accordion buttons inside mobile menu
+      const mobileNav = container.querySelector('#mobile-navigation-menu');
+      const tecnicaAccordionBtn = mobileNav.querySelector('button[aria-controls="accordion-tecnica"]');
+      expect(tecnicaAccordionBtn).toHaveAttribute('aria-expanded', 'false');
+      
+      // Click to toggle Técnica accordion
+      fireEvent.click(tecnicaAccordionBtn);
+      expect(tecnicaAccordionBtn).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('closes desktop dropdown on Escape key', () => {
+      renderWithRouter(<NavBar />);
+      
+      // Open desktop dropdown by clicking its trigger
+      const climaTriggers = screen.getAllByRole('button', { name: /clima y pique/i });
+      const desktopTrigger = climaTriggers[0];
+      
+      fireEvent.click(desktopTrigger);
+      expect(desktopTrigger).toHaveAttribute('aria-expanded', 'true');
+      
+      // Press Escape
+      fireEvent.keyDown(desktopTrigger, { key: 'Escape' });
+      expect(desktopTrigger).toHaveAttribute('aria-expanded', 'false');
+    });
+  });
 });

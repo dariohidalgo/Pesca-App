@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import SunCalc from 'suncalc';
 import SEO from './SEO';
-import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Wind, Gauge, Moon, MapPin, Loader2, AlertCircle, Calendar, Sun, Cloud, CloudRain, Award, Info, ShieldCheck, ExternalLink, ArrowUp } from 'lucide-react';
 import AdBanner from './AdBanner';
 import SchemaOrg from './SchemaOrg';
 import { canonicalUrl, DEFAULT_IMAGE } from '../lib/domain';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { getCordobaTodayString, getCardinalDirection } from '../lib/weatherUtils';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 
 const LOCATIONS = [
     { id: 'san-roque', name: 'Dique San Roque', lat: -31.3789, lon: -64.4647 },
@@ -64,7 +66,7 @@ export default function WeatherDashboard() {
     const [weatherData, setWeatherData] = useState(null);
     const [dailyForecast, setDailyForecast] = useState([]);
     const [bestDayIndex, setBestDayIndex] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [_loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -88,7 +90,7 @@ export default function WeatherDashboard() {
                         data = res.data;
                     }
                 } catch {
-                    const fallbackUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=America%2FArgentina%2FCordoba`;
+                    const fallbackUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=surface_pressure,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=America%2FArgentina%2FCordoba`;
                     const fallbackRes = await axios.get(fallbackUrl, { timeout: 8000 });
                     if (fallbackRes.data && (fallbackRes.data.current || fallbackRes.data.daily)) {
                         data = fallbackRes.data;
@@ -103,6 +105,8 @@ export default function WeatherDashboard() {
                 setWeatherData({
                     pressure: current.surface_pressure !== undefined ? Math.round(current.surface_pressure) : 950,
                     wind: current.wind_speed_10m !== undefined ? Math.round(current.wind_speed_10m) : 0,
+                    windGusts: current.wind_gusts_10m !== undefined && current.wind_gusts_10m !== null ? Math.round(current.wind_gusts_10m) : null,
+                    windDirection: current.wind_direction_10m !== undefined && current.wind_direction_10m !== null ? Math.round(current.wind_direction_10m) : null,
                     moonPhase: currentMoonPhase
                 });
 
@@ -111,8 +115,14 @@ export default function WeatherDashboard() {
                 let minWind = Infinity;
 
                 if (daily && daily.time) {
-                    for (let i = 1; i < daily.time.length && i <= 6; i++) {
+                    const todayCordoba = getCordobaTodayString();
+
+                    for (let i = 0; i < daily.time.length; i++) {
                         const dateStr = daily.time[i];
+                        if (!dateStr || dateStr < todayCordoba) {
+                            continue;
+                        }
+
                         const dateObj = new Date(dateStr + 'T12:00:00');
                         const windMax = daily.wind_speed_10m_max ? daily.wind_speed_10m_max[i] : 0;
                         const tempMax = daily.temperature_2m_max ? daily.temperature_2m_max[i] : 0;
@@ -188,25 +198,28 @@ export default function WeatherDashboard() {
                     <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">Pronóstico de Pique</h1>
                     <p className="text-slate-500 dark:text-slate-400 mt-1">Variables climáticas aplicadas a la pesca deportiva en Córdoba</p>
                 </div>
-                <div className="relative w-full md:w-64">
-                    <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                        <MapPin className="h-5 w-5 text-slate-400" />
+                <div className="flex flex-col items-start md:items-end gap-2 w-full md:w-auto">
+                    <div className="relative w-full md:w-64">
+                        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                            <MapPin className="h-5 w-5 text-slate-400" />
+                        </div>
+                        <select
+                            value={selectedLocation.id}
+                            onChange={handleLocationChange}
+                            className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm appearance-none font-medium cursor-pointer"
+                            aria-label="Seleccionar pesquero"
+                        >
+                            {LOCATIONS.map(loc => (
+                                <option key={loc.id} value={loc.id}>{loc.name}</option>
+                            ))}
+                        </select>
+                        <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                            <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </div>
                     </div>
-                    <select
-                        value={selectedLocation.id}
-                        onChange={handleLocationChange}
-                        className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm appearance-none font-medium cursor-pointer"
-                        aria-label="Seleccionar pesquero"
-                    >
-                        {LOCATIONS.map(loc => (
-                            <option key={loc.id} value={loc.id}>{loc.name}</option>
-                        ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                        <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                    </div>
+                    <DamWaterLevelIndicator damId={selectedLocation.id} size="sm" />
                 </div>
             </div>
 
@@ -237,7 +250,24 @@ export default function WeatherDashboard() {
                                 </div>
                                 <div>
                                     <p className="text-sm text-slate-500 dark:text-slate-400">Viento (10m)</p>
-                                    <p className="text-2xl font-bold text-slate-900 dark:text-white">{weatherData.wind} km/h</p>
+                                    <div className="flex items-center gap-2">
+                                        <p className="text-2xl font-bold text-slate-900 dark:text-white">{weatherData.wind} km/h</p>
+                                        {weatherData.windDirection !== null && weatherData.windDirection !== undefined && (
+                                            <div className="flex items-center gap-1 text-sm font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md" title={`Dirección: ${weatherData.windDirection}°`}>
+                                                <ArrowUp
+                                                    className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 transition-transform duration-300 inline-block"
+                                                    style={{ transform: `rotate(${weatherData.windDirection}deg)` }}
+                                                    aria-hidden="true"
+                                                />
+                                                <span>{getCardinalDirection(weatherData.windDirection)}</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                    {weatherData.windGusts !== null && weatherData.windGusts !== undefined && (
+                                        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                            Ráfagas: {weatherData.windGusts} km/h
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>

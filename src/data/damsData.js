@@ -4,12 +4,14 @@
  */
 
 import { UNVERIFIED_QUOTA_TEXT } from './officialRegulations.js';
+import { getDamWaterLevel } from './damWaterLevels.js';
 
 export const DAMS_DATA = [
   {
     id: 'san-roque',
     slug: 'san-roque',
     name: 'Dique San Roque',
+    waterLevel: getDamWaterLevel('san-roque'),
     department: 'Valle de Punilla / Villa Carlos Paz',
     status: 'published',
     updated: '2026-10-02',
@@ -153,6 +155,7 @@ export const DAMS_DATA = [
     id: 'los-molinos',
     slug: 'los-molinos',
     name: 'Dique Los Molinos',
+    waterLevel: getDamWaterLevel('los-molinos'),
     department: 'Valle de Calamuchita / Potrero de Garay',
     status: 'published',
     updated: '2026-10-02',
@@ -281,6 +284,7 @@ export const DAMS_DATA = [
     id: 'embalse',
     slug: 'embalse',
     name: 'Embalse de Río Tercero',
+    waterLevel: getDamWaterLevel('embalse'),
     department: 'Valle de Calamuchita / Embalse',
     status: 'published',
     updated: '2026-10-02',
@@ -409,6 +413,7 @@ export const DAMS_DATA = [
     id: 'cruz-del-eje',
     slug: 'cruz-del-eje',
     name: 'Dique Cruz del Eje',
+    waterLevel: getDamWaterLevel('cruz-del-eje'),
     department: 'Noroeste cordobés / Cruz del Eje',
     status: 'published',
     updated: '2026-10-02',
@@ -529,6 +534,7 @@ export const DAMS_DATA = [
     id: 'pichanas',
     slug: 'pichanas',
     name: 'Dique Pichanas',
+    waterLevel: getDamWaterLevel('pichanas'),
     department: 'Noroeste / Villa de Soto',
     status: 'published',
     updated: '2026-10-02',
@@ -641,6 +647,7 @@ export const DAMS_DATA = [
     id: 'cerro-pelado',
     slug: 'cerro-pelado',
     name: 'Embalse Cerro Pelado',
+    waterLevel: getDamWaterLevel('cerro-pelado'),
     department: 'Valle de Calamuchita / Complejo Río Grande',
     status: 'draft',
     coordinates: [-32.2250, -64.6394],
@@ -672,6 +679,7 @@ export const DAMS_DATA = [
     id: 'el-cajon',
     slug: 'el-cajon',
     name: 'Dique El Cajón',
+    waterLevel: getDamWaterLevel('el-cajon'),
     department: 'Valle de Punilla / Capilla del Monte',
     status: 'draft',
     coordinates: [-30.8500, -64.5500],
@@ -708,3 +716,6 @@ export function getDamById(id) {
 export function getPublishedDams() {
   return DAMS_DATA.filter(d => d.status === 'published');
 }
+
+export { getDamWaterLevel };
+

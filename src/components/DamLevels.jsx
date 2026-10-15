@@ -3,6 +3,7 @@ import SEO from './SEO';
 import { Waves, ExternalLink, Info, MapPin, Fish, AlertCircle } from 'lucide-react';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 
 const DAM_REFERENCE_DATA = [
   {
@@ -131,15 +132,16 @@ export default function DamLevels() {
                   {dam.location}
                 </span>
               </div>
-              <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-600 border-slate-200 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700">
-                Sin dato actualizado
-              </span>
+              <DamWaterLevelIndicator damId={dam.id} size="xs" />
             </div>
 
             <div className="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 mb-4 border border-slate-100 dark:border-slate-800">
               <div className="text-xs uppercase tracking-wider font-semibold text-slate-500 dark:text-slate-400">Cota oficial vertedero</div>
               <div className="text-2xl font-black text-cyan-600 dark:text-cyan-400 tracking-tight mt-0.5">{dam.spillwayLevel}</div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">{dam.basin}</div>
+              <div className="mt-2.5 pt-2.5 border-t border-slate-200/60 dark:border-slate-700/60">
+                <DamWaterLevelIndicator damId={dam.id} showBar={true} variant="compact" />
+              </div>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-2">{dam.basin}</div>
             </div>
 
             <div className="space-y-3 text-sm text-slate-600 dark:text-slate-300 flex-grow">

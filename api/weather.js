@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     const apiKey = process.env.OPEN_METEO_API_KEY;
     const baseUrl = apiKey ? 'https://customer-api.open-meteo.com/v1/forecast' : 'https://api.open-meteo.com/v1/forecast';
     const keyParam = apiKey ? `&apikey=${encodeURIComponent(apiKey)}` : '';
-    const apiUrl = `${baseUrl}?latitude=${latitude}&longitude=${longitude}&current=surface_pressure,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max&timezone=America%2FArgentina%2FCordoba${keyParam}`;
+    const apiUrl = `${baseUrl}?latitude=${latitude}&longitude=${longitude}&current=surface_pressure,wind_speed_10m,wind_gusts_10m,wind_direction_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_gusts_10m_max,wind_direction_10m_dominant,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max&timezone=America%2FArgentina%2FCordoba${keyParam}`;
     
     console.log(`[WeatherAPI] Fetching from Open-Meteo (${apiKey ? 'Commercial Endpoint' : 'Standard Endpoint'})`);
     

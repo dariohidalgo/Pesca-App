@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { generateTripPlan } from '../data/plannerRules';
 import { DAMS_DATA } from '../data/damsData';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 import SchemaOrg from './SchemaOrg';
 
 const STORAGE_KEY = 'pescacordoba_trip_plan_state';
@@ -153,6 +154,9 @@ export default function TripPlanner() {
               <option value="cruz-del-eje">Dique Cruz del Eje</option>
               <option value="pichanas">Dique Pichanas</option>
             </select>
+            <div className="mt-2">
+              <DamWaterLevelIndicator damId={damId} size="xs" />
+            </div>
           </div>
 
           {/* Fecha */}
@@ -315,11 +319,14 @@ export default function TripPlanner() {
       {/* Puntos y accesos recomendados */}
       {plan.relevantPoints.length > 0 && (
         <div className="mb-8">
-          <div className="flex items-center justify-between gap-2 mb-4">
-            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-              <span>Accesos y Puntos Sugeridos en {plan.dam.name}</span>
-            </h2>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <span>Accesos y Puntos Sugeridos en {plan.dam.name}</span>
+              </h2>
+              <DamWaterLevelIndicator damId={plan.dam.id} size="xs" />
+            </div>
             <Link
               to={`/mapa?dique=${plan.dam.id}`}
               className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline print:hidden"

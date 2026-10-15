@@ -40,9 +40,20 @@ describe('damsData', () => {
   it('keeps incomplete dams as draft instead of empty placeholders', () => {
     const drafts = DAMS_DATA.filter(d => d.status === 'draft');
     expect(drafts.length).toBeGreaterThan(0);
+    expect(drafts.length).toBeGreaterThan(0);
     drafts.forEach(d => {
       expect(d.status).toBe('draft');
       expect(d.fullDescription).toContain('borrador');
     });
+  });
+
+  it('includes waterLevel model with currentLevel and spillwayLevel for published dams', () => {
+    const sr = getDamById('san-roque');
+    expect(sr.waterLevel).toBeDefined();
+    expect(sr.waterLevel.currentLevel).toBe(33.50);
+    expect(sr.waterLevel.spillwayLevel).toBe(35.30);
+    expect(sr.waterLevel.diff).toBe(-1.80);
+    expect(sr.waterLevel.status).toBe('green');
+    expect(sr.waterLevel.label).toBe('Cota: -1.80m del vertedero');
   });
 });

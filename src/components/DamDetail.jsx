@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import { getDamById, DAMS_DATA } from '../data/damsData';
 import { getPointsByDam } from '../data/usefulPoints';
+import DamWaterLevelIndicator from './DamWaterLevelIndicator';
 import SchemaOrg from './SchemaOrg';
 import AdBanner from './AdBanner';
 
@@ -81,9 +82,12 @@ export default function DamDetail() {
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 mb-8 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 rounded-full text-xs font-semibold text-blue-700 dark:text-blue-300 mb-3">
-              <MapPin className="h-3.5 w-3.5" />
-              <span>{dam.department}</span>
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 rounded-full text-xs font-semibold text-blue-700 dark:text-blue-300">
+                <MapPin className="h-3.5 w-3.5" />
+                <span>{dam.department}</span>
+              </div>
+              <DamWaterLevelIndicator damId={dam.id} size="sm" />
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
               {dam.name}
@@ -114,7 +118,7 @@ export default function DamDetail() {
         </div>
 
         {/* Métricas clave */}
-        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           <div>
             <span className="text-xs text-slate-400 dark:text-slate-500 block">Espejo de agua</span>
             <span className="text-lg font-bold text-slate-800 dark:text-slate-200">
@@ -126,6 +130,12 @@ export default function DamDetail() {
             <span className="text-lg font-bold text-slate-800 dark:text-slate-200">
               {dam.maxDepthMeters ? `${dam.maxDepthMeters} m` : 'En medición'}
             </span>
+          </div>
+          <div className="col-span-2 sm:col-span-1">
+            <span className="text-xs text-slate-400 dark:text-slate-500 block">Nivel de Cota / Vertedero</span>
+            <div className="mt-1">
+              <DamWaterLevelIndicator damId={dam.id} showBar={true} variant="compact" size="xs" />
+            </div>
           </div>
           <div>
             <span className="text-xs text-slate-400 dark:text-slate-500 block">Pesqueros activos</span>

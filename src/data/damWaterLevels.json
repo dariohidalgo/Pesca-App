@@ -1,0 +1,63 @@
+{
+  "updatedAt": "2026-10-15T08:00:00-03:00",
+  "source": "Administración Provincial de Recursos Hídricos (APRHI)",
+  "sourceUrl": "https://portaldelagua.cba.gov.ar/",
+  "dams": {
+    "san-roque": {
+      "id": "san-roque",
+      "name": "Dique San Roque",
+      "currentLevel": 33.50,
+      "spillwayLevel": 35.30,
+      "lastUpdated": "2026-10-15"
+    },
+    "los-molinos": {
+      "id": "los-molinos",
+      "name": "Dique Los Molinos",
+      "currentLevel": 50.80,
+      "spillwayLevel": 53.00,
+      "lastUpdated": "2026-10-15"
+    },
+    "embalse": {
+      "id": "embalse",
+      "name": "Embalse de Río Tercero",
+      "currentLevel": 44.90,
+      "spillwayLevel": 46.50,
+      "lastUpdated": "2026-10-15"
+    },
+    "cruz-del-eje": {
+      "id": "cruz-del-eje",
+      "name": "Dique Cruz del Eje",
+      "currentLevel": 32.50,
+      "spillwayLevel": 37.20,
+      "lastUpdated": "2026-10-15"
+    },
+    "pichanas": {
+      "id": "pichanas",
+      "name": "Dique Pichanas",
+      "currentLevel": 40.50,
+      "spillwayLevel": 44.00,
+      "lastUpdated": "2026-10-15"
+    },
+    "la-vina": {
+      "id": "la-vina",
+      "name": "Dique La Viña",
+      "currentLevel": 94.20,
+      "spillwayLevel": 100.50,
+      "lastUpdated": "2026-10-15"
+    },
+    "el-cajon": {
+      "id": "el-cajon",
+      "name": "Dique El Cajón",
+      "currentLevel": 36.60,
+      "spillwayLevel": 38.00,
+      "lastUpdated": "2026-10-15"
+    },
+    "cerro-pelado": {
+      "id": "cerro-pelado",
+      "name": "Embalse Cerro Pelado",
+      "currentLevel": 86.80,
+      "spillwayLevel": 90.00,
+      "lastUpdated": "2026-10-15"
+    }
+  }
+}
