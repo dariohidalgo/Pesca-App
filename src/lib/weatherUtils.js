@@ -51,3 +51,69 @@ export function getWeatherDescription(code) {
   return 'Condiciones variables';
 }
 
+/**
+ * Calcula la rotación en grados para la flecha de viento (ArrowUp) según la convención
+ * meteorológica, donde la flecha apunta hacia donde sopla el viento (ej. viento del Oeste 270° sopla hacia el Este 90° →).
+ * @param {number|null|undefined} degrees - Dirección de origen del viento en grados (0° a 360°)
+ * @returns {number} Ángulo de rotación de la flecha en grados
+ */
+export function getWindArrowRotation(degrees) {
+  if (degrees === null || degrees === undefined || isNaN(degrees)) return 0;
+  return ((Number(degrees) + 180) % 360 + 360) % 360;
+}
+
+/**
+ * Calcula el índice del mejor día para pescar entre los días del pronóstico extendido,
+ * priorizando menor viento, ausencia de ráfagas violentas, estabilidad meteorológica y ventana lunar.
+ * @param {Array} days - Lista de días del pronóstico extendido
+ * @param {number} [basePressure=950] - Presión de referencia en hPa
+ * @returns {number} Índice del mejor día en el array (-1 si está vacío)
+ */
+export function findBestFishingDayIndex(days, basePressure = 950) {
+  if (!Array.isArray(days) || days.length === 0) return -1;
+
+  let bestIndex = 0;
+  let bestScore = -Infinity;
+
+  days.forEach((day, idx) => {
+    const wind = Number(day.windMax) || 0;
+    const gusts = Number(day.windGustsMax) || wind;
+
+    // Viento suave / moderado es ideal para pesca en diques cordobeses
+    let windScore = 0;
+    if (wind <= 12) windScore = 50 - wind * 1.5;
+    else if (wind <= 18) windScore = 35 - (wind - 12) * 2.5;
+    else if (wind <= 25) windScore = 15 - (wind - 18) * 3;
+    else windScore = -20 - (wind - 25) * 5;
+
+    // Penalidad por ráfagas violentas
+    const gustPenalty = Math.max(0, gusts - wind) * 0.7;
+
+    // Estabilidad meteorológica y ausencia de tormentas
+    const code = Number(day.weatherCode) || 0;
+    let weatherScore = 10;
+    if (code >= 95) weatherScore = -40; // tormenta eléctrica
+    else if (code >= 80) weatherScore = -20; // chubascos
+    else if (code >= 51) weatherScore = -10; // lluvia
+    else if (code === 0 || code === 1) weatherScore = 15; // despejado / óptimo
+
+    // Penalidad por probabilidad de lluvia
+    const rainPenalty = (Number(day.precipitationProbability) || 0) * 0.2;
+
+    // Ventana lunar (nueva, llena o cuartos)
+    const moonPhase = Number(day.moonPhase) || 0;
+    const isMajorMoon = (moonPhase < 0.05 || moonPhase > 0.95 || (moonPhase > 0.45 && moonPhase < 0.55));
+    const moonScore = isMajorMoon ? 8 : 0;
+
+    const totalScore = windScore - gustPenalty + weatherScore - rainPenalty + moonScore;
+
+    if (totalScore > bestScore) {
+      bestScore = totalScore;
+      bestIndex = idx;
+    }
+  });
+
+  return bestIndex;
+}
+
+

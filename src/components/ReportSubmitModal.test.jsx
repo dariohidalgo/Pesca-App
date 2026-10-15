@@ -50,6 +50,11 @@ describe('ReportSubmitModal', () => {
     expect(screen.getByRole('option', { name: /^Costa$/i })).toBeInTheDocument();
     expect(screen.getByRole('option', { name: /^Embarcado$/i })).toBeInTheDocument();
 
+    // Zona / Club input (opcional)
+    const zoneInput = screen.getByLabelText(/Zona \/ Club/i);
+    expect(zoneInput).toBeInTheDocument();
+    expect(zoneInput).toHaveAttribute('placeholder', expect.stringContaining('Murallón'));
+
     // Profundidad / Encarne input
     const depthInput = screen.getByLabelText(/Profundidad \/ Encarne/i);
     expect(depthInput).toBeInTheDocument();
@@ -63,17 +68,22 @@ describe('ReportSubmitModal', () => {
     const authorInput = screen.getByLabelText(/Nombre del pescador/i);
     expect(authorInput).toBeInTheDocument();
 
-    // Foto
-    expect(screen.getByText(/Foto de la salida/i)).toBeInTheDocument();
+    // Foto selector button (and NO URL input)
+    expect(screen.getByText(/Seleccionar foto/i)).toBeInTheDocument();
+    expect(screen.queryByPlaceholderText(/https:\/\/ejemplo\.com/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/o ingresar URL abajo/i)).not.toBeInTheDocument();
   });
 
-  it('submits report with pending: true and status: "pending"', async () => {
+  it('submits report with zone, pending: true and status: "pending"', async () => {
     const onSubmitted = vi.fn();
     render(
       <ReportSubmitModal isOpen={true} onClose={vi.fn()} onSubmitted={onSubmitted} />
     );
 
     // Fill form
+    fireEvent.change(screen.getByLabelText(/Zona \/ Club/i), {
+      target: { value: 'Frente al ACA' }
+    });
     fireEvent.change(screen.getByLabelText(/Profundidad \/ Encarne/i), {
       target: { value: 'Al barro con mojarra viva a 4 metros' }
     });
@@ -92,6 +102,7 @@ describe('ReportSubmitModal', () => {
     });
 
     const submittedData = firestore.addDoc.mock.calls[0][1];
+    expect(submittedData.zone).toBe('Frente al ACA');
     expect(submittedData.pending).toBe(true);
     expect(submittedData.status).toBe('pending');
     expect(submittedData.author).toBe('Carlos P.');
@@ -103,7 +114,7 @@ describe('ReportSubmitModal', () => {
     expect(screen.getByText(/pending: true/i)).toBeInTheDocument();
   });
 
-  it('defaults to anonymous when author is left blank', async () => {
+  it('defaults to anonymous and dam name for zone when left blank', async () => {
     render(
       <ReportSubmitModal isOpen={true} onClose={vi.fn()} onSubmitted={vi.fn()} />
     );
@@ -123,6 +134,7 @@ describe('ReportSubmitModal', () => {
 
     const submittedData = firestore.addDoc.mock.calls[0][1];
     expect(submittedData.author).toBe('Pescador anónimo');
+    expect(submittedData.zone).toBe('Dique San Roque');
     expect(submittedData.pending).toBe(true);
     expect(submittedData.status).toBe('pending');
   });

@@ -19,6 +19,7 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
     damId: 'san-roque',
     tripDate: new Date().toISOString().split('T')[0],
     modality: 'costa',
+    zone: '',
     depthAndBait: '',
     comment: '',
     author: '',
@@ -26,6 +27,7 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
   });
 
   const [photoPreview, setPhotoPreview] = useState(null);
+  const [photoFileName, setPhotoFileName] = useState('');
   const [status, setStatus] = useState('idle'); // idle | loading | success | error
   const [errorMessage, setErrorMessage] = useState('');
   const fileInputRef = useRef(null);
@@ -39,12 +41,14 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
       damId: 'san-roque',
       tripDate: new Date().toISOString().split('T')[0],
       modality: 'costa',
+      zone: '',
       depthAndBait: '',
       comment: '',
       author: '',
       photo: ''
     });
     setPhotoPreview(null);
+    setPhotoFileName('');
     onClose();
   };
 
@@ -61,6 +65,8 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
       alert('La foto debe ser menor a 5MB.');
       return;
     }
+
+    setPhotoFileName(file.name);
 
     if (typeof FileReader !== 'undefined') {
       const reader = new FileReader();
@@ -105,6 +111,7 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
 
   const handleRemovePhoto = () => {
     setPhotoPreview(null);
+    setPhotoFileName('');
     setFormData(prev => ({ ...prev, photo: '' }));
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
@@ -124,11 +131,11 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
       tripDate: formData.tripDate,
       publishDate: new Date().toISOString().split('T')[0],
       modality: formData.modality, // 'costa' | 'embarcado'
+      zone: formData.zone.trim() || targetDam?.name || 'Zona general',
       depthAndBait: formData.depthAndBait.trim(),
       baitAndRig: formData.depthAndBait.trim(), // retrocompatibilidad
       comment: formData.comment.trim(),
       notes: formData.comment.trim(), // retrocompatibilidad
-      zone: targetDam?.name || 'Zona general',
       targetSpecies: 'Variada / Pejerrey',
       conditions: 'Aporte de la comunidad',
       result: {
@@ -243,21 +250,38 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
               </div>
             </div>
 
-            {/* Modalidad */}
-            <div>
-              <label htmlFor="modal-modality" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
-                Modalidad
-              </label>
-              <select
-                id="modal-modality"
-                name="modality"
-                value={formData.modality}
-                onChange={handleChange}
-                className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="costa">Costa</option>
-                <option value="embarcado">Embarcado</option>
-              </select>
+            {/* Grilla de ubicación: Modalidad y Zona / Club */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label htmlFor="modal-modality" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  Modalidad
+                </label>
+                <select
+                  id="modal-modality"
+                  name="modality"
+                  value={formData.modality}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="costa">Costa</option>
+                  <option value="embarcado">Embarcado</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="modal-zone" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                  Zona / Club <span className="text-slate-400 font-normal">(opcional)</span>
+                </label>
+                <input
+                  id="modal-zone"
+                  type="text"
+                  name="zone"
+                  value={formData.zone}
+                  onChange={handleChange}
+                  placeholder="Ej: Murallón, Frente al ACA, Centro"
+                  className="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
             </div>
 
             {/* Profundidad / Encarne */}
@@ -310,60 +334,55 @@ export default function ReportSubmitModal({ isOpen, onClose, onSubmitted }) {
               />
             </div>
 
-            {/* Foto */}
+            {/* Selector de Foto optimizado */}
             <div>
               <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 Foto de la salida <span className="text-slate-400 font-normal">(opcional)</span>
               </label>
 
+              <input
+                ref={fileInputRef}
+                type="file"
+                id="modal-photo-file"
+                accept="image/*"
+                onChange={handlePhotoFileChange}
+                className="hidden"
+              />
+
               {photoPreview ? (
-                <div className="relative inline-block mt-1">
+                <div className="flex items-center gap-3 p-2.5 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl">
                   <img
                     src={photoPreview}
                     alt="Vista previa de la captura"
-                    className="w-32 h-24 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm"
+                    className="w-16 h-16 object-cover rounded-xl border border-slate-200 dark:border-slate-700 shrink-0"
                   />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 truncate">
+                      {photoFileName || 'Foto seleccionada'}
+                    </p>
+                    <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">
+                      ✓ Imagen lista y optimizada
+                    </p>
+                  </div>
                   <button
                     type="button"
                     onClick={handleRemovePhoto}
-                    className="absolute -top-2 -right-2 p-1.5 bg-red-600 text-white rounded-full hover:bg-red-700 shadow transition-colors"
-                    title="Quitar foto"
+                    className="p-2 text-slate-400 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-xl transition-colors shrink-0"
+                    title="Eliminar foto"
+                    aria-label="Eliminar foto"
                   >
-                    <Trash2 className="h-3.5 w-3.5" />
+                    <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
               ) : (
-                <div className="mt-1 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      id="modal-photo-file"
-                      accept="image/*"
-                      onChange={handlePhotoFileChange}
-                      className="hidden"
-                    />
-                    <label
-                      htmlFor="modal-photo-file"
-                      className="inline-flex items-center gap-2 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold cursor-pointer transition-colors border border-slate-200 dark:border-slate-700"
-                    >
-                      <Camera className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                      <span>Seleccionar foto</span>
-                    </label>
-                    <span className="text-xs text-slate-400">o ingresar URL abajo</span>
-                  </div>
-                  <input
-                    type="url"
-                    name="photo"
-                    value={formData.photo.startsWith('data:') ? '' : formData.photo}
-                    onChange={(e) => {
-                      const val = e.target.value;
-                      setFormData(prev => ({ ...prev, photo: val }));
-                      setPhotoPreview(val.trim() || null);
-                    }}
-                    placeholder="https://ejemplo.com/mifoto.jpg"
-                    className="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
+                <div className="mt-1">
+                  <label
+                    htmlFor="modal-photo-file"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-bold cursor-pointer transition-colors border border-slate-200 dark:border-slate-700"
+                  >
+                    <Camera className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    <span>Seleccionar foto</span>
+                  </label>
                 </div>
               )}
             </div>
